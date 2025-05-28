@@ -1,183 +1,123 @@
-/* -------------------
-   1. Reset & Base Styles
-------------------- */
+/* Base Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  scroll-behavior: smooth;
 }
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #f0f4ff, #ffffff);
+  background-color: #f9f9f9;
   color: #333;
   line-height: 1.6;
-  padding: 0 20px;
-}
-
-a {
-  color: #004aad;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-/* -------------------
-   2. Navigation Bar
-------------------- */
-nav {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: #e6f0ff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-}
-
-nav h1 a {
-  color: #004aad;
-  font-size: 1.8rem;
-}
-
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-}
-
-nav a {
-  color: #004aad;
-  font-weight: 600;
-  position: relative;
-}
-
-nav a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 2px;
-  bottom: -5px;
-  left: 0;
-  background-color: #004aad;
-  transition: width 0.3s ease;
-}
-
-nav a:hover::after {
-  width: 100%;
-}
-
-/* -------------------
-   3. Section Layout
-------------------- */
-section {
-  max-width: 900px;
-  margin: auto;
-  padding: 60px 20px;
   text-align: center;
 }
 
-section h2 {
+/* Header */
+header {
+  background: white;
+  padding: 20px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+header h1 {
   font-size: 2rem;
-  margin-bottom: 20px;
-  color: #004aad;
+  color: #222;
 }
 
-/* -------------------
-   4. Hero Section
-------------------- */
-.hero {
-  text-align: center;
-  padding: 80px 20px;
-  background: radial-gradient(circle at center, #dce8ff, #f0f4ff);
-  border-radius: 15px;
-  animation: fadeIn 1.2s ease-in;
-}
-
-.hero h2 {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
-  color: #004aad;
-}
-
-.hero p {
-  font-size: 1.2rem;
-  color: #555;
-}
-
-/* -------------------
-   5. Buttons
-------------------- */
-.btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 28px;
-  background: #004aad;
-  color: #fff;
-  border-radius: 8px;
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
-
-.btn:hover {
-  background: #002f73;
-  transform: scale(1.05);
-}
-
-/* -------------------
-   6. Project Cards
-------------------- */
-.project-card {
-  background: #fff;
-  border: 1px solid #ccc;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
-}
-
-.project-card h3 {
-  color: #004aad;
+header p {
+  font-size: 1rem;
+  color: #666;
   margin-bottom: 10px;
 }
 
-.project-card p {
-  color: #555;
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  list-style: none;
+  margin-top: 10px;
 }
 
-/* -------------------
-   7. Footer
-------------------- */
-footer {
-  text-align: center;
-  padding: 30px 0;
-  margin-top: 60px;
+nav a {
+  text-decoration: none;
+  color: #444;
+  font-weight: bold;
+  padding-bottom: 5px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+
+nav a.active,
+nav a:hover {
+  border-color: #004aad;
+}
+
+/* Intro Section */
+.intro {
+  background-color: #f3f1f1;
+  padding: 50px 20px;
+}
+
+.profile-img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.intro h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.intro h2 span {
+  font-size: 1.8rem;
   color: #666;
-  background: #f0f4ff;
-  border-top: 1px solid #ccc;
 }
 
-/* -------------------
-   8. Animations
-------------------- */
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.button-group {
+  margin: 30px 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.circle-btn {
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+  line-height: 120px;
+  border-radius: 50%;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.circle-btn:hover {
+  transform: scale(1.05);
+}
+
+.pink {
+  background-color: #e8436f;
+}
+
+.blue {
+  background-color: #42c6e7;
+}
+
+.yellow {
+  background-color: #e6c644;
+}
+
+.intro-text {
+  max-width: 600px;
+  margin: auto;
+  font-size: 1rem;
+  color: #555;
+  margin-top: 20px;
 }
