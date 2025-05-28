@@ -10,8 +10,8 @@
 <body>
 <div id="progress-bar"></div>
 
-  <!-- Navigation -->
- <header>
+<!-- Navigation -->
+<header>
   <div class="nav-container">
     <h1>Kasvi Mahajan</h1>
     <button class="hamburger" onclick="toggleMenu()">☰</button>
@@ -27,88 +27,88 @@
   </nav>
 </header>
 
+<!-- Main content -->
+<main class="page-layout">
 
-  <!-- Main content should be inside the body -->
-  <main class="page-layout">
-    
-    <!-- Home Section -->
-    <section id="home" data-aos="fade-up">
-      <img src="assets/profile.jpg" alt="Profile Picture" class="profile-img" />
-      <h2 data-aos="fade-up" data-aos-delay="100">Hello,<br><span>A bit about me:</span></h2>
-      <p class="intro-text" data-aos="fade-up" data-aos-delay="200">Welcome to my portfolio. I'm an Applied Mathematics student passionate about data, research, and creativity.</p>
-    </section>
+  <!-- Home Section -->
+  <section id="home" class="intro" data-aos="fade-up">
+    <img src="assets/profile.jpg" alt="Profile Picture" class="profile-img" />
+    <h2 data-aos="fade-up" data-aos-delay="100">Hello,<br><span>A bit about me:</span></h2>
+    <p class="intro-text" data-aos="fade-up" data-aos-delay="200">Welcome to my portfolio. I'm an Applied Mathematics student passionate about data, research, and creativity.</p>
+  </section>
 
-    <!-- Education Section -->
-    <section id="education" data-aos="fade-up">
-      <h2 data-aos="fade-up" data-aos-delay="100">Education</h2>
-      <p data-aos="fade-up" data-aos-delay="200">Honors Specialization in Applied Mathematics<br>Western University, 2021–2025 (Expected)</p>
-    </section>
+  <!-- Education Section -->
+  <section id="education" data-aos="fade-up">
+    <h2 data-aos="fade-up" data-aos-delay="100">Education</h2>
+    <p data-aos="fade-up" data-aos-delay="200">Honors Specialization in Applied Mathematics<br>Western University, 2021–2025 (Expected)</p>
+  </section>
 
-    <!-- Experience Section -->
-    <section id="experience" data-aos="fade-up">
-      <h2 data-aos="fade-up" data-aos-delay="100">Experience</h2>
-      <div class="project-card">
-        <h3 data-aos="fade-up" data-aos-delay="200">Project Intern, EY India</h3>
-        <p data-aos="fade-up" data-aos-delay="200">Worked on business transformation projects; built dashboards and contributed to client analysis.</p>
-      </div>
-      <div class="project-card">
-        <h3 data-aos="fade-up" data-aos-delay="200">Research Assistant, Western University</h3>
-        <p data-aos="fade-up" data-aos-delay="200">Assisted in data collection and modeling for applied mathematics research studies.</p>
-      </div>
-    </section>
+  <!-- Experience Section -->
+  <section id="experience" data-aos="fade-up">
+    <h2 data-aos="fade-up" data-aos-delay="100">Experience</h2>
+    <div class="project-card">
+      <h3 data-aos="fade-up" data-aos-delay="200">Project Intern, EY India</h3>
+      <p data-aos="fade-up" data-aos-delay="200">Worked on business transformation projects; built dashboards and contributed to client analysis.</p>
+    </div>
+    <div class="project-card">
+      <h3 data-aos="fade-up" data-aos-delay="200">Research Assistant, Western University</h3>
+      <p data-aos="fade-up" data-aos-delay="200">Assisted in data collection and modeling for applied mathematics research studies.</p>
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section id="contact" data-aos="fade-up">
-      <h2 data-aos="fade-up" data-aos-delay="100">Contact Me</h2>
-      <p data-aos="fade-up" data-aos-delay="200">Email: <a href="mailto:mahajan.kasvi@gmail.com">mahajan.kasvi@gmail.com</a></p>
-      <p data-aos="fade-up" data-aos-delay="200">LinkedIn: <a href="https://www.linkedin.com/in/kasvimahajan/" target="_blank">kasvimahajan</a></p>
-    </section>
+  <!-- Contact Section -->
+  <section id="contact" data-aos="fade-up">
+    <h2 data-aos="fade-up" data-aos-delay="100">Contact Me</h2>
+    <p data-aos="fade-up" data-aos-delay="200">Email: <a href="mailto:mahajan.kasvi@gmail.com">mahajan.kasvi@gmail.com</a></p>
+    <p data-aos="fade-up" data-aos-delay="200">LinkedIn: <a href="https://www.linkedin.com/in/kasvimahajan/" target="_blank">kasvimahajan</a></p>
+  </section>
+</main>
 
-  </main>
+<footer>
+  <p>© 2025 Kasvi Mahajan. All rights reserved.</p>
+</footer>
 
-  <footer>
-    <p>© 2025 Kasvi Mahajan. All rights reserved.</p>
-  </footer>
-
-  <!-- Scroll Animations -->
+<!-- Scripts -->
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>
-  AOS.init();
-</script>
+<script>AOS.init();</script>
 
-<!-- Scroll Progress Bar -->
 <script>
+  // Scroll progress bar
   window.onscroll = function () {
     const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
     const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
     const progress = (scrollTop / scrollHeight) * 100;
     document.getElementById("progress-bar").style.width = progress + "%";
+    topBtn.style.display = (scrollTop > 300) ? "block" : "none";
+  };
+
+  // Scroll-to-top button
+  const topBtn = document.getElementById("scrollToTopBtn");
+  topBtn.onclick = function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 </script>
 
-<!-- Sticky Nav Shadow -->
 <script>
+  // Sticky header shadow
   const nav = document.querySelector("header");
   window.addEventListener("scroll", () => {
     nav.classList.toggle("scrolled", window.scrollY > 50);
   });
 </script>
 
-<!-- ScrollSpy Highlighting -->
 <script>
+  // ScrollSpy
   const sections = document.querySelectorAll("section");
   const navLinks = document.querySelectorAll(".nav-link");
-
   window.addEventListener("scroll", () => {
     let current = "";
-
     sections.forEach((section) => {
       const sectionTop = section.offsetTop;
       if (pageYOffset >= sectionTop - 100) {
         current = section.getAttribute("id");
       }
     });
-
     navLinks.forEach((link) => {
       link.classList.remove("active");
       if (link.getAttribute("href") === `#${current}`) {
@@ -118,32 +118,15 @@
   });
 </script>
 
-<button id="scrollToTopBtn" title="Go to top">↑</button>
 <script>
-  const topBtn = document.getElementById("scrollToTopBtn");
-
-  window.onscroll = function () {
-    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const progress = (scrollTop / scrollHeight) * 100;
-
-    // Scroll progress bar
-    document.getElementById("progress-bar").style.width = progress + "%";
-
-    // Show/hide scroll-to-top button
-    topBtn.style.display = (scrollTop > 300) ? "block" : "none";
-  };
-
-  topBtn.onclick = function () {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-</script>
-
-<script>
+  // Mobile menu toggle
   function toggleMenu() {
     document.querySelector("nav ul").classList.toggle("show");
   }
 </script>
+
+<!-- Scroll To Top Button -->
+<button id="scrollToTopBtn" title="Go to top">↑</button>
 
 </body>
 </html>
