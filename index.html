@@ -2,63 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Kasvi Mahajan | Portfolio</title>
   <link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
+
   <header>
-  <nav>
-    <h1><a href="index.html">Kasvi Mahajan</a></h1>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About Me</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="contact.html">Contact Me</a></li>
-    </ul>
-  </nav>
-</header>
+    <h1>Kasvi Mahajan</h1>
+    <p>Applied Mathematics Student</p>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-
-  <section class="hero">
-    <h2>Hello, I'm Kasvi.</h2>
-    <p>Data Analyst. Applied Math Student. Aspiring Consultant. Creative Mind.</p>
-    <a href="#projects" class="btn">View My Work</a>
-  </section>
-
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I'm a fourth-year Applied Mathematics student at Western University. I’ve interned at EY India, contributed to data-driven research, and led campus initiatives. I combine analytical skills with creative thinking—whether I'm solving equations or painting landscapes.
+  <section class="intro">
+    <img src="assets/profile.jpg" alt="Profile Picture" class="profile-img" />
+    <h2>Hello,<br><span>a bit about me:</span></h2>
+    <div class="button-group">
+      <a href="about.html" class="circle-btn pink">ABOUT ME</a>
+      <a href="projects.html" class="circle-btn blue">MY WORK</a>
+      <a href="contact.html" class="circle-btn yellow">CONTACT</a>
+    </div>
+    <p class="intro-text">
+      Welcome to my digital portfolio! I’m an Applied Mathematics student passionate about data, innovation, and creativity. This site showcases my work, my journey, and a little bit of who I am.
     </p>
   </section>
 
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project-card">
-      <h3>Bootstrapped Confidence Intervals</h3>
-      <p>Analyzed large datasets to generate visual CI models using Python and NumPy.</p>
-    </div>
-    <div class="project-card">
-      <h3>Chaos Theory Visualizations</h3>
-      <p>Created cobweb plots for nonlinear maps to explore bifurcation and chaos.</p>
-    </div>
-  </section>
-
-  <section id="resume">
-    <h2>Resume</h2>
-    <p>View or download my full resume below:</p>
-    <a href="assets/resume.pdf" target="_blank" class="btn">Download Resume</a>
-  </section>
-
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <p>Email: <a href="mailto:mahajan.kasvi@gmail.com">mahajan.kasvi@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/kasvimahajan" target="_blank">kasvimahajan</a></p>
-  </section>
-
-  <footer>
-    <p>© 2025 Kasvi Mahajan</p>
-  </footer>
 </body>
 </html>
