@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>Kasvi Mahajan | Portfolio</title>
   <link rel="stylesheet" href="styles/style.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 
@@ -20,18 +21,30 @@
     </nav>
   </header>
 
-  <section class="intro">
-    <img src="assets/profile.jpg" alt="Profile Picture" class="profile-img" />
-    <h2>Hello,<br><span>a bit about me:</span></h2>
+  <section class="intro fade-up">
+  <img src="assets/profile.jpg" alt="Profile Picture" class="profile-img fade-up" />
+  <h2 class="fade-up">Hello,<br><span>a bit about me:</span></h2>
+  <p class="intro-text fade-up">Welcome to my digital portfolio! I am an Applied Mathematics student...</p>
     <div class="button-group">
       <a href="about.html" class="circle-btn pink">ABOUT ME</a>
       <a href="projects.html" class="circle-btn blue">MY WORK</a>
       <a href="contact.html" class="circle-btn yellow">CONTACT</a>
     </div>
     <p class="intro-text">
-      Welcome to my digital portfolio! I’m an Applied Mathematics student passionate about data, innovation, and creativity. This site showcases my work, my journey, and a little bit of who I am.
+      Welcome to my digital portfolio! I am an Applied Mathematics student passionate about data, innovation, and creativity. This site showcases my work, my journey, and a little bit of who I am.
     </p>
   </section>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+<div data-aos="fade-up">
+  <h2>Projects</h2>
+</div>
+
+<div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+  <p>Here’s my work.</p>
+</div>
 
 </body>
 </html>
