@@ -216,3 +216,28 @@ nav a:hover {
 .fade-up {
   animation: fadeUp 0.8s ease-out;
 }
+/* -------------------
+   Layout Spacing & Grid
+------------------- */
+
+main.page-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 80px; /* space between sections */
+  padding: 60px 20px;
+}
+
+section {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Optional: consistent header styling */
+section h2 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #004aad;
+}
