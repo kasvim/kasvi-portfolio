@@ -81,12 +81,6 @@
     document.getElementById("progress-bar").style.width = progress + "%";
     topBtn.style.display = (scrollTop > 300) ? "block" : "none";
   };
-
-  // Scroll-to-top button
-  const topBtn = document.getElementById("scrollToTopBtn");
-  topBtn.onclick = function () {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 </script>
 
 <script>
@@ -127,6 +121,26 @@
 
 <!-- Scroll To Top Button -->
 <button id="scrollToTopBtn" title="Go to top">↑</button>
+
+<script>
+  const topBtn = document.getElementById("scrollToTopBtn");
+
+  window.onscroll = function () {
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress = (scrollTop / scrollHeight) * 100;
+
+    // Update scroll bar
+    document.getElementById("progress-bar").style.width = progress + "%";
+
+    // Show/hide scroll-to-top button
+    topBtn.style.display = (scrollTop > 300) ? "block" : "none";
+  };
+
+  topBtn.onclick = function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+</script>
 
 </body>
 </html>
