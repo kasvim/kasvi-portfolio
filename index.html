@@ -2,168 +2,157 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Kasvi Mahajan | Portfolio</title>
+  <title>Kasvi Mahajan | Data Stories</title>
   <link rel="stylesheet" href="styles/style.css" />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 
 <body>
-<div id="progress-bar"></div>
+  <div id="progress-bar"></div>
 
-<!-- Navigation -->
-<header>
-  <div class="nav-container">
-    <h1>Kasvi Mahajan</h1>
-    <button class="hamburger" onclick="toggleMenu()">☰</button>
-  </div>
-  <nav id="mainNav">
-    <ul>
-      <li><a href="#home" class="nav-link">Home</a></li>
-      <li><a href="#education" class="nav-link">Education</a></li>
-      <li><a href="#portfolio" class="nav-link">Projects</a></li>
-      <li><a href="#experience" class="nav-link">Experience</a></li>
-      <li><a href="#contact" class="nav-link">Contact</a></li>
-    </ul>
-  </nav>
-</header>
-
-<!-- Main content -->
-<main class="page-layout">
-
-  <!-- Home Section -->
-  <section id="home" class="intro" data-aos="fade-up">
-    <div class="background-blur"></div>
-    <div class="home-content">
-    <img src="assets/profile.jpg" alt="Profile Picture" class="profile-img" />
-    <h2 data-aos="fade-up" data-aos-delay="100">Hello,<br><span>A bit about me:</span></h2>
-    <p class="intro-text" data-aos="fade-up" data-aos-delay="200">Welcome to my portfolio. I'm an Applied Mathematics student passionate about data, research, and creativity.</p>
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <h1>Kasvi Mahajan</h1>
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
     </div>
-</section>
+    <nav id="mainNav">
+      <ul>
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- Education Section -->
-  <section id="education" data-aos="fade-up">
-    <h2 data-aos="fade-up" data-aos-delay="100">Education</h2>
-    <div class = "project-card">
-    <p data-aos="fade-up" data-aos-delay="200">I am pursuing a Major in Applied Mathematics and a Minor in Studio Arts.<br> 
-        At Western University, 2021–2025 (August Expected)<br> 
-        I started my journey as a Computer Science Major, soon I realised Mathematics is my one true love. 
-        I was always driven by the Math geniuses in my Family. 
-        Now, after 4 years I have found my passion in Data Analysis and Visualisation. 
-        Ever since then I have strived to build my technical and soft skills in the field of Data. </p>
-    </div>
-  </section>
+  <main class="page-layout">
+    <!-- Home Section -->
+    <section id="home" class="intro" data-aos="fade-up">
+      <div class="background-blur"></div>
+      <div class="home-content">
+        <img src="assets/profile.jpg" alt="Profile Picture" class="profile-img" />
+        <h2>Hello,<br><span>Welcome to my portfolio!</span></h2>
+        <p class="intro-text">I'm an Applied Mathematics student passionate about modeling, data analysis, and creative storytelling.</p>
+      </div>
+    </section>
 
-  <!-- Portfolio Section -->
-<section id="portfolio" data-aos="fade-up">
-  <h2 data-aos="fade-up" data-aos-delay="100">Projects</h2>
-  <div class = "project-card">
-  <p data-aos="fade-up" data-aos-delay="200">
-    To view my work:<br>
-    <a href="portfolio.html" class="portfolio-link">Check out the Projects section</a>
-  </p>
-  </div>
-</section>
+    <!-- About Section -->
+    <section id="about" data-aos="fade-up">
+      <h2>About Me</h2>
+      <div class="project-card">
+        <p>
+          I’m currently pursuing a BSc in Applied Mathematics with a Minor in Studio Arts at Western University (expected August 2025).
+          I began in Computer Science but quickly realized that **Mathematics is my one true love**.
+          Over time, I’ve become passionate about **data analysis, simulations, and visual storytelling**—merging logic and creativity to solve meaningful problems.
+        </p>
+      </div>
+    </section>
 
-  <!-- Experience Section -->
-  <section id="experience" data-aos="fade-up">
-    <h2 data-aos="fade-up" data-aos-delay="100">Experience</h2>
-    <div class="project-card">
-      <h3 data-aos="fade-up" data-aos-delay="200">Project Intern, EY India</h3>
-      <p data-aos="fade-up" data-aos-delay="200">Worked on business transformation projects; built dashboards and contributed to client analysis.</p>
-    </div>
-    <div class="project-card">
-      <h3 data-aos="fade-up" data-aos-delay="200">Research Assistant, Western University</h3>
-      <p data-aos="fade-up" data-aos-delay="200">Assisted in data collection and modeling for applied mathematics research studies.</p>
-    </div>
-  </section>
+    <!-- Projects Section -->
+    <section id="projects" data-aos="fade-up">
+      <h2>Projects</h2>
 
-  <!-- Contact Section -->
-  <section id="contact" data-aos="fade-up">
-     <div class="project-card"> 
-    <h2 data-aos="fade-up" data-aos-delay="100">Contact Me</h2>
-    <p data-aos="fade-up" data-aos-delay="200">Email: <a href="mailto:mahajan.kasvi@gmail.com">mahajan.kasvi@gmail.com</a></p>
-    <p data-aos="fade-up" data-aos-delay="200">LinkedIn: <a href="https://www.linkedin.com/in/kasvimahajan/" target="_blank">kasvimahajan</a></p>
-        </div>  
-</section>
-</main>
+      <div class="project-card">
+        <h3>Disease Modelling: COVID-19 in France</h3>
+        <p>
+          Built a detailed SVIR compartmental model simulating COVID-19 spread in France using real-world data (June–Sept 2021). Analyzed exponential growth/decay phases, performed parameter fitting and sensitivity analysis using MATLAB.
+        </p>
+        <p><strong>Tools:</strong> MATLAB, ode45, fminsearch</p>
+      </div>
 
-<footer>
-  <p>© 2025 Kasvi Mahajan. All rights reserved.</p>
-</footer>
+      <div class="project-card">
+        <h3>Bootstrapped CI Visualizer</h3>
+        <p>Used Python and Matplotlib to visually demonstrate confidence intervals using real-world samples and resampling techniques.</p>
+        <p><strong>Tools:</strong> Python, Matplotlib</p>
+      </div>
 
-<!-- Scripts -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script>AOS.init();</script>
+      <div class="project-card">
+        <h3>Chaos Theory Visuals</h3>
+        <p>Created MATLAB-based cobweb plots and bifurcation diagrams to explore chaotic behavior in nonlinear maps.</p>
+        <p><strong>Tools:</strong> MATLAB</p>
+      </div>
+    </section>
 
-<script>
-  // Scroll progress bar
-  window.onscroll = function () {
-    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const progress = (scrollTop / scrollHeight) * 100;
-    document.getElementById("progress-bar").style.width = progress + "%";
-    topBtn.style.display = (scrollTop > 300) ? "block" : "none";
-  };
-</script>
+    <!-- Experience Section -->
+    <section id="experience" data-aos="fade-up">
+      <h2>Experience</h2>
 
-<script>
-  // Sticky header shadow
-  const nav = document.querySelector("header");
-  window.addEventListener("scroll", () => {
-    nav.classList.toggle("scrolled", window.scrollY > 50);
-  });
-</script>
+      <div class="project-card">
+        <h3>Research Assistant, Western University</h3>
+        <p>Simulated genome mutations and fitness landscapes using Python and MATLAB. Collaborated on geological data projects in Earth Sciences.</p>
+      </div>
 
-<script>
-  // ScrollSpy
-  const sections = document.querySelectorAll("section");
-  const navLinks = document.querySelectorAll(".nav-link");
-  window.addEventListener("scroll", () => {
-    let current = "";
-    sections.forEach((section) => {
-      const sectionTop = section.offsetTop;
-      if (pageYOffset >= sectionTop - 100) {
-        current = section.getAttribute("id");
-      }
+      <div class="project-card">
+        <h3>Project Intern, EY India</h3>
+        <p>Maintained and analyzed corporate data for 50+ companies. Contributed to dashboards, weekly reports, and compliance analysis.</p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" data-aos="fade-up">
+      <h2>Contact Me</h2>
+      <div class="project-card">
+        <p>Email: <a href="mailto:mahajan.kasvi@gmail.com">mahajan.kasvi@gmail.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/kasvimahajan/" target="_blank">kasvimahajan</a></p>
+        <p><a href="assets/KasviMahajan_Resume.pdf" class="portfolio-link" download>Download Resume</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Kasvi Mahajan. All rights reserved.</p>
+  </footer>
+
+  <!-- AOS and Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
+
+  <script>
+    // Scroll progress bar
+    const topBtn = document.getElementById("scrollToTopBtn");
+    window.onscroll = function () {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = (scrollTop / scrollHeight) * 100;
+      document.getElementById("progress-bar").style.width = progress + "%";
+      topBtn.style.display = (scrollTop > 300) ? "block" : "none";
+    };
+
+    // ScrollSpy
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-link");
+    window.addEventListener("scroll", () => {
+      let current = "";
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        if (pageYOffset >= sectionTop - 100) {
+          current = section.getAttribute("id");
+        }
+      });
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === `#${current}`) {
+          link.classList.add("active");
+        }
+      });
     });
-    navLinks.forEach((link) => {
-      link.classList.remove("active");
-      if (link.getAttribute("href") === `#${current}`) {
-        link.classList.add("active");
-      }
-    });
-  });
-</script>
 
-<script>
-  // Mobile menu toggle
-  function toggleMenu() {
-    document.querySelector("nav ul").classList.toggle("show");
-  }
-</script>
+    // Mobile menu
+    function toggleMenu() {
+      document.querySelector("nav ul").classList.toggle("show");
+    }
 
-<!-- Scroll To Top Button -->
-<button id="scrollToTopBtn" title="Go to top">↑</button>
+    // Scroll to Top
+    topBtn.onclick = function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+  </script>
 
-<script>
-  const topBtn = document.getElementById("scrollToTopBtn");
-
-  window.onscroll = function () {
-    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const progress = (scrollTop / scrollHeight) * 100;
-
-    // Update scroll bar
-    document.getElementById("progress-bar").style.width = progress + "%";
-
-    // Show/hide scroll-to-top button
-    topBtn.style.display = (scrollTop > 300) ? "block" : "none";
-  };
-
-  topBtn.onclick = function () {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-</script>
+  <button id="scrollToTopBtn" title="Go to top">↑</button>
 
 </body>
 </html>
