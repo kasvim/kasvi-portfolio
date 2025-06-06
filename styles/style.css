@@ -10,7 +10,7 @@ html {
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Poppins', sans-serif;
   background-color: #f9f9f9;
   color: #333;
   line-height: 1.6;
@@ -29,14 +29,15 @@ header {
 
 .nav-container {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  padding: 0 40px;
 }
 
 header h1 {
   font-size: 2rem;
   color: #222;
-  margin-bottom: 10px;
+  margin: 0;
 }
 
 nav ul {
@@ -50,7 +51,7 @@ nav ul {
 nav a {
   text-decoration: none;
   color: #444;
-  font-weight: bold;
+  font-weight: 600;
   padding-bottom: 5px;
   border-bottom: 2px solid transparent;
   transition: border-color 0.3s;
@@ -62,12 +63,12 @@ nav a:hover {
 }
 
 header.scrolled {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   background-color: #ffffff;
   transition: box-shadow 0.3s ease;
 }
 
-/* Home Section with Blurred Background */
+/* Home Section */
 #home {
   position: relative;
   overflow: hidden;
@@ -102,21 +103,21 @@ header.scrolled {
 }
 
 .profile-img {
-  width: 180px;
-  height: 180px;
+  width: 160px;
+  height: 160px;
   object-fit: cover;
   border-radius: 50%;
   margin-bottom: 20px;
 }
 
 .intro h2 {
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   margin-bottom: 10px;
-  color: #333;
+  color: #222;
 }
 
 .intro h2 span {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   color: #666;
 }
 
@@ -128,7 +129,7 @@ header.scrolled {
   margin-top: 20px;
 }
 
-/* Layout Spacing */
+/* Section Layout */
 main.page-layout {
   display: flex;
   flex-direction: column;
@@ -137,7 +138,7 @@ main.page-layout {
 }
 
 section {
-  min-height: 80vh;
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -150,22 +151,34 @@ section h2 {
   color: #004aad;
 }
 
+/* Project Cards */
 .project-card {
-  border: 1px solid #ccc;
-  padding: 20px;
+  border: 1px solid #ddd;
+  padding: 20px 30px;
   border-radius: 10px;
-  margin: 15px 0;
-  width: 80%;
+  margin: 20px 0;
+  width: 90%;
   max-width: 700px;
   background-color: #fff;
-}
-/* Project Card Hover Effect */
-.project-card:hover {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-  transform: translateY(-5px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
   transition: all 0.3s ease;
 }
 
+.project-card:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+}
+
+.project-card h3 {
+  color: #222;
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.6;
+}
 
 /* Scroll Progress Bar */
 #progress-bar {
@@ -201,6 +214,29 @@ section h2 {
   transform: scale(1.1);
 }
 
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #f0f0f0;
+  color: #555;
+  font-size: 0.9rem;
+  margin-top: 40px;
+}
+
+.portfolio-link {
+  color: #004aad;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s, color 0.3s;
+}
+
+.portfolio-link:hover {
+  border-color: #004aad;
+  color: #002f73;
+}
+
 /* Mobile Navigation */
 .hamburger {
   display: none;
@@ -209,13 +245,6 @@ section h2 {
   border: none;
   color: #004aad;
   cursor: pointer;
-}
-
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 40px;
 }
 
 @media (max-width: 768px) {
@@ -241,8 +270,8 @@ section h2 {
   }
 
   .profile-img {
-    width: 130px;
-    height: 130px;
+    width: 120px;
+    height: 120px;
   }
 
   .intro h2 {
@@ -257,66 +286,4 @@ section h2 {
     font-size: 0.95rem;
     padding: 0 10px;
   }
-}
-
-@media (max-width: 480px) {
-  nav h1 {
-    font-size: 1.5rem;
-  }
-
-  header p {
-    font-size: 0.9rem;
-  }
-
-  .intro h2 {
-    font-size: 1.6rem;
-  }
-
-  .intro h2 span {
-    font-size: 1.2rem;
-  }
-
-  .intro-text {
-    font-size: 0.9rem;
-    line-height: 1.4;
-  }
-}
-
-/* Animation */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-up {
-  animation: fadeUp 0.8s ease-out;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #f0f0f0;
-  color: #555;
-  font-size: 0.9rem;
-  margin-top: 40px;
-}
-
-.portfolio-link {
-  color: #004aad;
-  font-weight: bold;
-  text-decoration: none;
-  border-bottom: 2px solid transparent;
-  transition: border-color 0.3s, color 0.3s;
-}
-
-.portfolio-link:hover {
-  border-color: #004aad;
-  color: #002f73;
 }
