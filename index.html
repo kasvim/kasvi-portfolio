@@ -96,30 +96,42 @@
 </section>
 
 
-    <!-- Projects Section -->
-    <section id="projects" data-aos="fade-up">
-      <h2>Projects</h2>
+    <section id="projects" class="projects-section" data-aos="fade-up">
+  <h2>Featured Projects</h2>
+  <p class="section-subtitle">
+    Showcasing my work in mathematical modeling, data analysis, and computational research
+  </p>
 
-      <div class="project-card">
-        <h3>Disease Modelling: COVID-19 in France</h3>
-        <p>
-          Built a detailed SVIR compartmental model simulating COVID-19 spread in France using real-world data (June–Sept 2021). Analyzed exponential growth/decay phases, performed parameter fitting and sensitivity analysis using MATLAB.
-        </p>
-        <p><strong>Tools:</strong> MATLAB, ode45, fminsearch</p>
+  <!-- Project Card -->
+  <div class="project-feature">
+    <div class="project-text">
+      <h3>Disease Modeling: COVID-19 in France</h3>
+      <p>
+        Developed a sophisticated epidemiological model using a custom SVIR (Susceptible–Vaccinated–Infected–Recovered) differential equation system to analyze COVID-19 transmission dynamics in France.
+        The project involved comprehensive parameter fitting and sensitivity analysis using real-world case data.
+      </p>
+      <h4>Key Technical Achievements:</h4>
+      <ul>
+        <li>Implemented SVIR system using MATLAB’s ode45</li>
+        <li>Fitted exponential growth/decay functions to real data</li>
+        <li>Computed basic reproduction number \( R_0 \) and conducted stability analysis</li>
+        <li>Validated results through residual analysis and parameter tuning</li>
+      </ul>
+      <a href="assets/Covid-19_France_Kasvi_Mahajan_FinalProject.pdf" 
+        class="btn btn-research" 
+        download 
+        target="_blank">📄 View Research Paper</a>
+    </div>
+    <div class="project-visual">
+      <div class="project-icon-card">
+        <div class="project-icon">📈</div>
+        <h5>COVID-19 Model</h5>
+        <p class="icon-caption">SVIR System Visualization</p>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div class="project-card">
-        <h3>Bootstrapped CI Visualizer</h3>
-        <p>Used Python and Matplotlib to visually demonstrate confidence intervals using real-world samples and resampling techniques.</p>
-        <p><strong>Tools:</strong> Python, Matplotlib</p>
-      </div>
-
-      <div class="project-card">
-        <h3>Chaos Theory Visuals</h3>
-        <p>Created MATLAB-based cobweb plots and bifurcation diagrams to explore chaotic behavior in nonlinear maps.</p>
-        <p><strong>Tools:</strong> MATLAB</p>
-      </div>
-    </section>
 
     <!-- Experience Section -->
     <section id="experience" data-aos="fade-up">
