@@ -882,3 +882,103 @@ footer {
   background-color: #002f73;
   transform: scale(1.05);
 }
+
+/* Leadership Section */
+.leadership-section {
+  padding: 80px 20px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.leadership-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Card Styling */
+.leadership-card {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+  background-color: #fff;
+}
+
+.leadership-card:hover {
+  transform: translateY(-5px);
+}
+
+.leadership-card .card-header {
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.leadership-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.leadership-card .org {
+  font-size: 0.95rem;
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+/* Colored headers */
+.card-purple { background: linear-gradient(to right, #9c27b0, #ba68c8); }
+.card-pink { background: linear-gradient(to right, #e91e63, #f06292); }
+.card-blue { background: linear-gradient(to right, #004aad, #1e88e5); }
+
+.leadership-card .card-body {
+  background: linear-gradient(to bottom, #f9fbfe, #e8f0fc);
+  padding: 20px;
+  text-align: left;
+}
+
+.date-tag {
+  background: white;
+  color: #333;
+  padding: 8px 16px;
+  border-radius: 20px;
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+}
+
+.leadership-card p {
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Philosophy Box */
+.leadership-philosophy {
+  margin-top: 60px;
+  padding: 40px 30px;
+  background: linear-gradient(to right, #004aad, #1e88e5);
+  color: white;
+  border-radius: 20px;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.leadership-philosophy h3 {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+}
+
+.leadership-philosophy p {
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.8;
+}
