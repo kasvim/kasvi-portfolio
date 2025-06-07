@@ -993,6 +993,15 @@ footer {
 .contact-section h2 {
   font-size: 2rem;
   margin-bottom: 10px;
+  color: white;
+}
+
+.contact-section .section-subtitle {
+  font-size: 1rem;
+  color: white;
+  opacity: 0.95;
+  max-width: 700px;
+  margin: 0 auto 50px auto;
 }
 
 .contact-grid {
@@ -1026,32 +1035,36 @@ footer {
 .contact-card .icon {
   font-size: 2rem;
   margin-bottom: 10px;
+  color: white;
 }
 
 .contact-card h3 {
   font-size: 1.2rem;
   margin-bottom: 4px;
+  color: white;
 }
 
 .contact-card .subtext {
   font-size: 0.9rem;
-  opacity: 0.85;
+  color: white;
+  opacity: 0.9;
   margin-bottom: 10px;
 }
 
 .contact-card .value {
   font-weight: 500;
   font-size: 0.95rem;
-  word-break: break-all;
+  color: white;
+  word-break: break-word;
 }
 
-/* Footer */
 .contact-footer {
   margin-top: 50px;
 }
 
 .contact-footer .location {
   font-size: 0.95rem;
+  color: white;
   margin-bottom: 20px;
 }
 
@@ -1077,4 +1090,5 @@ footer {
   margin: 0 auto;
   font-size: 0.95rem;
   line-height: 1.7;
+  color: white;
 }
