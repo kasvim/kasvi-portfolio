@@ -34,6 +34,7 @@
   <main class="page-layout">
     <!-- Home Section (Lovable Style) -->
   <section id="home" class="hero-section" data-aos="fade-up">
+  <div class="background-blur"></div>
   <div class="hero-content">
     <img src="assets/profile.jpg" alt="Kasvi Mahajan" class="hero-profile-img" />
     <h1>Kasvi Mahajan</h1>
@@ -451,9 +452,14 @@
     topBtn.onclick = function () {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
+    // Close mobile nav menu when a link is clicked
+      document.querySelectorAll("nav ul li a").forEach(link => {
+      link.addEventListener("click", () => {
+      document.querySelector("nav ul").classList.remove("show");
+  });
+});
+    <button id="scrollToTopBtn" title="Go to top">↑</button>
   </script>
-
-  <button id="scrollToTopBtn" title="Go to top">↑</button>
 
 </body>
 </html>
