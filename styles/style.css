@@ -317,10 +317,12 @@ footer {
   align-items: center;
   padding: 60px 20px;
   text-align: center;
+  position: relative;
 }
 
 .hero-content {
   max-width: 800px;
+  z-index: 2;
 }
 
 .profile-initials {
