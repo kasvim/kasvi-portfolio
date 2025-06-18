@@ -16,7 +16,6 @@
   <header>
     <div class="nav-container">
       <h3>Kasvi Mahajan</h3>
-      <button class="hamburger" onclick="toggleMenu()">☰</button>
     </div>
     <nav id="mainNav">
       <ul>
@@ -455,14 +454,15 @@
     topBtn.onclick = function () {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     };
-    // Close mobile nav menu when a link is clicked
-      document.querySelectorAll("nav ul li a").forEach(link => {
-      link.addEventListener("click", () => {
+    // Close menu on link click
+  document.querySelectorAll("nav ul li a").forEach(link => {
+    link.addEventListener("click", () => {
       document.querySelector("nav ul").classList.remove("show");
   });
 });
-    <button id="scrollToTopBtn" title="Go to top">↑</button>
   </script>
+  <button id="scrollToTopBtn" title="Go to top">↑</button>
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
 
 </body>
 </html>
