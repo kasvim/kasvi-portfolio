@@ -499,7 +499,43 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init();</script>
 
+
   <script>
+      // Dark Mode Logic
+      const darkModeToggle = document.getElementById('darkModeToggle');
+      const body = document.body;
+
+      // Function to set dark mode
+      function enableDarkMode() {
+        body.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark');
+        darkModeToggle.textContent = '🌙'; // Moon icon for dark mode
+      }
+
+      // Function to set light mode
+      function disableDarkMode() {
+        body.classList.remove('dark-mode');
+        localStorage.setItem('theme', 'light');
+        darkModeToggle.textContent = '☀️'; // Sun icon for light mode
+      }
+
+      // Check for saved theme preference on page load
+      const currentTheme = localStorage.getItem('theme');
+      if (currentTheme === 'dark') {
+        enableDarkMode();
+      } else {
+        // Default to light mode or ensure light mode is applied if no preference/light preference
+        disableDarkMode();
+      }
+
+      // Toggle dark mode on button click
+      darkModeToggle.addEventListener('click', () => {
+        if (body.classList.contains('dark-mode')) {
+          disableDarkMode();
+        } else {
+          enableDarkMode();
+        }
+  });
     // Scroll progress bar
     const topBtn = document.getElementById("scrollToTopBtn");
     window.onscroll = function () {
@@ -543,42 +579,6 @@
     link.addEventListener("click", () => {
       document.querySelector("nav ul").classList.remove("show");
   });
-});
-
-// Dark Mode Logic
-const darkModeToggle = document.getElementById('darkModeToggle');
-const body = document.body;
-
-// Function to set dark mode
-function enableDarkMode() {
-  body.classList.add('dark-mode');
-  localStorage.setItem('theme', 'dark');
-  darkModeToggle.textContent = '🌙'; // Moon icon for dark mode
-}
-
-// Function to set light mode
-function disableDarkMode() {
-  body.classList.remove('dark-mode');
-  localStorage.setItem('theme', 'light');
-  darkModeToggle.textContent = '☀️'; // Sun icon for light mode
-}
-
-// Check for saved theme preference on page load
-const currentTheme = localStorage.getItem('theme');
-if (currentTheme === 'dark') {
-  enableDarkMode();
-} else {
-  // Default to light mode or ensure light mode is applied if no preference/light preference
-  disableDarkMode();
-}
-
-// Toggle dark mode on button click
-darkModeToggle.addEventListener('click', () => {
-  if (body.classList.contains('dark-mode')) {
-    disableDarkMode();
-  } else {
-    enableDarkMode();
-  }
 });
   </script>
   <button id="scrollToTopBtn" title="Go to top">↑</button>
