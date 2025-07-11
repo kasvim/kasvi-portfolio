@@ -3,6 +3,93 @@ html {
   scroll-behavior: smooth;
 }
 
+/* --- CSS Variables for Colors --- */
+:root {
+  /* Light Mode Colors */
+  --bg-light: #f9f9f9;
+  --bg-white: #ffffff;
+  --text-primary: #333;
+  --text-secondary: #555;
+  --heading-color: #004aad;
+  --border-color: #eee;
+  --shadow-light: rgba(0, 0, 0, 0.03);
+  --shadow-medium: rgba(0, 0, 0, 0.08);
+  --shadow-dark: rgba(0, 0, 0, 0.1);
+  --card-bg-light: linear-gradient(to bottom right, #f2f9ff, #e6f0fb);
+  --card-bg-light-alt: #f9fbfe; /* for leadership card body */
+  --timeline-line: #dbeafe;
+  --date-tag-bg: #f1f5f9;
+  --button-primary-bg: #004aad;
+  --button-primary-text: white;
+  --button-outline-border: #004aad;
+  --button-outline-text: #004aad;
+  --button-outline-hover-bg: #004aad;
+  --button-outline-hover-text: white;
+  --contact-card-bg: rgba(255, 255, 255, 0.1);
+  --footer-bg: #f0f0f0;
+  --progress-bar-bg: #004aad;
+  --scroll-top-bg: #004aad;
+  --scroll-top-hover-bg: #002f73;
+  --hamburger-color: #004aad;
+  --bg-white-translucent: rgba(255, 255, 255, 0.75); /* Added for home-content */
+
+  /* Project/Skill Card Specific Gradients */
+  --card-blue-gradient: linear-gradient(to right, #004aad, #0a65c2);
+  --card-lightblue-gradient: linear-gradient(to right, #2196f3, #64b5f6);
+  --card-cyan-gradient: linear-gradient(to right, #00bcd4, #4dd0e1);
+  --card-purple-gradient: linear-gradient(to right, #9c27b0, #ba68c8);
+  --card-indigo-gradient: linear-gradient(to right, #3f51b5, #7986cb);
+  --card-green-gradient: linear-gradient(to right, #2e7d32, #66bb6a);
+  --leadership-card-purple: linear-gradient(to right, #9c27b0, #ba68c8);
+  --leadership-card-pink: linear-gradient(to right, #e91e63, #f06292);
+  --leadership-card-blue: linear-gradient(to right, #004aad, #1e88e5);
+  --philosophy-bg: linear-gradient(to right, #004aad, #1e88e5);
+  --contact-section-bg: linear-gradient(to bottom, #004aad, #005bd3);
+}
+
+.dark-mode {
+  /* Dark Mode Colors */
+  --bg-light: #1a1a2e;
+  --bg-white: #0f0f20;
+  --text-primary: #e0e0e0;
+  --text-secondary: #b0b0b0;
+  --heading-color: #79a6ed;
+  --border-color: #333;
+  --shadow-light: rgba(0, 0, 0, 0.2);
+  --shadow-medium: rgba(0, 0, 0, 0.3);
+  --shadow-dark: rgba(0, 0, 0, 0.4);
+  --card-bg-light: linear-gradient(to bottom right, #2a2a4a, #1f1f3f);
+  --card-bg-light-alt: #181830;
+  --timeline-line: #444;
+  --date-tag-bg: #282840;
+  --button-primary-bg: #79a6ed;
+  --button-primary-text: #1a1a2e;
+  --button-outline-border: #79a6ed;
+  --button-outline-text: #79a6ed;
+  --button-outline-hover-bg: #79a6ed;
+  --button-outline-hover-text: #1a1a2e;
+  --contact-card-bg: rgba(255, 255, 255, 0.05);
+  --footer-bg: #151525;
+  --progress-bar-bg: #79a6ed;
+  --scroll-top-bg: #79a6ed;
+  --scroll-top-hover-bg: #5a8ae0;
+  --hamburger-color: #79a6ed;
+  --bg-white-translucent: rgba(15, 15, 32, 0.75); /* Added for home-content dark mode */
+
+  /* Project/Skill Card Specific Gradients (adjust as needed for dark mode aesthetics) */
+  --card-blue-gradient: linear-gradient(to right, #003a7a, #074a92);
+  --card-lightblue-gradient: linear-gradient(to right, #1a6cb3, #4d8fc2);
+  --card-cyan-gradient: linear-gradient(to right, #00879c, #3d9ea9);
+  --card-purple-gradient: linear-gradient(to right, #6d1e7c, #8b4e96);
+  --card-indigo-gradient: linear-gradient(to right, #2e3a80, #5c6ba0);
+  --card-green-gradient: linear-gradient(to right, #1f5a21, #4d8f50);
+  --leadership-card-purple: linear-gradient(to right, #6d1e7c, #8b4e96);
+  --leadership-card-pink: linear-gradient(to right, #a01a4e, #b3567a);
+  --leadership-card-blue: linear-gradient(to right, #003a7a, #1562ae);
+  --philosophy-bg: linear-gradient(to right, #1a1a2e, #2a2a4a);
+  --contact-section-bg: linear-gradient(to bottom, #1a1a2e, #0f0f20);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -11,23 +98,40 @@ html {
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
+  background-color: var(--bg-light);
+  color: var(--text-primary);
   line-height: 1.6;
   text-align: center;
 }
 
 /* Header */
 header {
-  background: white;
+  background: var(--bg-white);
   padding: 20px 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--border-color);
   position: sticky;
   top: 0;
   z-index: 999;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 2px 8px var(--shadow-light);
 }
 
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  font-size: 1.5rem; /* Adjust size as needed */
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-left: 20px; /* Space from navigation links */
+  color: var(--text-primary); /* Use text color variable */
+}
+
+.dark-mode-toggle:hover {
+  background-color: var(--date-tag-bg); /* Use a subtle background */
+  transform: scale(1.1);
+}
 
 .nav-container {
   display: flex;
@@ -38,15 +142,13 @@ header {
   margin: 0 auto;
 }
 
-
 nav {
   margin-left: auto;
 }
 
-
 header h1 {
   font-size: 2rem;
-  color: #222;
+  color: var(--text-primary); /* Updated */
   margin: 0;
 }
 
@@ -61,7 +163,7 @@ nav ul {
 
 nav a {
   text-decoration: none;
-  color: #444;
+  color: var(--text-secondary);
   font-weight: 600;
   padding-bottom: 5px;
   border-bottom: 2px solid transparent;
@@ -70,12 +172,12 @@ nav a {
 
 nav a.active,
 nav a:hover {
-  border-color: #004aad;
+  border-color: var(--heading-color);
 }
 
 header.scrolled {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-  background-color: #ffffff;
+  box-shadow: 0 4px 10px var(--shadow-medium);
+  background-color: var(--bg-white);
   transition: box-shadow 0.3s ease;
 }
 
@@ -117,9 +219,9 @@ section {
   position: relative;
   z-index: 2;
   padding: 40px;
-  background: rgba(255, 255, 255, 0.75);
+  background: var(--bg-white-translucent); /* Updated */
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px var(--shadow-dark);
   max-width: 700px;
 }
 
@@ -134,19 +236,19 @@ section {
 .intro h2 {
   font-size: 2.4rem;
   margin-bottom: 10px;
-  color: #222;
+  color: var(--text-primary);
 }
 
 .intro h2 span {
   font-size: 1.6rem;
-  color: #666;
+  color: var(--text-secondary);
 }
 
 .intro-text {
   max-width: 600px;
   margin: auto;
   font-size: 1rem;
-  color: #555;
+  color: var(--text-secondary);
   margin-top: 20px;
 }
 
@@ -169,35 +271,34 @@ section {
 section h2 {
   margin-bottom: 20px;
   font-size: 2rem;
-  color: #004aad;
+  color: var(--heading-color);
 }
-
 /* Project Cards */
 .project-card {
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   padding: 20px 30px;
   border-radius: 10px;
   margin: 20px 0;
   width: 90%;
   max-width: 700px;
-  background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  background-color: var(--bg-white);
+  box-shadow: 0 2px 8px var(--shadow-light);
   transition: all 0.3s ease;
 }
 
 .project-card:hover {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  box-shadow:0 8px 20px var(--shadow-medium);
   transform: translateY(-4px);
 }
 
 .project-card h3 {
-  color: #222;
+  color: var(--text-primary); /* Updated */
   margin-bottom: 10px;
 }
 
 .project-card p {
   font-size: 0.95rem;
-  color: #444;
+  color: var(--text-secondary); /* Updated */
   line-height: 1.6;
 }
 
@@ -207,7 +308,7 @@ section h2 {
   top: 0;
   left: 0;
   height: 5px;
-  background: #004aad;
+  background: var(--progress-bar-bg);
   width: 0%;
   z-index: 9999;
   transition: width 0.2s ease-out;
@@ -219,7 +320,7 @@ section h2 {
   bottom: 30px;
   right: 30px;
   z-index: 999;
-  background-color: #004aad;
+  background-color: var(--scroll-top-bg);
   color: white;
   border: none;
   padding: 12px 16px;
@@ -231,7 +332,7 @@ section h2 {
 }
 
 #scrollToTopBtn:hover {
-  background-color: #002f73;
+  background-color: var(--scroll-top-hover-bg);
   transform: scale(1.1);
 }
 
@@ -239,14 +340,14 @@ section h2 {
 footer {
   text-align: center;
   padding: 20px;
-  background-color: #f0f0f0;
-  color: #555;
+  background-color: var(--footer-bg);
+  color: var(--text-secondary);
   font-size: 0.9rem;
   margin-top: 40px;
 }
 
 .portfolio-link {
-  color: #004aad;
+  color: var(--heading-color);
   font-weight: bold;
   text-decoration: none;
   border-bottom: 2px solid transparent;
@@ -254,8 +355,8 @@ footer {
 }
 
 .portfolio-link:hover {
-  border-color: #004aad;
-  color: #002f73;
+  border-color:var(--heading-color);
+  color: var(--scroll-top-hover-bg);
 }
 
 /* Mobile Navigation */
@@ -264,7 +365,7 @@ footer {
   font-size: 28px;
   background: none;
   border: none;
-  color: #004aad;
+  color: var(--hamburger-color);
   cursor: pointer;
 }
 
@@ -273,13 +374,13 @@ footer {
     display: none;
     flex-direction: column;
     gap: 15px;
-    background-color: #ffffff;
+    background-color: var(--bg-white); /* Updated */
     padding: 20px;
     position: absolute;
     top: 70px;
     right: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px var(--shadow-medium); /* Updated */
   }
 
   nav ul.show {
@@ -311,7 +412,7 @@ footer {
 /* Hero Section Inspired by Lovable */
 .hero-section {
   min-height: 100vh;
-  background: linear-gradient(to bottom, #f6fafd, #ffffff);
+  background: linear-gradient(to bottom, var(--bg-light), var(--bg-white));
   display: flex;
   justify-content: center;
   align-items: center;
@@ -325,9 +426,9 @@ footer {
   z-index: 2;
   max-width: 800px;
   padding: 40px;
-  background: rgba(255, 255, 255, 0.75); /* translucent white */
+  background: var(--bg-white-translucent);
   border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 15px var(--shadow-dark);
 }
 
 .hero-wrapper {
@@ -344,7 +445,7 @@ footer {
 .profile-initials {
   width: 130px;
   height: 130px;
-  background: #004aad;
+  background: var(--heading-color); /* Updated */
   color: white;
   font-size: 2.5rem;
   font-weight: 700;
@@ -353,33 +454,33 @@ footer {
   justify-content: center;
   align-items: center;
   margin: 0 auto 30px auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px var(--shadow-dark); /* Updated */
 }
 
 .hero-content h1 {
   font-size: 3rem;
   font-weight: 700;
-  color: #222;
+  color:var(--text-primary);
   margin-bottom: 10px;
 }
 
 .hero-content h2 {
   font-size: 1.3rem;
   font-weight: 400;
-  color: #666;
+  color: var(--text-secondary);
   margin-bottom: 20px;
 }
 
 .quote {
   font-size: 1.1rem;
-  color: #004aad;
+  color: var(--heading-color);
   font-weight: 500;
   margin-bottom: 10px;
 }
 
 .subtext {
   font-size: 0.95rem;
-  color: #444;
+  color: var(--text-secondary);
   margin-bottom: 30px;
 }
 
@@ -401,24 +502,24 @@ footer {
 }
 
 .btn-primary {
-  background-color: #004aad;
-  color: white;
+  background-color: var(--button-primary-bg);
+  color:  var(--button-primary-text);
   border: 2px solid transparent;
 }
 
 .btn-primary:hover {
-  background-color: #002f73;
+  background-color: var(--scroll-top-hover-bg);
 }
 
 .btn-outline {
-  border: 2px solid #004aad;
-  color: #004aad;
+  border: 2px solid var(--button-outline-border);
+  color:var(--button-outline-text);
   background: transparent;
 }
 
 .btn-outline:hover {
-  background-color: #004aad;
-  color: white;
+  background-color: var(--button-outline-hover-bg);
+  color: var(--button-outline-hover-text);
 }
 /* Replace .profile-initials with this */
 .hero-profile-img {
@@ -427,7 +528,7 @@ footer {
   border-radius: 50%;
   object-fit: cover;
   margin-bottom: 30px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 18px var(--shadow-dark);
   transition: transform 0.3s ease;
 }
 
@@ -444,13 +545,13 @@ footer {
   font-size: 0.95rem;
   transition: all 0.3s ease-in-out;
   display: inline-block;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 6px var(--shadow-light); /* Updated */
 }
 .btn-research {
   display: inline-block;
   margin-top: 20px;
-  background-color: #004aad;
-  color: #fff;
+  background-color: var(--button-primary-bg);
+  color: var(--button-primary-text);
   padding: 10px 18px;
   border-radius: 8px;
   font-weight: 600;
@@ -460,19 +561,19 @@ footer {
 }
 
 .btn-research:hover {
-  background-color: #002f73;
+  background-color: var(--scroll-top-hover-bg);
   transform: scale(1.05);
 }
 
 
 .btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px var(--shadow-dark); /* Updated */
 }
 /* About Section Layout */
 .about-section {
   padding: 80px 20px;
-  background-color: #fff;
+  background-color: var(--bg-white);
 }
 
 .about-grid {
@@ -489,7 +590,7 @@ footer {
   max-width: 600px;
   text-align: left;
   font-size: 1rem;
-  color: #333;
+  color: var(--text-primary);
   line-height: 1.8;
 }
 
@@ -501,22 +602,22 @@ footer {
 }
 
 .info-card {
-  background: linear-gradient(to bottom right, #f2f9ff, #e6f0fb);
+  background: var(--card-bg-light);
   padding: 20px;
   border-radius: 16px;
   text-align: left;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  box-shadow:0 2px 10px var(--shadow-light);
 }
 
 .info-card h4 {
   font-size: 1.1rem;
-  color: #004aad;
+  color: var(--heading-color); /* Updated */
   margin-bottom: 10px;
 }
 
 .info-card p {
   font-size: 0.95rem;
-  color: #444;
+  color: var(--text-secondary); /* Updated */
   line-height: 1.5;
 }
 
@@ -532,7 +633,7 @@ footer {
 .about-list h3 {
   font-size: 1.3rem;
   margin-bottom: 15px;
-  color: #222;
+  color: var(--text-primary); /* Updated */
 }
 
 .about-list ul {
@@ -543,14 +644,14 @@ footer {
 .about-list li {
   font-size: 0.95rem;
   margin-bottom: 10px;
-  color: #333;
+  color: var(--text-primary); /* Updated */
   position: relative;
   padding-left: 20px;
 }
 
 .about-list li::before {
   content: "●";
-  color: #004aad;
+  color: var(--heading-color); /* Updated */
   position: absolute;
   left: 0;
   top: 2px;
@@ -559,19 +660,19 @@ footer {
 /* Projects Section */
 .projects-section {
   padding: 80px 20px;
-  background: linear-gradient(to bottom, #f6fafd, #ffffff);
+  background: linear-gradient(to bottom, var(--bg-light), var(--bg-white)); /* Updated */
   text-align: center;
 }
 
 .projects-section h2 {
   font-size: 2.2rem;
   margin-bottom: 10px;
-  color: #222;
+  color: var(--text-primary); /* Updated */
 }
 
 .section-subtitle {
   font-size: 1rem;
-  color: #555;
+  color: var(--text-secondary); /* Updated */
   max-width: 700px;
   margin: 0 auto 50px auto;
 }
@@ -583,10 +684,10 @@ footer {
   gap: 30px;
   justify-content: space-between;
   align-items: center;
-  background-color: white;
+  background-color: var(--bg-white); /* Updated */
   border-radius: 20px;
   padding: 40px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 30px var(--shadow-light); /* Updated */
   max-width: 1100px;
   margin: 0 auto;
 }
@@ -615,8 +716,8 @@ footer {
 .view-project-button {
   display: inline-block;
   margin-top: 20px;
-  background-color: #007bff; /* A nice blue */
-  color: #fff;
+  background-color: var(--button-primary-bg); /* Updated */
+  color: var(--button-primary-text); /* Updated */
   padding: 10px 18px;
   border-radius: 8px;
   font-weight: 600;
@@ -626,9 +727,9 @@ footer {
 }
 
 .view-project-button:hover {
-  background-color: #0056b3;
+  background-color: var(--scroll-top-hover-bg); /* Updated */
   transform: scale(1.05);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px var(--shadow-dark); /* Updated */
 }
 
 /* Optional: Add a hover effect to project feature cards */
@@ -638,7 +739,7 @@ footer {
 
 .project-feature:hover {
   transform: translateY(-8px); /* Lift the card slightly */
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1); /* Enhance shadow on hover */
+  box-shadow: 0 12px 35px var(--shadow-medium); /* Updated */
 }
 
 /* Container for multiple projects in the section */
@@ -656,13 +757,13 @@ footer {
 
 .project-text h3 {
   font-size: 1.5rem;
-  color: #222;
+  color: var(--text-primary); /* Updated */
   margin-bottom: 10px;
 }
 
 .project-text p {
   font-size: 1rem;
-  color: #444;
+  color: var(--text-secondary); /* Updated */
   margin-bottom: 20px;
   line-height: 1.6;
 }
@@ -670,7 +771,7 @@ footer {
 .project-text h4 {
   font-size: 1rem;
   margin-bottom: 10px;
-  color: #004aad;
+  color: var(--heading-color); /* Updated */
 }
 
 .project-text ul {
@@ -679,7 +780,7 @@ footer {
 
 .project-text li {
   font-size: 0.95rem;
-  color: #333;
+  color: var(--text-primary); /* Updated */
   margin-bottom: 8px;
 }
 
@@ -691,15 +792,29 @@ footer {
 }
 
 .project-icon-card {
-  background: linear-gradient(to bottom right, #267df4, #004aad);
+  background: linear-gradient(to bottom right, #267df4, #004aad); /* This should also be a variable */
   color: white;
   border-radius: 20px;
   padding: 40px 30px;
   text-align: center;
   width: 100%;
   max-width: 280px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 20px var(--shadow-medium); /* Updated */
 }
+/* Self-correction: The project-icon-card background should use a variable like --card-blue-gradient or a new one for project icons specifically if it's different.
+   For now, I'll use --card-blue-gradient and assume it's suitable, but if the icon backgrounds need more variation, new variables would be needed.
+   Let's change it to var(--card-blue-gradient) for consistency. */
+.project-icon-card {
+  background: var(--card-blue-gradient); /* Updated to use variable */
+  color: white;
+  border-radius: 20px;
+  padding: 40px 30px;
+  text-align: center;
+  width: 100%;
+  max-width: 280px;
+  box-shadow: 0 6px 20px var(--shadow-medium);
+}
+
 
 .project-icon {
   font-size: 2.5rem;
@@ -713,18 +828,18 @@ footer {
 
 .icon-caption {
   font-size: 0.9rem;
-  color: #e0e0e0;
+  color: #e0e0e0; /* Keeping white for icons on dark background */
 }
 /* Experience Section */
 .experience-section {
   padding: 80px 20px;
-  background-color: #ffffff;
+  background-color: var(--bg-white); /* Updated */
   text-align: center;
 }
 
 .experience-section h2 {
   font-size: 2.2rem;
-  color: #222;
+  color: var(--text-primary); /* Updated */
   margin-bottom: 10px;
 }
 
@@ -742,7 +857,7 @@ footer {
   left: 35px;
   width: 3px;
   height: 100%;
-  background-color: #dbeafe;
+  background-color: var(--timeline-line); /* Updated */
 }
 
 .timeline-item {
@@ -758,13 +873,13 @@ footer {
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  background-color: #004aad;
+  background-color: var(--button-primary-bg); /* Updated - assuming timeline icons use primary color */
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px var(--shadow-dark); /* Updated */
   position: relative;
   z-index: 1;
 }
@@ -774,10 +889,10 @@ footer {
 }
 
 .card {
-  background: linear-gradient(to bottom right, #f2f9ff, #e6f0fb);
+  background: var(--card-bg-light); /* Updated */
   padding: 25px 30px;
   border-radius: 16px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 8px 20px var(--shadow-light); /* Updated */
   text-align: left;
 }
 
@@ -792,22 +907,22 @@ footer {
 .card-header h3 {
   font-size: 1.2rem;
   margin: 0;
-  color: #222;
+  color: var(--text-primary); /* Updated */
 }
 
 .date-tag {
-  background: #f1f5f9;
+  background: var(--date-tag-bg); /* Updated */
   border-radius: 8px;
   padding: 6px 12px;
   font-size: 0.85rem;
   font-weight: 500;
-  color: #333;
+  color: var(--text-primary); /* Updated */
 }
 
 .card p {
   font-size: 0.95rem;
   margin: 10px 0 15px;
-  color: #444;
+  color: var(--text-secondary); /* Updated */
 }
 
 .card ul {
@@ -818,13 +933,13 @@ footer {
 .card ul li {
   margin-bottom: 10px;
   font-size: 0.95rem;
-  color: #333;
+  color: var(--text-primary); /* Updated */
 }
 
 /* Skills Section */
 .skills-section {
   padding: 80px 20px;
-  background: linear-gradient(to bottom, #f6fafd, #ffffff);
+  background: linear-gradient(to bottom, var(--bg-light), var(--bg-white)); /* Updated */
   text-align: center;
 }
 
@@ -854,8 +969,8 @@ footer {
 .skill-card {
   border-radius: 20px;
   overflow: hidden;
-  background-color: #fff;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  background-color: var(--bg-white); /* Updated */
+  box-shadow: 0 4px 15px var(--shadow-light); /* Updated */
   transition: transform 0.3s ease;
 }
 
@@ -865,7 +980,7 @@ footer {
 
 .card-header {
   padding: 16px;
-  color: white;
+  color: white; /* Stays white for gradient headers */
   text-align: left;
   font-size: 1rem;
   font-weight: 600;
@@ -891,21 +1006,21 @@ footer {
   font-size: 0.95rem;
   display: flex;
   justify-content: space-between;
-  color: #333;
+  color: var(--text-primary); /* Updated */
 }
 
-.card-blue { background: linear-gradient(to right, #004aad, #0a65c2); }
-.card-lightblue { background: linear-gradient(to right, #2196f3, #64b5f6); }
-.card-cyan { background: linear-gradient(to right, #00bcd4, #4dd0e1); }
-.card-purple { background: linear-gradient(to right, #9c27b0, #ba68c8); }
-.card-indigo { background: linear-gradient(to right, #3f51b5, #7986cb); }
-.card-green { background: linear-gradient(to right, #2e7d32, #66bb6a); }
+.card-blue { background: var(--card-blue-gradient); } /* Updated to use variable */
+.card-lightblue { background: var(--card-lightblue-gradient); } /* Updated to use variable */
+.card-cyan { background: var(--card-cyan-gradient); } /* Updated to use variable */
+.card-purple { background: var(--card-purple-gradient); } /* Updated to use variable */
+.card-indigo { background: var(--card-indigo-gradient); } /* Updated to use variable */
+.card-green { background: var(--card-green-gradient); } /* Updated to use variable */
 
 
 .skill-card h3 {
   font-size: 1.1rem;
   padding: 16px;
-  color: white;
+  color: white; /* Stays white for gradient headers */
   text-align: left;
 }
 
@@ -919,22 +1034,23 @@ footer {
   margin-bottom: 10px;
   display: flex;
   justify-content: space-between;
-  color: #333;
+  color: var(--text-primary); /* Updated */
   font-size: 0.95rem;
 }
 
 .dots {
-  color: #004aad;
+  color: var(--heading-color); /* Updated */
   letter-spacing: 2px;
 }
 
-/* Color themes */
-.card-blue { background: linear-gradient(to right, #004aad, #0a65c2); }
-.card-lightblue { background: linear-gradient(to right, #2196f3, #64b5f6); }
-.card-cyan { background: linear-gradient(to right, #00bcd4, #4dd0e1); }
-.card-purple { background: linear-gradient(to right, #9c27b0, #ba68c8); }
-.card-indigo { background: linear-gradient(to right, #3f51b5, #7986cb); }
-.card-green { background: linear-gradient(to right, #2e7d32, #66bb6a); }
+/* Color themes (re-declaration, remove this if it's a duplicate of above) */
+/* Assuming this block is redundant, commenting it out as it conflicts with the ones above */
+/* .card-blue { background: linear-gradient(to right, #004aad, #0a65c2); } */
+/* .card-lightblue { background: linear-gradient(to right, #2196f3, #64b5f6); } */
+/* .card-cyan { background: linear-gradient(to right, #00bcd4, #4dd0e1); } */
+/* .card-purple { background: linear-gradient(to right, #9c27b0, #ba68c8); } */
+/* .card-indigo { background: linear-gradient(to right, #3f51b5, #7986cb); } */
+/* .card-green { background: linear-gradient(to right, #2e7d32, #66bb6a); } */
 
 /* Core Competencies */
 .core-competencies {
@@ -954,25 +1070,25 @@ footer {
 }
 
 .badge {
-  background-color: #004aad;
+  background-color: var(--button-primary-bg); /* Updated */
   color: white;
   padding: 10px 16px;
   border-radius: 20px;
   font-size: 0.9rem;
   font-weight: 500;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 10px var(--shadow-light); /* Updated */
   transition: all 0.3s ease;
 }
 
 .badge:hover {
-  background-color: #002f73;
+  background-color: var(--scroll-top-hover-bg); /* Updated */
   transform: scale(1.05);
 }
 
 /* Leadership Section */
 .leadership-section {
   padding: 80px 20px;
-  background-color: #fff;
+  background-color: var(--bg-white); /* Updated */
   text-align: center;
 }
 
@@ -998,9 +1114,9 @@ footer {
 .leadership-card {
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 25px var(--shadow-light); /* Updated */
   transition: transform 0.3s ease;
-  background-color: #fff;
+  background-color: var(--bg-white); /* Updated */
 }
 
 .leadership-card:hover {
@@ -1008,7 +1124,7 @@ footer {
 }
 
 .leadership-card .card-header {
-  color: #fff;
+  color: #fff; /* Stays white for gradient headers */
   padding: 20px;
   text-align: center;
 }
@@ -1025,31 +1141,31 @@ footer {
 }
 
 /* Colored headers */
-.card-purple { background: linear-gradient(to right, #9c27b0, #ba68c8); }
-.card-pink { background: linear-gradient(to right, #e91e63, #f06292); }
-.card-blue { background: linear-gradient(to right, #004aad, #1e88e5); }
+.card-purple { background: var(--leadership-card-purple); } /* Updated to use variable */
+.card-pink { background: var(--leadership-card-pink); } /* Updated to use variable */
+.card-blue { background: var(--leadership-card-blue); } /* Updated to use variable */
 
 .leadership-card .card-body {
-  background: linear-gradient(to bottom, #f9fbfe, #e8f0fc);
+  background: var(--card-bg-light-alt); /* Updated */
   padding: 20px;
   text-align: left;
 }
 
 .date-tag {
-  background: white;
-  color: #333;
+  background: var(--bg-white); /* Updated */
+  color: var(--text-primary); /* Updated */
   padding: 8px 16px;
   border-radius: 20px;
   display: inline-block;
   font-size: 0.85rem;
   font-weight: 600;
   margin-bottom: 15px;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 6px var(--shadow-light); /* Updated */
 }
 
 .leadership-card p {
   font-size: 0.95rem;
-  color: #333;
+  color: var(--text-primary); /* Updated */
   line-height: 1.6;
 }
 
@@ -1057,7 +1173,7 @@ footer {
 .leadership-philosophy {
   margin-top: 60px;
   padding: 40px 30px;
-  background: linear-gradient(to right, #004aad, #1e88e5);
+  background: var(--philosophy-bg); /* Updated */
   color: white;
   border-radius: 20px;
   max-width: 900px;
@@ -1079,7 +1195,7 @@ footer {
 /* Contact Section */
 .contact-section {
   padding: 80px 20px;
-  background: linear-gradient(to bottom, #004aad, #005bd3);
+  background: var(--contact-section-bg); /* Updated */
   color: white;
   text-align: center;
 }
@@ -1110,20 +1226,20 @@ footer {
 }
 
 .contact-card {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--contact-card-bg); /* Updated */
   padding: 25px 30px;
   border-radius: 20px;
   width: 300px;
   text-decoration: none;
   color: white;
   text-align: left;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px var(--shadow-dark); /* Updated */
   transition: transform 0.3s ease;
 }
 
 .contact-card:hover {
   transform: translateY(-5px);
-  background-color: rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.15); /* Keep slightly different hover for this specific card */
 }
 
 .contact-card .icon {
@@ -1163,8 +1279,8 @@ footer {
 }
 
 .btn-resume {
-  background-color: white;
-  color: #004aad;
+  background-color: var(--bg-white); /* Updated */
+  color: var(--heading-color); /* Updated */
   padding: 12px 22px;
   font-weight: bold;
   border-radius: 12px;
@@ -1175,7 +1291,7 @@ footer {
 }
 
 .btn-resume:hover {
-  background-color: #e3e8f0;
+  background-color: var(--date-tag-bg); /* Updated */
   transform: scale(1.05);
 }
 
@@ -1186,4 +1302,3 @@ footer {
   line-height: 1.7;
   color: white;
 }
-

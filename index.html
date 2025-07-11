@@ -14,9 +14,12 @@
 
   <!-- Navigation -->
   <header>
-    <div class="nav-container">
-      <h3>Kasvi Mahajan</h3>
-    </div>
+  <div class="nav-container">
+    <h3>Kasvi Mahajan</h3>
+    <button id="darkModeToggle" aria-label="Toggle Dark Mode" class="dark-mode-toggle">
+    ☀️
+    </button>
+  </div>
     <nav id="mainNav">
       <ul>
         <li><a href="#home" class="nav-link">Home</a></li>
@@ -540,6 +543,42 @@
     link.addEventListener("click", () => {
       document.querySelector("nav ul").classList.remove("show");
   });
+});
+
+// Dark Mode Logic
+const darkModeToggle = document.getElementById('darkModeToggle');
+const body = document.body;
+
+// Function to set dark mode
+function enableDarkMode() {
+  body.classList.add('dark-mode');
+  localStorage.setItem('theme', 'dark');
+  darkModeToggle.textContent = '🌙'; // Moon icon for dark mode
+}
+
+// Function to set light mode
+function disableDarkMode() {
+  body.classList.remove('dark-mode');
+  localStorage.setItem('theme', 'light');
+  darkModeToggle.textContent = '☀️'; // Sun icon for light mode
+}
+
+// Check for saved theme preference on page load
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme === 'dark') {
+  enableDarkMode();
+} else {
+  // Default to light mode or ensure light mode is applied if no preference/light preference
+  disableDarkMode();
+}
+
+// Toggle dark mode on button click
+darkModeToggle.addEventListener('click', () => {
+  if (body.classList.contains('dark-mode')) {
+    disableDarkMode();
+  } else {
+    enableDarkMode();
+  }
 });
   </script>
   <button id="scrollToTopBtn" title="Go to top">↑</button>
