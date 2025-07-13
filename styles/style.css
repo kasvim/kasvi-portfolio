@@ -454,6 +454,104 @@ section h2 {
   color: #e0e0e0; /* Keep a light color on dark icon card */
 }
 
+/* Projects Section - Letterboxd Grid Preparation */
+.projects-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive grid columns */
+  gap: 30px; /* Space between project cards */
+  max-width: 1200px; /* Max width for the grid */
+  margin: 0 auto;
+  padding-top: 20px; /* Some padding from the section subtitle */
+}
+
+.project-feature {
+  /* Existing styles are good, but we'll modify heavily in the next phase for image-centric cards */
+  display: flex; /* Keep flex for content within the card for now */
+  flex-direction: column; /* Stack content vertically within the new card */
+  align-items: center;
+  text-align: center;
+  background-color: var(--bg-secondary); /* Ensure cards use secondary background */
+  border-radius: 10px;
+  overflow: hidden; /* Important for images */
+  box-shadow: 0 4px 15px var(--shadow-medium); /* Nicer shadow */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 0; /* Remove padding from .project-feature itself, content will be padded */
+}
+
+.project-feature:hover {
+  transform: translateY(-5px); /* Lift on hover */
+  box-shadow: 0 8px 25px var(--shadow-dark); /* Deeper shadow on hover */
+}
+
+.project-visual {
+  width: 100%; /* Take full width of the card */
+  height: 200px; /* Fixed height for consistency, adjust as needed */
+  overflow: hidden;
+  position: relative;
+  /* Instead of project-icon-card, we want an image here */
+}
+
+/* This is where your actual project images would go */
+.project-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the area, cropping if necessary */
+  transition: transform 0.3s ease;
+}
+
+.project-feature:hover .project-visual img {
+  transform: scale(1.05); /* Zoom image on hover */
+}
+
+.project-icon-card {
+  /* This style will likely be replaced by actual images or removed,
+     but we'll keep it for now if you still want fallback icons.
+     If you use images, this block might become obsolete or simplified. */
+  background: var(--card-blue-gradient); /* Example: using a gradient for placeholder */
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem; /* Larger icon */
+  height: 100%;
+  width: 100%;
+}
+
+.project-text {
+  padding: 20px; /* Padding for text inside the card */
+  text-align: left;
+  width: 100%;
+  flex-grow: 1; /* Allows text to take available space */
+}
+
+.project-text h3 {
+  font-size: 1.25rem; /* Smaller, cleaner title */
+  margin-bottom: 5px;
+  color: var(--text-primary);
+}
+
+.project-text p {
+  font-size: 0.9rem; /* Concise project description */
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-bottom: 10px; /* More compact */
+}
+
+.project-text h4 {
+  display: none; /* Hide 'Key Technical Achievements' heading for a cleaner card look */
+}
+
+.project-text ul {
+  display: none; /* Hide list of achievements on the main card view for brevity */
+}
+
+.view-project-button {
+  width: calc(100% - 40px); /* Adjust button width within card padding */
+  margin: 15px auto 20px auto; /* Centered, more space */
+  display: block; /* Make it a block-level button */
+  text-align: center;
+}
+
 /* Experience Section */
 .experience-section {
   background-color: var(--bg-primary); /* Updated */
