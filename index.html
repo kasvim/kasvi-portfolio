@@ -590,6 +590,194 @@
     }
 
     // MODAL JAVASCRIPT (to be added in the next step)
+    // Project Detail Modal Logic
+    const projectModal = document.getElementById('projectModal');
+    const modalCloseButton = projectModal.querySelector('.modal-close');
+    const modalOverlay = projectModal.querySelector('.modal-overlay');
+
+    const modalProjectImage = projectModal.querySelector('.modal-project-image');
+    const modalProjectTitle = projectModal.querySelector('.modal-project-title');
+    const modalProjectSubtitle = projectModal.querySelector('.modal-project-subtitle');
+    const modalProjectDescription = projectModal.querySelector('.modal-project-description');
+    const modalAchievementsHeading = projectModal.querySelector('.modal-achievements-heading');
+    const modalAchievementsList = projectModal.querySelector('.modal-achievements-list');
+    const modalViewPaperButton = projectModal.querySelector('.modal-view-paper');
+    const modalExploreProjectButton = projectModal.querySelector('.modal-explore-project');
+
+    // Function to open the modal
+    function openProjectModal(projectId) {
+      const projectCard = document.getElementById(projectId); // Get the specific project card by ID
+
+      // Get content from the hidden project details
+      const projectTitle = projectCard.querySelector('.project-title').textContent;
+      const projectSubtitle = projectCard.querySelector('.project-subtitle').textContent;
+      const projectImageSrc = projectCard.querySelector('.project-image').src;
+      const projectImageAlt = projectCard.querySelector('.project-image').alt;
+
+      const hiddenDetails = projectCard.querySelector('.project-details-hidden');
+      const projectDescription = hiddenDetails.querySelector('p').innerHTML; // Use innerHTML to preserve bold/italics
+      const projectAchievementsHeading = hiddenDetails.querySelector('h4') ? hiddenDetails.querySelector('h4').textContent : '';
+      const projectAchievementsListItems = hiddenDetails.querySelectorAll('ul li');
+
+      const viewPaperLink = hiddenDetails.querySelector('.view-paper-button') ? hiddenDetails.querySelector('.view-paper-button').href : '';
+      const exploreProjectLink = hiddenDetails.querySelector('.project-button') ? hiddenDetails.querySelector('.project-button').href : ''; // Using .project-button now
+
+      // Populate the modal
+      modalProjectImage.src = projectImageSrc;
+      modalProjectImage.alt = projectImageAlt;
+      modalProjectTitle.textContent = projectTitle;
+      modalProjectSubtitle.textContent = projectSubtitle;
+      modalProjectDescription.innerHTML = projectDescription; // Use innerHTML for description
+
+      // Populate achievements
+      modalAchievementsList.innerHTML = ''; // Clear previous items
+      if (projectAchievementsHeading) {
+          modalAchievementsHeading.textContent = projectAchievementsHeading;
+          projectAchievementsListItems.forEach(item => {
+              const listItem = document.createElement('li');
+              listItem.textContent = item.textContent;
+              modalAchievementsList.appendChild(listItem);
+          });
+          modalAchievementsHeading.style.display = 'block'; // Show heading if content exists
+          modalAchievementsList.style.display = 'block'; // Show list if content exists
+      } else {
+          modalAchievementsHeading.style.display = 'none'; // Hide heading if no content
+          modalAchievementsList.style.display = 'none'; // Hide list if no content
+      }
+
+
+      // Populate buttons and show/hide as needed
+      if (viewPaperLink && viewPaperLink !== '#') {
+          modalViewPaperButton.href = viewPaperLink;
+          modalViewPaperButton.style.display = 'inline-block';
+      } else {
+          modalViewPaperButton.style.display = 'none';
+      }
+
+      if (exploreProjectLink && exploreProjectLink !== '#') {
+          modalExploreProjectButton.href = exploreProjectLink;
+          modalExploreProjectButton.style.display = 'inline-block';
+      } else {
+          modalExploreProjectButton.style.display = 'none';
+      }
+
+      // If both buttons are hidden, hide the modal-buttons div
+      if (modalViewPaperButton.style.display === 'none' && modalExploreProjectButton.style.display === 'none') {
+        modalProjectModal.querySelector('.modal-buttons').style.display = 'none';
+      } else {
+        modalProjectModal.querySelector('.modal-buttons').style.display = 'flex';
+      }
+
+
+      // Show the modal and prevent body scrolling
+      projectModal.classList.add('is-open');
+      body.classList.add('modal-open');
+    }
+
+    // Function to close the modal
+    function closeProjectModal() {
+      projectModal.classList.remove('is-open');
+      body.classList.remove('modal-open');
+      // Clear content after closing for next open
+      modalProjectImage.src = '';
+      modalProjectImage.alt = '';
+      modalProjectTitle.textContent = '';
+      modalProjectSubtitle.textContent = '';
+      modalProjectDescription.innerHTML = '';
+      modalAchievementsHeading.textContent = '';
+      modalAchievementsList.innerHTML = '';
+      modalViewPaperButton.href = '#';
+      modalExploreProjectButton.href = '#';
+    }
+
+    // Event Listeners for opening modal
+    const projectCards = document.querySelectorAll('.projects-container .project-card');
+    projectCards.forEach(card => {
+        // We'll give each project-card a unique ID in HTML for easy reference
+        // For example: <div class="project-card" id="covidProject" ...>
+        // Then pass this ID to openProjectModal
+        card.addEventListener('click', () => {
+            // Get the data from the clicked card's current display
+            const projectTitle = card.querySelector('.project-title').textContent;
+            const projectSubtitle = card.querySelector('.project-subtitle').textContent;
+            const projectImageSrc = card.querySelector('.project-image').src;
+            const projectImageAlt = card.querySelector('.project-image').alt;
+
+            // Get content from the hidden project details
+            const hiddenDetails = card.querySelector('.project-details-hidden');
+            const projectDescription = hiddenDetails.querySelector('p').innerHTML;
+            const projectAchievementsHeading = hiddenDetails.querySelector('h4') ? hiddenDetails.querySelector('h4').textContent : '';
+            const projectAchievementsListItems = hiddenDetails.querySelectorAll('ul li');
+
+            // Find the specific buttons for this card
+            const viewPaperButtonInCard = hiddenDetails.querySelector('.view-paper-button');
+            const exploreProjectButtonInCard = hiddenDetails.querySelector('.project-button');
+
+            const viewPaperLink = viewPaperButtonInCard ? viewPaperButtonInCard.href : '';
+            const exploreProjectLink = exploreProjectButtonInCard ? exploreProjectButtonInCard.href : '';
+
+            // Populate the modal
+            modalProjectImage.src = projectImageSrc;
+            modalProjectImage.alt = projectImageAlt;
+            modalProjectTitle.textContent = projectTitle;
+            modalProjectSubtitle.textContent = projectSubtitle;
+            modalProjectDescription.innerHTML = projectDescription;
+
+            // Populate achievements
+            modalAchievementsList.innerHTML = ''; // Clear previous items
+            if (projectAchievementsHeading) {
+                modalAchievementsHeading.textContent = projectAchievementsHeading;
+                modalAchievementsHeading.style.display = 'block';
+                projectAchievementsListItems.forEach(item => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = item.innerHTML; // Use innerHTML to preserve any formatting in list items
+                    modalAchievementsList.appendChild(listItem);
+                });
+                modalAchievementsList.style.display = 'block';
+            } else {
+                modalAchievementsHeading.style.display = 'none';
+                modalAchievementsList.style.display = 'none';
+            }
+
+            // Populate buttons and show/hide as needed
+            if (viewPaperLink && viewPaperLink !== '#') {
+                modalViewPaperButton.href = viewPaperLink;
+                modalViewPaperButton.style.display = 'inline-block';
+            } else {
+                modalViewPaperButton.style.display = 'none';
+            }
+
+            if (exploreProjectLink && exploreProjectLink !== '#') {
+                modalExploreProjectButton.href = exploreProjectLink;
+                modalExploreProjectButton.style.display = 'inline-block';
+            } else {
+                modalExploreProjectButton.style.display = 'none';
+            }
+
+            // Show/hide modal-buttons container based on button visibility
+            const modalButtonsContainer = projectModal.querySelector('.modal-buttons');
+            if (modalViewPaperButton.style.display === 'none' && modalExploreProjectButton.style.display === 'none') {
+                modalButtonsContainer.style.display = 'none';
+            } else {
+                modalButtonsContainer.style.display = 'flex'; // Restore flex display
+            }
+
+            // Show the modal and prevent body scrolling
+            projectModal.classList.add('is-open');
+            body.classList.add('modal-open');
+        });
+    });
+
+    // Event Listeners for closing modal
+    modalCloseButton.addEventListener('click', closeProjectModal);
+    modalOverlay.addEventListener('click', closeProjectModal); // Click anywhere on overlay to close
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && projectModal.classList.contains('is-open')) {
+        closeProjectModal();
+      }
+    });
     // All functions for opening, populating, and closing the modal will go here.
   </script>
 
