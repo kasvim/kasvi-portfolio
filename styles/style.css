@@ -1098,3 +1098,219 @@ footer {
   background-color: var(--link-hover-color);
   transform: scale(1.1);
 }
+
+/* --- Project Detail Modal Styling --- */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 10000; /* Sit on top of everything */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: hidden; /* Prevent background scroll */
+  background-color: rgba(0, 0, 0, 0.7); /* Fallback semi-transparent black */
+  transition: background-color 0.3s ease; /* Smooth background fade */
+  justify-content: center; /* Center content horizontally */
+  align-items: center; /* Center content vertically */
+  -webkit-backdrop-filter: blur(5px); /* Safari blur */
+  backdrop-filter: blur(5px); /* Blur background behind modal */
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* Darkens content behind */
+}
+
+.modal-content {
+  background-color: var(--bg-secondary); /* Use secondary background for modal */
+  margin: auto;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px var(--shadow-dark); /* Stronger shadow for modal */
+  position: relative;
+  width: 90%;
+  max-width: 900px; /* Max width for larger screens */
+  max-height: 90vh; /* Max height of viewport */
+  overflow-y: auto; /* Enable scrolling for long content */
+  color: var(--text-primary); /* Default text color inside modal */
+  transform: scale(0.9); /* Start slightly smaller for transition */
+  opacity: 0; /* Hidden for transition */
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out; /* Smooth pop-in */
+  z-index: 10001; /* Above overlay */
+  text-align: left; /* Text alignment inside modal */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Active state for modal (controlled by JS) */
+.modal.is-open {
+  display: flex; /* Flex to center content */
+}
+
+.modal.is-open .modal-content {
+  transform: scale(1); /* Scale to normal size */
+  opacity: 1; /* Fully visible */
+}
+
+.modal-close {
+  color: var(--text-secondary); /* Muted color for close button */
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  cursor: pointer;
+  border: none;
+  background: none;
+  transition: color 0.2s ease;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+  color: var(--heading-color); /* Accent color on hover/focus */
+  text-decoration: none;
+}
+
+.modal-body-content {
+  display: flex;
+  flex-direction: row; /* Default side-by-side */
+  gap: 30px;
+  margin-top: 20px; /* Space from close button */
+}
+
+.modal-image-wrapper {
+  flex-shrink: 0; /* Don't shrink image */
+  width: 300px; /* Fixed width for modal image */
+  height: 450px; /* Fixed height for modal image */
+  border-radius: 8px; /* Match project card radius */
+  overflow: hidden;
+  box-shadow: 0 5px 15px var(--shadow-medium);
+}
+
+.modal-project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-text-content {
+  flex-grow: 1; /* Take remaining space */
+}
+
+.modal-project-title {
+  font-size: 2rem;
+  color: var(--heading-color);
+  margin-bottom: 10px;
+}
+
+.modal-project-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+}
+
+.modal-project-description {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+.modal-achievements-heading {
+  font-size: 1.05rem;
+  color: var(--heading-color);
+  margin-bottom: 10px;
+}
+
+.modal-achievements-list {
+  list-style: disc inside; /* Default bullet points */
+  padding-left: 0; /* Remove default padding */
+  margin-bottom: 25px;
+}
+
+.modal-achievements-list li {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: auto; /* Push buttons to bottom if content is short */
+  padding-top: 15px; /* Space above buttons */
+  border-top: 1px solid var(--border-color); /* Subtle separator */
+}
+
+.modal-button {
+  background-color: var(--button-bg-primary);
+  color: var(--button-text-primary);
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 5px var(--shadow-light);
+}
+
+.modal-button:hover {
+  background-color: var(--link-hover-color);
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px var(--shadow-medium);
+}
+
+/* Utility class to prevent body scroll when modal is open */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Responsive adjustments for modal */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .modal-body-content {
+    flex-direction: column; /* Stack image and text vertically */
+    gap: 20px;
+  }
+
+  .modal-image-wrapper {
+    width: 100%; /* Full width image */
+    height: 300px; /* Shorter height on mobile */
+  }
+
+  .modal-project-title {
+    font-size: 1.8rem;
+  }
+
+  .modal-project-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 15px;
+  }
+  .modal-close {
+    font-size: 24px;
+    top: 10px;
+    right: 15px;
+  }
+  .modal-image-wrapper {
+    height: 250px;
+  }
+  .modal-button {
+    width: 100%; /* Buttons stack on very small screens */
+    text-align: center;
+  }
+}
