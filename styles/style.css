@@ -698,7 +698,7 @@ section h2 {
 */
 
 
-/* --- Skills Section --- */
+/* --- Skills Section (Revamped Individual Skill Cards) --- */
 .skills-section {
   padding: 80px 20px;
   background: var(--bg-primary);
@@ -706,15 +706,22 @@ section h2 {
 }
 
 .skills-section h2 {
-  font-size: 2.5rem; /* Consistent heading size */
+  font-size: 2.5rem;
   color: var(--heading-color);
   margin-bottom: 30px;
 }
 
-.skills-grid {
+.section-subtitle { /* Keeping if still used for overall section subtitle */
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 800px;
+  margin: 0 auto 60px auto;
+}
+
+.all-skills-grid { /* Renamed from .skills-grid */
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px; /* Consistent gap */
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Smaller min width for more items */
+  gap: 20px; /* Consistent gap */
   margin-top: 40px;
   max-width: 1200px;
   margin-left: auto;
@@ -722,72 +729,127 @@ section h2 {
 }
 
 @media (max-width: 992px) {
-  .skills-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .all-skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   }
 }
 
 @media (max-width: 600px) {
-  .skills-grid {
-    grid-template-columns: 1fr;
+  .all-skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
   }
 }
 
-
-.skill-card {
-  border-radius: 12px; /* Consistent border radius */
-  overflow: hidden;
+.skill-item { /* New styling for individual skill cards */
   background-color: var(--bg-secondary);
+  border-radius: 8px;
+  padding: 20px 15px; /* Padding for content */
   box-shadow: 0 4px 15px var(--shadow-light);
-  transition: transform 0.3s ease;
-}
-
-.skill-card:hover {
-  transform: translateY(-5px);
-}
-
-.skill-card .card-header {
-  padding: 16px;
-  color: white;
-  text-align: left;
-  font-size: 1rem;
-  font-weight: 600;
-  border-top-left-radius: 12px; /* Match skill card border radius */
-  border-top-right-radius: 12px; /* Match skill card border radius */
-}
-
-.skill-card .card-body {
-  padding: 20px;
-  text-align: left;
-  border-bottom-left-radius: 12px; /* Match skill card border radius */
-  border-bottom-right-radius: 12px; /* Match skill card border radius */
-}
-
-.skill-card .card-body ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.skill-card .card-body li {
-  margin-bottom: 10px;
-  font-size: 0.95rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden; /* For potential overflow of icons/content */
+  min-height: 180px; /* A fixed height for uniformity, adjust as needed */
+}
+
+.skill-item:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 30px var(--shadow-dark);
+}
+
+.skill-icon-wrapper {
+  width: 80px; /* Size for the icon area */
+  height: 80px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Ensure icon fits */
+}
+
+.skill-icon-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain; /* Ensure full icon is visible, not cropped */
+  transition: transform 0.2s ease;
+}
+
+.skill-item:hover .skill-icon-img {
+  transform: scale(1.1); /* Subtle zoom on icon hover */
+}
+
+.skill-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.proficiency-rating {
+  display: flex;
+  gap: 3px; /* Space between dots */
+  margin-top: auto; /* Pushes rating to the bottom */
+}
+
+.proficiency-rating .dot {
+  width: 12px; /* Size of each dot */
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--border-color); /* Empty dot color */
+  transition: background-color 0.2s ease;
+}
+
+.proficiency-rating .dot.filled {
+  background-color: var(--heading-color); /* Filled dot color (accent) */
+}
+
+.proficiency-rating .dot.half-filled {
+  background: linear-gradient(to right, var(--heading-color) 50%, var(--border-color) 50%); /* Half-filled dot */
+}
+
+.skill-details-hidden { /* Content for modal */
+  display: none;
+}
+
+
+/* Core Competencies (No changes here, keeping for context) */
+.core-competencies {
+  margin-top: 60px;
+}
+
+.core-competencies h3 {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
   color: var(--text-primary);
 }
 
-/* Color themes for skill cards (using the darker gradients from dark-mode variables) */
-.card-blue { background: var(--card-blue-gradient); }
-.card-lightblue { background: var(--card-lightblue-gradient); }
-.card-cyan { background: var(--card-cyan-gradient); }
-.card-purple { background: var(--card-purple-gradient); }
-.card-indigo { background: var(--card-indigo-gradient); }
-.card-green { background: var(--card-green-gradient); }
+.badge-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
 
-.dots {
-  color: var(--heading-color); /* Accent color for dots */
-  letter-spacing: 2px;
+.badge {
+  background-color: var(--button-bg-primary);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 18px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  box-shadow: 0 2px 10px var(--shadow-light);
+  transition: all 0.3s ease;
+}
+
+.badge:hover {
+  background-color: var(--link-hover-color);
+  transform: scale(1.05);
 }
 
 /* Core Competencies */
