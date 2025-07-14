@@ -793,56 +793,42 @@ section h2 {
 
 .proficiency-rating {
   display: flex;
-  gap: 2px; /* Closer spacing for stars */
-  margin-top: auto;
+  gap: 3px; /* Space between stars */
+  margin-top: auto; /* Pushes rating to the bottom */
   font-size: 1.1rem; /* Base size for stars */
+  color: var(--text-secondary); /* Default color for empty/unfilled stars */
 }
 
-.proficiency-rating .dot {
-  /* No width/height/background-color as the star character will define shape */
-  display: inline-block;
-  color: var(--text-secondary); /* Default color for empty star */
-  line-height: 1; /* Ensure no extra space around character */
-  position: relative;
+/* Style for Font Awesome star icons */
+.proficiency-rating i {
+  transition: color 0.2s ease; /* Smooth color transition for stars */
 }
 
-.proficiency-rating .dot::before {
-  content: '★'; /* Unicode star character */
-  font-family: 'Font Awesome 5 Free', 'Segoe UI Emoji', 'Apple Color Emoji', 'Segoe UI Symbol'; /* Fallback fonts for star character */
-  font-weight: 900; /* Ensure filled star if using Font Awesome */
-  display: inline-block;
+/* Color for filled stars (using fas fa-star) */
+.proficiency-rating i.fas.fa-star {
+  color: var(--heading-color); /* Use your accent color for filled stars */
 }
 
-.proficiency-rating .dot.filled {
-  color: var(--heading-color); /* Filled star color */
+/* Color for half-filled stars (using fas fa-star-half-alt) */
+.proficiency-rating i.fas.fa-star-half-alt {
+  color: var(--heading-color); /* Use your accent color for half-filled stars */
 }
 
-.proficiency-rating .dot.empty {
-  color: var(--text-secondary); /* Empty star color, can be a lighter shade of --text-primary */
+/* Color for empty stars (using far fa-star) - already set by parent .proficiency-rating, but can be overridden */
+.proficiency-rating i.far.fa-star {
+  color: var(--text-secondary); /* A lighter, muted color for empty stars */
 }
 
-/* Half-filled star effect */
-.proficiency-rating .dot.half-filled {
-  color: var(--text-secondary); /* Base color for the 'empty' half */
-  position: relative; /* Needed for pseudo-element positioning */
-  display: inline-block; /* Ensure it respects width/height for pseudo-element */
+/* You might want to adjust the .dots class if it was used elsewhere,
+   but for proficiency rating, it's replaced by the <i> tag styling. */
+/* If .dots is only for skill-accordion-content li: */
+.skill-accordion-content ul li .dots {
+  color: var(--heading-color); /* Keep dots styled in expanded content */
+  letter-spacing: 2px;
 }
 
-.proficiency-rating .dot.half-filled::after {
-  content: '★'; /* Full star character */
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: var(--heading-color); /* Color for the 'filled' half */
-  overflow: hidden;
-  width: 50%; /* Only show half of the star */
-}
-
-/* Ensure dots don't have existing background colors from generic dot styling if any */
-/* The old .dots class is no longer used for proficiency, only for the previous list items */
 
 /* --- Keep the rest of your current CSS below this --- */
-
 
 /* Core Competencies (No changes here, keeping for context) */
 .core-competencies {
