@@ -793,29 +793,55 @@ section h2 {
 
 .proficiency-rating {
   display: flex;
-  gap: 3px; /* Space between dots */
-  margin-top: auto; /* Pushes rating to the bottom */
+  gap: 2px; /* Closer spacing for stars */
+  margin-top: auto;
+  font-size: 1.1rem; /* Base size for stars */
 }
 
 .proficiency-rating .dot {
-  width: 12px; /* Size of each dot */
-  height: 12px;
-  border-radius: 50%;
-  background-color: var(--border-color); /* Empty dot color */
-  transition: background-color 0.2s ease;
+  /* No width/height/background-color as the star character will define shape */
+  display: inline-block;
+  color: var(--text-secondary); /* Default color for empty star */
+  line-height: 1; /* Ensure no extra space around character */
+  position: relative;
+}
+
+.proficiency-rating .dot::before {
+  content: '★'; /* Unicode star character */
+  font-family: 'Font Awesome 5 Free', 'Segoe UI Emoji', 'Apple Color Emoji', 'Segoe UI Symbol'; /* Fallback fonts for star character */
+  font-weight: 900; /* Ensure filled star if using Font Awesome */
+  display: inline-block;
 }
 
 .proficiency-rating .dot.filled {
-  background-color: var(--heading-color); /* Filled dot color (accent) */
+  color: var(--heading-color); /* Filled star color */
 }
 
+.proficiency-rating .dot.empty {
+  color: var(--text-secondary); /* Empty star color, can be a lighter shade of --text-primary */
+}
+
+/* Half-filled star effect */
 .proficiency-rating .dot.half-filled {
-  background: linear-gradient(to right, var(--heading-color) 50%, var(--border-color) 50%); /* Half-filled dot */
+  color: var(--text-secondary); /* Base color for the 'empty' half */
+  position: relative; /* Needed for pseudo-element positioning */
+  display: inline-block; /* Ensure it respects width/height for pseudo-element */
 }
 
-.skill-details-hidden { /* Content for modal */
-  display: none;
+.proficiency-rating .dot.half-filled::after {
+  content: '★'; /* Full star character */
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--heading-color); /* Color for the 'filled' half */
+  overflow: hidden;
+  width: 50%; /* Only show half of the star */
 }
+
+/* Ensure dots don't have existing background colors from generic dot styling if any */
+/* The old .dots class is no longer used for proficiency, only for the previous list items */
+
+/* --- Keep the rest of your current CSS below this --- */
 
 
 /* Core Competencies (No changes here, keeping for context) */
