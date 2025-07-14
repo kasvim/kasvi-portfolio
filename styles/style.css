@@ -590,7 +590,7 @@ section h2 {
 }
 
 
-/* --- Experience Section --- */
+/* --- Experience Section (Letterboxd Style Cards) --- */
 .experience-section {
   padding: 80px 20px;
   background-color: var(--bg-primary);
@@ -603,106 +603,99 @@ section h2 {
   margin-bottom: 30px;
 }
 
-.timeline {
-  position: relative;
-  margin: 50px auto;
-  padding-left: 50px; /* More space for the line and icons */
-  max-width: 1000px; /* Slightly narrower timeline for focus */
-  text-align: left; /* Align content left */
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 800px;
+  margin: 0 auto 60px auto;
 }
 
-.timeline::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 20px; /* Adjusted position of the line */
-  width: 2px; /* Thinner line */
-  height: 100%;
-  background-color: var(--border-color); /* Subtle border color for the line */
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Responsive grid, 280px min card width */
+  gap: 25px; /* Space between cards */
+  max-width: 1200px; /* Max width for the grid */
+  margin: 0 auto;
+  padding-top: 20px; /* Space from subtitle */
 }
 
-.timeline-item {
+.experience-card {
+  background-color: var(--bg-secondary); /* Card background */
+  border-radius: 8px; /* Consistent border-radius */
+  padding: 25px; /* Inner padding for content */
+  box-shadow: 0 4px 15px var(--shadow-medium); /* Consistent shadow */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  text-align: left; /* Align text within card */
   display: flex;
-  align-items: flex-start;
-  gap: 25px; /* More space between icon and card */
-  margin-bottom: 40px; /* Slightly less space between items */
-  position: relative;
+  flex-direction: column; /* Stack content vertically */
+  justify-content: space-between; /* Push date/buttons to bottom */
+  position: relative; /* For potential overlays/absolute elements */
 }
 
-.timeline-icon {
-  flex-shrink: 0;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%; /* Make icon circular for softer look */
-  background-color: var(--heading-color); /* Use accent color for icons */
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 20px;
-  box-shadow: 0 4px 10px var(--shadow-dark);
-  position: absolute; /* Position icon absolutely on the line */
-  left: 0; /* Align with the line */
-  top: 0; /* Align to the top of the item */
-  z-index: 1;
+.experience-card:hover {
+  transform: translateY(-8px); /* Lift on hover */
+  box-shadow: 0 10px 30px var(--shadow-dark); /* Deeper shadow */
 }
 
-.timeline-content {
-  flex: 1;
-  margin-left: 40px; /* Space for the icon/line */
+.card-visible-content {
+  flex-grow: 1; /* Allows this content to expand and push other things down */
 }
 
-.card {
-  background: var(--bg-secondary); /* Consistent card background */
+.card-icon {
+  font-size: 2.5rem; /* Larger icon */
+  margin-bottom: 15px;
+  color: var(--heading-color); /* Accent color for icon */
+  text-align: center; /* Center the icon within its space */
+}
+
+.card-title {
+  font-size: 1.25rem; /* Prominent title */
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 5px;
+}
+
+.card-company {
+  font-size: 0.95rem; /* Company text */
+  color: var(--text-secondary);
+  margin-bottom: 15px;
+}
+
+.card-date {
+  display: block; /* Ensure date is on its own line */
+  font-size: 0.85rem; /* Smaller date font */
+  color: var(--text-secondary);
+  font-weight: 500;
+  margin-top: 15px; /* Space from company/description */
+  padding-top: 10px; /* Padding above date */
+  border-top: 1px solid var(--border-color); /* Subtle separator above date */
+}
+
+/* Hidden details for modal */
+.card-details-hidden {
+  display: none; /* Hide the detailed content */
+}
+
+/* Removing old timeline specific styles */
+/* The previous .timeline, .timeline::before, .timeline-item, .timeline-icon,
+   .timeline-content, .card, .card-header, .date-tag (general), .card p, .card ul, .card ul li
+   rules from the old timeline should now be completely replaced by the new .experience-grid and .experience-card styles. */
+/* Ensure no old "card" styles from previous section are interfering with new "experience-card" */
+
+/* You should also remove these redundant generic .card styles if they exist
+   and are not used elsewhere, or ensure they align with the new .experience-card style */
+/* .card {
+  background: var(--gradient-light-card);
   padding: 25px 30px;
-  border-radius: 12px; /* Consistent border radius */
-  box-shadow: 0 8px 20px var(--shadow-medium); /* Consistent shadow */
+  border-radius: 16px;
+  box-shadow: 0 8px 20px var(--shadow-light);
   text-align: left;
 }
-
-.card-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-  flex-wrap: wrap;
-}
-
-.card-header h3 {
-  font-size: 1.15rem; /* Slightly smaller for card titles */
-  margin: 0;
-  color: var(--text-primary);
-}
-
-.date-tag {
-  background: var(--button-bg-secondary); /* Muted background for tags */
-  border-radius: 6px; /* Consistent border radius */
-  padding: 6px 10px; /* Adjusted padding */
-  font-size: 0.8rem; /* Smaller font size */
-  font-weight: 500;
-  color: var(--text-primary);
-}
-
-.card p {
-  font-size: 0.9rem; /* Consistent paragraph font size */
-  margin: 8px 0 12px; /* Adjusted margins */
-  color: var(--text-secondary);
-  line-height: 1.6;
-}
-
-.card ul {
-  padding-left: 20px;
-  margin: 0;
-}
-
-.card ul li {
-  margin-bottom: 8px; /* Slightly smaller margin */
-  font-size: 0.9rem; /* Consistent font size */
-  color: var(--text-primary);
-}
-.card ul li:last-child {
-  margin-bottom: 0; /* No margin on last list item */
-}
+.card-header h3 { color: var(--text-primary); }
+.card p { color: var(--text-secondary); }
+.card ul li { color: var(--text-primary); }
+*/
 
 
 /* --- Skills Section --- */
