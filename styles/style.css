@@ -590,7 +590,7 @@ section h2 {
 }
 
 
-/* --- Experience Section (Letterboxd Style Cards) --- */
+/* --- Experience Section --- */
 .experience-section {
   padding: 80px 20px;
   background-color: var(--bg-primary);
@@ -676,27 +676,6 @@ section h2 {
 .card-details-hidden {
   display: none; /* Hide the detailed content */
 }
-
-/* Removing old timeline specific styles */
-/* The previous .timeline, .timeline::before, .timeline-item, .timeline-icon,
-   .timeline-content, .card, .card-header, .date-tag (general), .card p, .card ul, .card ul li
-   rules from the old timeline should now be completely replaced by the new .experience-grid and .experience-card styles. */
-/* Ensure no old "card" styles from previous section are interfering with new "experience-card" */
-
-/* You should also remove these redundant generic .card styles if they exist
-   and are not used elsewhere, or ensure they align with the new .experience-card style */
-/* .card {
-  background: var(--gradient-light-card);
-  padding: 25px 30px;
-  border-radius: 16px;
-  box-shadow: 0 8px 20px var(--shadow-light);
-  text-align: left;
-}
-.card-header h3 { color: var(--text-primary); }
-.card p { color: var(--text-secondary); }
-.card ul li { color: var(--text-primary); }
-*/
-
 
 /* --- Skills Section (Revamped Individual Skill Cards) --- */
 .skills-section {
@@ -794,7 +773,7 @@ section h2 {
 .proficiency-rating {
   display: flex;
   gap: 3px; /* Space between stars */
-  margin-top: auto; /* Pushes rating to the bottom */
+  margin-top: auto;
   font-size: 1.1rem; /* Base size for stars */
   color: var(--text-secondary); /* Default color for empty/unfilled stars */
 }
@@ -819,16 +798,10 @@ section h2 {
   color: var(--text-secondary); /* A lighter, muted color for empty stars */
 }
 
-/* You might want to adjust the .dots class if it was used elsewhere,
-   but for proficiency rating, it's replaced by the <i> tag styling. */
-/* If .dots is only for skill-accordion-content li: */
-.skill-accordion-content ul li .dots {
-  color: var(--heading-color); /* Keep dots styled in expanded content */
-  letter-spacing: 2px;
+.skill-details-hidden { /* Content for modal */
+  display: none;
 }
 
-
-/* --- Keep the rest of your current CSS below this --- */
 
 /* Core Competencies (No changes here, keeping for context) */
 .core-competencies {
@@ -864,40 +837,6 @@ section h2 {
   transform: scale(1.05);
 }
 
-/* Core Competencies */
-.core-competencies {
-  margin-top: 60px;
-}
-
-.core-competencies h3 {
-  font-size: 1.4rem;
-  margin-bottom: 20px;
-  color: var(--text-primary);
-}
-
-.badge-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px; /* Slightly smaller gap for badges */
-  justify-content: center;
-}
-
-.badge {
-  background-color: var(--button-bg-primary);
-  color: white;
-  padding: 8px 14px; /* Slightly smaller padding */
-  border-radius: 18px; /* Consistent border radius */
-  font-size: 0.85rem; /* Slightly smaller font size */
-  font-weight: 500;
-  box-shadow: 0 2px 10px var(--shadow-light);
-  transition: all 0.3s ease;
-}
-
-.badge:hover {
-  background-color: var(--link-hover-color);
-  transform: scale(1.05);
-}
-
 /* --- Leadership Section --- */
 .leadership-section {
   padding: 80px 20px;
@@ -909,6 +848,13 @@ section h2 {
   font-size: 2.5rem; /* Consistent heading size */
   color: var(--heading-color);
   margin-bottom: 30px;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 800px;
+  margin: 0 auto 60px auto;
 }
 
 .leadership-grid {
@@ -960,6 +906,7 @@ section h2 {
 .leadership-card.card-purple .card-header { background: var(--leadership-card-purple); }
 .leadership-card.card-pink .card-header { background: var(--leadership-card-pink); }
 .leadership-card.card-blue .card-header { background: var(--leadership-card-blue); }
+
 
 .leadership-card .card-body {
   background: var(--gradient-light-card);
@@ -1025,8 +972,8 @@ section h2 {
   color: white;
 }
 
-.contact-section .section-subtitle {
-  font-size: 1.1rem; /* Consistent subtitle size */
+.section-subtitle {
+  font-size: 1.1rem;
   color: white;
   opacity: 0.95;
   max-width: 700px;
@@ -1380,4 +1327,146 @@ body.modal-open {
     width: 100%; /* Buttons stack on very small screens */
     text-align: center;
   }
+}
+
+/* --- Project Detail Modal Styling (Continued for Skill Spotlight) --- */
+
+/* Base style to hide skill-specific content by default */
+.modal-skill-content {
+  display: none; /* Hidden by default, shown by JS when type is 'skill' */
+  margin-top: 25px;
+  padding-top: 25px;
+  border-top: 1px solid var(--border-color); /* Separator */
+}
+
+/* Ensure project-specific content is hidden when skill modal is active */
+/* Note: These classes are added to the modal itself by JS when it's a skill modal */
+.modal.is-open.skill-modal .modal-image-wrapper,
+.modal.is-open.skill-modal .modal-achievements-heading,
+.modal.is-open.skill-modal .modal-achievements-list,
+.modal.is-open.skill-modal .modal-buttons {
+  display: none;
+}
+
+/* Ensure skill-specific content is shown when skill modal is active */
+.modal.is-open.skill-modal .modal-skill-content {
+  display: block; /* Show the skill-specific content */
+}
+
+/* Styling for Skill Proficiency in Modal */
+.modal-skill-proficiency {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 25px;
+  flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.skill-modal-rating-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.skill-modal-stars {
+  font-size: 1.5rem; /* Larger stars in modal */
+  gap: 4px; /* More space between larger stars */
+  color: var(--text-secondary); /* Default color for empty/unfilled stars */
+}
+/* Font Awesome stars in modal */
+.skill-modal-stars i {
+  transition: color 0.2s ease;
+}
+
+.skill-modal-stars i.fas.fa-star,
+.skill-modal-stars i.fas.fa-star-half-alt {
+  color: var(--heading-color);
+}
+.skill-modal-stars i.far.fa-star {
+  color: var(--text-secondary);
+}
+
+/* Styling for Projects Featuring This Skill section */
+.modal-skill-projects-heading {
+  font-size: 1.1rem;
+  color: var(--heading-color);
+  margin-top: 25px;
+  margin-bottom: 15px;
+  border-top: 1px solid var(--border-color); /* Separator */
+  padding-top: 25px;
+}
+
+.modal-skill-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Mini grid for project thumbnails */
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.modal-mini-project-card {
+  background-color: var(--bg-primary); /* Slightly different background for mini-cards */
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px var(--shadow-light);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  cursor: pointer;
+  text-decoration: none; /* Remove underline for links */
+  color: inherit; /* Inherit text color */
+}
+
+.modal-mini-project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px var(--shadow-medium);
+}
+
+.modal-mini-project-image-wrapper {
+  width: 100%;
+  height: 150px; /* Fixed height for mini-poster */
+  overflow: hidden;
+}
+
+.modal-mini-project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-mini-project-title {
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 10px;
+  color: var(--text-primary);
+  text-align: center;
+  white-space: nowrap; /* Prevent title wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Add ellipsis if title is too long */
+}
+
+/* Styling for Key Tools & Concepts */
+.modal-skill-tools-heading {
+  font-size: 1.1rem;
+  color: var(--heading-color);
+  margin-top: 25px;
+  margin-bottom: 15px;
+  border-top: 1px solid var(--border-color); /* Separator */
+  padding-top: 25px;
+}
+
+.modal-skill-tools-list {
+  list-style: none; /* Remove default bullets */
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px; /* Space between tool badges */
+}
+
+.modal-skill-tools-list li {
+  background-color: var(--button-bg-secondary); /* Muted badge background */
+  color: var(--button-text-secondary);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap; /* Prevent wrapping */
 }
