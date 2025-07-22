@@ -660,14 +660,149 @@
     const modalSkillToolsHeading = projectModal.querySelector('.modal-skill-tools-heading');
 
 
-    // Function to populate and open the modal
-    function populateAndOpenModal(data) {
-        // Reset/Hide all specific content areas first
-        modalImageWrapper.style.display = 'none';
-        modalAchievementsHeading.style.display = 'none';
-        modalAchievementsList.style.display = 'none';
-        modalButtonsContainer.style.display = 'none';
-        modalSkillContent.style.display = 'none'; // Hide skill content by default
+    // Function to populate and open the modal (UPDATED for Leadership)
+function populateAndOpenModal(data) {
+    // Reset/Hide all specific content areas first
+    modalImageWrapper.style.display = 'none';
+    modalAchievementsHeading.style.display = 'none';
+    modalAchievementsList.style.display = 'none';
+    modalButtonsContainer.style.display = 'none';
+    modalSkillContent.style.display = 'none'; // Hide skill content by default
+
+    // Remove any previous type-specific classes from the modal
+    projectModal.classList.remove('skill-modal'); // Assuming this was added for skills
+
+    // Populate common fields
+    modalProjectTitle.textContent = data.title;
+    if (data.subtitle) {
+        modalProjectSubtitle.textContent = data.subtitle;
+        modalProjectSubtitle.style.display = 'block';
+    } else {
+        modalProjectSubtitle.style.display = 'none';
+    }
+    if (data.description) {
+        modalProjectDescription.innerHTML = data.description;
+        modalProjectDescription.style.display = 'block';
+    } else {
+        modalProjectDescription.style.display = 'none';
+    }
+
+    // Conditional rendering based on data.type
+    if (data.type === 'project') {
+        modalImageWrapper.style.display = 'block';
+        modalProjectImage.src = data.imageSrc;
+        modalProjectImage.alt = data.imageAlt || data.title;
+
+        if (data.achievementsHeading && data.achievementsListItems && data.achievementsListItems.length > 0) {
+            modalAchievementsHeading.textContent = data.achievementsHeading;
+            modalAchievementsHeading.style.display = 'block';
+            modalAchievementsList.innerHTML = '';
+            data.achievementsListItems.forEach(itemText => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = itemText;
+                modalAchievementsList.appendChild(listItem);
+            });
+            modalAchievementsList.style.display = 'block';
+        }
+
+        let hasButtons = false;
+        if (data.viewPaperLink && data.viewPaperLink !== '#') {
+            modalViewPaperButton.href = data.viewPaperLink;
+            modalViewPaperButton.style.display = 'inline-block';
+            hasButtons = true;
+        }
+        if (data.exploreProjectLink && data.exploreProjectLink !== '#') {
+            modalExploreProjectButton.href = data.exploreProjectLink;
+            modalExploreProjectButton.style.display = 'inline-block';
+            hasButtons = true;
+        }
+        if (hasButtons) {
+            modalButtonsContainer.style.display = 'flex';
+        }
+
+    } else if (data.type === 'experience' || data.type === 'leadership') { // Now handles leadership
+        // Experience and Leadership share similar display (no image, a description, and a list of achievements/roles)
+        // Image already hidden.
+        if (data.achievementsHeading && data.achievementsListItems && data.achievementsListItems.length > 0) {
+            modalAchievementsHeading.textContent = data.achievementsHeading;
+            modalAchievementsHeading.style.display = 'block';
+            modalAchievementsList.innerHTML = '';
+            data.achievementsListItems.forEach(itemText => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = itemText;
+                modalAchievementsList.appendChild(listItem);
+            });
+            modalAchievementsList.style.display = 'block';
+        }
+
+    } else if (data.type === 'skill') {
+        projectModal.classList.add('skill-modal'); // Add class to modal for skill-specific CSS hiding/showing
+        modalSkillContent.style.display = 'block';
+
+        // Populate proficiency stars
+        skillModalStarsContainer.innerHTML = '';
+        const fullStars = Math.floor(data.proficiency);
+        const hasHalfStar = data.proficiency % 1 !== 0;
+        const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+
+        for (let i = 0; i < fullStars; i++) {
+            skillModalStarsContainer.innerHTML += '<i class="fas fa-star"></i>';
+        }
+        if (hasHalfStar) {
+            skillModalStarsContainer.innerHTML += '<i class="fas fa-star-half-alt"></i>';
+        }
+        for (let i = 0; i < emptyStars; i++) {
+            skillModalStarsContainer.innerHTML += '<i class="far fa-star"></i>';
+        }
+
+        // Populate Projects Featuring This Skill
+        modalSkillProjectsGrid.innerHTML = '';
+        if (data.projectsFeaturingSkill && data.projectsFeaturingSkill.length > 0) {
+            modalSkillProjectsHeading.style.display = 'block';
+            data.projectsFeaturingSkill.forEach(projectId => {
+                const projectCard = document.getElementById(projectId);
+                if (projectCard) {
+                    const projectImageSrc = projectCard.querySelector('.project-image').src;
+                    const projectImageAlt = projectCard.querySelector('.project-image').alt;
+                    const projectTitle = projectCard.querySelector('.project-title').textContent;
+
+                    const miniCardHtml = `
+                        <a href="#projects" class="modal-mini-project-card" data-project-id="${projectId}">
+                            <div class="modal-mini-project-image-wrapper">
+                                <img src="${projectImageSrc}" alt="${projectImageAlt}" class="modal-mini-project-image">
+                            </div>
+                            <div class="modal-mini-project-title">${projectTitle}</div>
+                        </a>
+                    `;
+                    modalSkillProjectsGrid.innerHTML += miniCardHtml;
+                }
+            });
+            modalSkillProjectsGrid.style.display = 'grid';
+        } else {
+            modalSkillProjectsHeading.style.display = 'none';
+            modalSkillProjectsGrid.style.display = 'none';
+        }
+
+        // Populate Key Tools & Concepts
+        modalSkillToolsList.innerHTML = '';
+        if (data.toolsAndConcepts && data.toolsAndConcepts.length > 0) {
+            modalSkillToolsHeading.style.display = 'block';
+            data.toolsAndConcepts.forEach(tool => {
+                const listItem = document.createElement('li');
+                listItem.textContent = tool;
+                modalSkillToolsList.appendChild(listItem);
+            });
+            modalSkillToolsList.style.display = 'flex';
+        } else {
+            modalSkillToolsHeading.style.display = 'none';
+            modalSkillToolsList.style.display = 'none';
+        }
+    }
+
+    // Show the modal and prevent body scrolling
+    projectModal.classList.add('is-open');
+    body.classList.add('modal-open');
+}
 
         // Populate common fields
         modalProjectTitle.textContent = data.title;
@@ -798,7 +933,7 @@
         // Show the modal and prevent body scrolling
         projectModal.classList.add('is-open');
         body.classList.add('modal-open');
-    }
+    
 
     // Function to close the modal
     function closeGenericModal() {
@@ -921,7 +1056,31 @@
             type: 'skill'
         };
     }
+ // For Leadership (NEW FUNCTION)
+    function extractLeadershipData(card) {
+        const title = card.querySelector('.card-header h3').textContent;
+        const organization = card.querySelector('.card-header .org').textContent;
+        const date = card.querySelector('.card-body .date-tag').textContent;
+        const visibleSummary = card.querySelector('.card-body p').innerHTML; // Short summary
 
+        const hiddenDetails = card.querySelector('.leadership-details-hidden');
+        const modalTitle = hiddenDetails.querySelector('h4') ? hiddenDetails.querySelector('h4').textContent : title; // Use H4 if present, else visible title
+        const modalDescription = hiddenDetails.querySelector('p') ? hiddenDetails.querySelector('p').innerHTML : visibleSummary;
+        const modalListItems = Array.from(hiddenDetails.querySelectorAll('ul li')).map(li => li.innerHTML);
+
+        return {
+            title: modalTitle,
+            subtitle: `${organization} (${date})`, // Combine org and date for modal subtitle
+            description: modalDescription,
+            imageSrc: null, // No image for leadership
+            imageAlt: null,
+            achievementsHeading: 'Role & Responsibilities:', // Custom heading for achievements/list
+            achievementsListItems: modalListItems,
+            viewPaperLink: null,
+            exploreProjectLink: null,
+            type: 'leadership' // Add a type
+        };
+    }
 
     // --- Attach Event Listeners to Cards ---
 
@@ -948,6 +1107,15 @@
     skillItems.forEach(item => {
         item.addEventListener('click', () => {
             const data = extractSkillData(item);
+            populateAndOpenModal(data);
+        });
+    });
+
+    // For Leadership Cards (NEW EVENT LISTENER BLOCK)
+    const leadershipCards = document.querySelectorAll('.leadership-grid .leadership-card');
+    leadershipCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const data = extractLeadershipData(card);
             populateAndOpenModal(data);
         });
     });
