@@ -879,7 +879,7 @@ section h2 {
 }
 
 .leadership-section h2 {
-  font-size: 2.5rem; /* Consistent heading size */
+  font-size: 2.5rem;
   color: var(--heading-color);
   margin-bottom: 30px;
 }
@@ -893,8 +893,8 @@ section h2 {
 
 .leadership-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 25px; /* Consistent gap */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); /* Consistent grid behavior */
+  gap: 25px;
   margin-top: 40px;
   max-width: 1100px;
   margin-left: auto;
@@ -911,68 +911,122 @@ section h2 {
   border-radius: 12px; /* Consistent border radius */
   overflow: hidden;
   box-shadow: 0 8px 25px var(--shadow-light);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   background-color: var(--bg-secondary);
+  cursor: pointer; /* Indicate it's clickable */
+  display: flex;
+  flex-direction: column; /* Ensure content stacks */
+  justify-content: space-between; /* Push date/footer content down */
+  position: relative; /* For overlay positioning */
 }
 
 .leadership-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px); /* Lift on hover */
+  box-shadow: 0 10px 30px var(--shadow-dark); /* Deeper shadow */
 }
 
 .leadership-card .card-header {
-  color: #fff;
+  color: #fff; /* Text color for gradient headers */
   padding: 20px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100px; /* Give headers a bit more height */
+  position: relative; /* For correct z-index over overlay if needed */
+  z-index: 2; /* Ensure header content is above overlay */
 }
 
 .leadership-card h3 {
-  font-size: 1.15rem; /* Consistent card title size */
+  font-size: 1.25rem; /* Slightly larger for prominence */
   margin-bottom: 5px;
 }
 
 .leadership-card .org {
-  font-size: 0.9rem; /* Consistent organization font size */
+  font-size: 0.95rem;
   font-weight: 500;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
-/* Colored headers for leadership cards */
+/* Colored headers for leadership cards - apply to .card-header */
 .leadership-card.card-purple .card-header { background: var(--leadership-card-purple); }
 .leadership-card.card-pink .card-header { background: var(--leadership-card-pink); }
 .leadership-card.card-blue .card-header { background: var(--leadership-card-blue); }
 
-
 .leadership-card .card-body {
-  background: var(--gradient-light-card);
+  background: var(--gradient-light-card); /* Consistent body background */
   padding: 20px;
   text-align: left;
+  flex-grow: 1; /* Allows body content to push overlay down */
+  position: relative;
+  z-index: 1; /* Ensure body is below overlay when it appears */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* For subtle push effect */
 }
 
-.leadership-card .date-tag { /* Specific date tag for leadership cards */
+.leadership-card:hover .card-body {
+    transform: translateY(-10px); /* Push body content up slightly to reveal overlay */
+    opacity: 0.9;
+}
+
+
+.leadership-card .date-tag {
   background: var(--bg-primary);
   color: var(--text-primary);
-  padding: 8px 14px; /* Consistent padding */
-  border-radius: 18px; /* Consistent border radius */
+  padding: 8px 14px;
+  border-radius: 18px;
   display: inline-block;
-  font-size: 0.8rem; /* Consistent font size */
+  font-size: 0.8rem;
   font-weight: 600;
   margin-bottom: 15px;
   box-shadow: 0 1px 6px var(--shadow-light);
 }
 
 .leadership-card p {
-  font-size: 0.9rem; /* Consistent paragraph font size */
+  font-size: 0.9rem;
   color: var(--text-primary);
   line-height: 1.6;
 }
 
-/* Philosophy Box */
+/* Hidden details for modal */
+.leadership-details-hidden {
+  display: none;
+}
+
+/* --- Leadership Card Hover Overlay (The "Transition Animation") --- */
+.leadership-hover-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px; /* Height of the overlay */
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent); /* Subtle fade-in */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transform: translateY(100%); /* Start completely below the card */
+  opacity: 0; /* Hidden initially */
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  border-bottom-left-radius: 12px; /* Match card border radius */
+  border-bottom-right-radius: 12px;
+  z-index: 3; /* Ensure it's above card-body */
+}
+
+.leadership-card:hover .leadership-hover-overlay {
+  transform: translateY(0); /* Slide up into view */
+  opacity: 1; /* Fade in */
+}
+
+/* Philosophy Box (no changes here, keeping for context) */
 .leadership-philosophy {
   margin-top: 60px;
   padding: 40px 30px;
   background: var(--philosophy-bg);
   color: white;
-  border-radius: 12px; /* Consistent border radius */
+  border-radius: 12px;
   max-width: 900px;
   margin-left: auto;
   margin-right: auto;
@@ -986,7 +1040,7 @@ section h2 {
 }
 
 .leadership-philosophy p {
-  font-size: 0.95rem; /* Consistent paragraph font size */
+  font-size: 0.95rem;
   font-weight: 400;
   line-height: 1.8;
   color: white;
