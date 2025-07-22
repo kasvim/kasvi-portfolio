@@ -803,38 +803,72 @@ section h2 {
 }
 
 
-/* Core Competencies (No changes here, keeping for context) */
+/* --- Core Competencies (Revamped with Chips) --- */
 .core-competencies {
   margin-top: 60px;
+  text-align: center;
 }
 
 .core-competencies h3 {
-  font-size: 1.4rem;
-  margin-bottom: 20px;
+  font-size: 1.6rem; /* Slightly larger heading */
+  margin-bottom: 30px; /* More space below heading */
   color: var(--text-primary);
 }
 
-.badge-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
+.key-competencies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive grid for chips */
+  gap: 15px; /* Space between chips */
+  max-width: 900px; /* Max width for the grid */
+  margin: 0 auto;
 }
 
-.badge {
-  background-color: var(--button-bg-primary);
-  color: white;
-  padding: 8px 14px;
-  border-radius: 18px;
-  font-size: 0.85rem;
-  font-weight: 500;
+@media (max-width: 768px) {
+  .key-competencies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .key-competencies-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+  }
+}
+
+.competency-chip {
+  background-color: var(--bg-secondary); /* Use secondary background for chips */
+  color: var(--text-primary);
+  padding: 15px 10px; /* Vertical and horizontal padding */
+  border-radius: 8px; /* Consistent border radius */
   box-shadow: 0 2px 10px var(--shadow-light);
-  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column; /* Stack icon and text */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  cursor: default; /* Not clickable by default for now, can be changed */
+  min-height: 100px; /* Ensure uniform height for chips */
 }
 
-.badge:hover {
-  background-color: var(--link-hover-color);
-  transform: scale(1.05);
+.competency-chip:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 20px var(--shadow-medium);
+  background-color: var(--bg-primary); /* Lighter background on hover */
+}
+
+.competency-chip i { /* Font Awesome icon styling */
+  font-size: 2.2rem; /* Larger icon size */
+  margin-bottom: 10px;
+  color: var(--heading-color); /* Accent color for icons */
+}
+
+.competency-chip span {
+  display: block; /* Ensure text is below icon */
+  line-height: 1.2;
 }
 
 /* --- Leadership Section --- */
