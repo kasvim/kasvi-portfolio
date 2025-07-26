@@ -847,6 +847,65 @@
         }
     });
 
+    // index.html - Inside your main <script> tag
+
+    // --- About Me Slider Logic ---
+    const sliderTrack = document.querySelector('.about-cards-track');
+    const slides = document.querySelectorAll('.about-cards-track .info-card');
+    const prevArrow = document.querySelector('.slider-arrow.prev-slide');
+    const nextArrow = document.querySelector('.slider-arrow.next-slide');
+    const sliderDots = document.querySelectorAll('.slider-dots .dot');
+
+    let currentSlideIndex = 0;
+    const totalSlides = slides.length;
+
+    // Function to move to a specific slide
+    function goToSlide(index) {
+        if (index < 0) {
+            currentSlideIndex = totalSlides - 1; // Wrap around to end
+        } else if (index >= totalSlides) {
+            currentSlideIndex = 0; // Wrap around to beginning
+        } else {
+            currentSlideIndex = index;
+        }
+
+        const offset = -currentSlideIndex * 100; // Calculate percentage offset
+        sliderTrack.style.transform = `translateX(${offset}%)`;
+
+        // Update active dot
+        sliderDots.forEach((dot, idx) => {
+            if (idx === currentSlideIndex) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+
+    // Event listeners for arrows
+    prevArrow.addEventListener('click', () => {
+        goToSlide(currentSlideIndex - 1);
+    });
+
+    nextArrow.addEventListener('click', () => {
+        goToSlide(currentSlideIndex + 1);
+    });
+
+    // Event listeners for dots
+    sliderDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            goToSlide(index);
+        });
+    });
+
+    // Initialize the slider to the first slide
+    goToSlide(0);
+
+    // --- End About Me Slider Logic ---
+
+
+    // (Keep all your other existing JavaScript below this point: Scroll Progress, ScrollSpy, Mobile Menu)
+
     // --- Data Extraction Functions for specific card types ---
 
     // For Projects
