@@ -8,6 +8,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Correctly link Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -272,7 +274,6 @@
   <script>
     AOS.init();
 
-    // Data for the portfolio sections
     const portfolioData = {
         projects: [
             {
@@ -494,8 +495,7 @@
             }
         ]
     };
-
-    // --- Card Generation Functions ---
+    
     function createProjectCard(project) {
         return `
             <div id="${project.id}" class="project-card group" data-aos="fade-up" data-type="${project.type}" data-id="${project.id}">
@@ -528,7 +528,6 @@
     }
 
     function createSkillCard(skill) {
-        // Find projects that feature this skill to include in the card's data attribute
         const projectsWithSkill = portfolioData.projects.filter(p => p.skills.includes(skill.id)).map(p => p.id);
         const projectsDataAttr = projectsWithSkill.join(',');
 
@@ -577,7 +576,6 @@
         return stars;
     }
 
-    // --- Main Rendering Function ---
     function renderPortfolio() {
         document.getElementById('projects-container').innerHTML = portfolioData.projects.map(createProjectCard).join('');
         document.getElementById('experience-grid').innerHTML = portfolioData.experience.map(createExperienceCard).join('');
@@ -585,15 +583,12 @@
         document.getElementById('leadership-grid').innerHTML = portfolioData.leadership.map(createLeadershipCard).join('');
     }
 
-    // Call render on load
     document.addEventListener('DOMContentLoaded', () => {
         renderPortfolio();
         AOS.init();
-        // Call init again to apply animations to the dynamically loaded content
         AOS.refresh();
     });
 
-    // Dark Mode Logic
     const darkModeToggle = document.getElementById('darkModeToggle');
     const body = document.body;
 
@@ -624,7 +619,6 @@
         }
     });
 
-    // Project/Experience Detail Modal Logic
     const projectModal = document.getElementById('projectModal');
     const modalCloseButton = projectModal.querySelector('.modal-close');
     const modalOverlay = projectModal.querySelector('.modal-overlay');
@@ -781,12 +775,11 @@
         }
     });
 
-    // --- Search Functionality ---
     const searchInput = document.getElementById('searchInput');
 
     searchInput.addEventListener('input', (event) => {
         const query = event.target.value.toLowerCase().trim();
-        const allCards = document.querySelectorAll('.project-card, .skill-item, .experience-card, .leadership-card');
+        const allCards = document.querySelectorAll('[data-id]');
         allCards.forEach(card => {
             const id = card.dataset.id;
             let found = false;
@@ -827,7 +820,6 @@
         });
     });
 
-    // --- About Me Slider Logic ---
     const sliderTrack = document.querySelector('.about-cards-track');
     const slides = document.querySelectorAll('.about-cards-track .info-card');
     const prevArrow = document.querySelector('.slider-arrow.prev-slide');
@@ -873,7 +865,6 @@
       });
     }
     
-    // --- Other existing JavaScript (Scroll Progress, ScrollSpy, Mobile Menu) ---
     const topBtn = document.getElementById("scrollToTopBtn");
     const progressBar = document.getElementById("progress-bar");
     window.onscroll = function () {
