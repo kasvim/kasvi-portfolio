@@ -272,6 +272,7 @@
   <script>
     AOS.init();
 
+    // Data for the portfolio sections
     const portfolioData = {
         projects: [
             {
@@ -772,52 +773,8 @@
             }, 300);
         }
     });
-
-    const searchInput = document.getElementById('searchInput');
-
-    searchInput.addEventListener('input', (event) => {
-        const query = event.target.value.toLowerCase().trim();
-        const allCards = document.querySelectorAll('[data-id]');
-        allCards.forEach(card => {
-            const id = card.dataset.id;
-            let found = false;
-            // Search projects
-            if (id.startsWith('project-')) {
-                const project = portfolioData.projects.find(p => p.id === id);
-                if (project && (project.title.toLowerCase().includes(query) || project.subtitle.toLowerCase().includes(query) || project.description.toLowerCase().includes(query))) {
-                    found = true;
-                }
-            }
-            // Search skills
-            if (id.startsWith('skill')) {
-                const skill = portfolioData.skills.find(s => s.id === id);
-                if (skill && (skill.title.toLowerCase().includes(query) || skill.description.toLowerCase().includes(query))) {
-                    found = true;
-                }
-            }
-            // Search experiences
-            if (id.startsWith('history') || id.startsWith('math') || id.startsWith('earth') || id.startsWith('ey')) {
-                 const experience = portfolioData.experience.find(e => e.id === id);
-                 if (experience && (experience.title.toLowerCase().includes(query) || experience.subtitle.toLowerCase().includes(query) || experience.description.toLowerCase().includes(query))) {
-                    found = true;
-                 }
-            }
-            // Search leadership
-            if (id.startsWith('women') || id.startsWith('team') || id.startsWith('committee')) {
-                const leadership = portfolioData.leadership.find(l => l.id === id);
-                if (leadership && (leadership.title.toLowerCase().includes(query) || leadership.organization.toLowerCase().includes(query) || leadership.summary.toLowerCase().includes(query))) {
-                    found = true;
-                }
-            }
-
-            if (found) {
-                card.style.display = 'block';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    });
-
+    
+    // --- About Me Slider Logic ---
     const sliderTrack = document.querySelector('.about-cards-track');
     const slides = document.querySelectorAll('.about-cards-track .info-card');
     const prevArrow = document.querySelector('.slider-arrow.prev-slide');
@@ -910,6 +867,57 @@
             const navUl = document.querySelector("nav ul");
             if (navUl.classList.contains("show")) {
                 navUl.classList.remove("show");
+            }
+        });
+    });
+
+    // --- Search Functionality ---
+    const searchInput = document.getElementById('searchInput');
+
+    searchInput.addEventListener('input', (event) => {
+        const query = event.target.value.toLowerCase().trim();
+        const allCards = document.querySelectorAll('[data-id]');
+        
+        allCards.forEach(card => {
+            const id = card.dataset.id;
+            let found = false;
+            
+            // Search projects
+            if (id.startsWith('project-')) {
+                const project = portfolioData.projects.find(p => p.id === id);
+                if (project && (project.title.toLowerCase().includes(query) || project.subtitle.toLowerCase().includes(query) || project.description.toLowerCase().includes(query))) {
+                    found = true;
+                }
+            }
+            
+            // Search skills
+            if (id.startsWith('skill')) {
+                const skill = portfolioData.skills.find(s => s.id === id);
+                if (skill && (skill.title.toLowerCase().includes(query) || skill.description.toLowerCase().includes(query))) {
+                    found = true;
+                }
+            }
+            
+            // Search experiences
+            if (id.startsWith('history') || id.startsWith('math') || id.startsWith('earth') || id.startsWith('ey')) {
+                 const experience = portfolioData.experience.find(e => e.id === id);
+                 if (experience && (experience.title.toLowerCase().includes(query) || experience.subtitle.toLowerCase().includes(query) || (experience.description && experience.description.toLowerCase().includes(query)))) {
+                    found = true;
+                 }
+            }
+            
+            // Search leadership
+            if (id.startsWith('women') || id.startsWith('team') || id.startsWith('committee')) {
+                const leadership = portfolioData.leadership.find(l => l.id === id);
+                if (leadership && (leadership.title.toLowerCase().includes(query) || leadership.organization.toLowerCase().includes(query) || leadership.summary.toLowerCase().includes(query))) {
+                    found = true;
+                }
+            }
+
+            if (found) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
             }
         });
     });
