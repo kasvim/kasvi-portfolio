@@ -19,6 +19,12 @@
       <button id="darkModeToggle" aria-label="Toggle Dark Mode" class="dark-mode-toggle">
         ☀️
       </button>
+      <div class="search-container">
+        <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search projects...">
+        </div>
+      </div>  
       <nav id="mainNav">
         <ul>
           <li><a href="#home" class="nav-link">Home</a></li>
@@ -1061,7 +1067,28 @@
             populateAndOpenModal(data);
         });
     });
+    // --- Project Search Functionality ---
+    const searchInput = document.getElementById('searchInput');
+    const projectCards = document.querySelectorAll('.projects-section .project-card');
 
+    searchInput.addEventListener('input', (event) => {
+        const query = event.target.value.toLowerCase().trim();
+
+        projectCards.forEach(card => {
+            const title = card.querySelector('.project-title').textContent.toLowerCase();
+            const subtitle = card.querySelector('.project-subtitle').textContent.toLowerCase();
+            const description = card.querySelector('.project-details-hidden p').textContent.toLowerCase();
+
+            // Check if the query is found in the title, subtitle, or description
+            if (title.includes(query) || subtitle.includes(query) || description.includes(query)) {
+                card.style.display = 'block'; // Show the card
+            } else {
+                card.style.display = 'none'; // Hide the card
+            }
+        });
+    });
+
+    // --- End Project Search Functionality ---
     // Event listener for clicking on mini-project cards inside skill modal
     projectModal.addEventListener('click', (event) => {
         if (event.target.closest('.modal-mini-project-card')) {

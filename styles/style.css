@@ -114,6 +114,49 @@ header {
   margin: 0 auto;
 }
 
+/* --- Search Bar Styling --- */
+.search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto; /* Pushes the search bar to the right on large screens */
+    margin-right: 1rem;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    transition: width 0.3s ease-in-out;
+    width: 250px; /* Default width */
+}
+
+.search-box i {
+    color: #888;
+    margin-right: 0.75rem;
+    font-size: 1rem;
+}
+
+.search-box input {
+    background: none;
+    border: none;
+    color: #d4d4d4;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+}
+
+/* For mobile, hide the search bar initially */
+@media (max-width: 768px) {
+    .search-container {
+        display: none;
+    }
+    /* You might want to show it in the mobile menu or as a toggleable icon */
+}
+
 nav {
   margin-left: auto;
 }
