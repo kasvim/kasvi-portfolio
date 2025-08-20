@@ -3,11 +3,121 @@
 <head>
   <meta charset="UTF-8" />
   <title>Kasvi Mahajan | Portfolio</title>
-  <link rel="stylesheet" href="styles/style.css" />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Correctly link Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    /* Add custom styles here to match the Letterboxd aesthetic and override defaults */
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f0f2f5;
+        color: #333;
+        transition: background-color 0.3s, color 0.3s;
+    }
+    body.dark-mode {
+        background-color: #1a1a1a;
+        color: #d4d4d4;
+    }
+    
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+    }
+
+    /* --- Search Bar Styling --- */
+    .search-container {
+        display: none; /* Hide on mobile by default */
+        position: relative;
+        align-items: center;
+        margin-left: auto;
+        margin-right: 1rem;
+    }
+    @media (min-width: 768px) {
+        .search-container {
+            display: flex; /* Show on desktop */
+        }
+    }
+
+    .search-box {
+        display: flex;
+        align-items: center;
+        background-color: #d4d4d4;
+        border-radius: 8px;
+        padding: 0.5rem 1rem;
+        width: 250px;
+    }
+    body.dark-mode .search-box {
+        background-color: #2a2a2a;
+    }
+
+    .search-box i {
+        color: #888;
+        margin-right: 0.75rem;
+        font-size: 1rem;
+    }
+
+    .search-box input {
+        background: none;
+        border: none;
+        color: #333;
+        font-size: 0.9rem;
+        outline: none;
+        width: 100%;
+    }
+    body.dark-mode .search-box input {
+        color: #d4d4d4;
+    }
+
+    /* --- Project/Card Container Styling --- */
+    .projects-container, .experience-grid, .leadership-grid, .all-skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+
+    /* --- Letterboxd-Style Card Styling --- */
+    .project-card, .skill-item {
+        width: 300px;
+        height: 400px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+    }
+    .project-card:hover, .skill-item:hover {
+        transform: translateY(-8px) scale(1.03);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+    }
+    .project-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+    .project-card:hover .project-image {
+      transform: scale(1.05);
+    }
+    .project-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 1rem;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+        transform: translateY(100%);
+        transition: transform 0.3s ease-in-out;
+    }
+    .project-card:hover .project-overlay {
+        transform: translateY(0);
+    }
+  </style>
 </head>
 
 <body>
@@ -19,12 +129,13 @@
       <button id="darkModeToggle" aria-label="Toggle Dark Mode" class="dark-mode-toggle">
         ☀️
       </button>
+      <!-- ADDED NEW SEARCH BAR HTML -->
       <div class="search-container">
-        <div class="search-box">
-        <i class="fas fa-search"></i>
-        <input type="text" id="searchInput" placeholder="Search projects...">
-        </div>
-      </div>  
+          <div class="search-box">
+              <i class="fas fa-search"></i>
+              <input type="text" id="searchInput" placeholder="Search projects...">
+          </div>
+      </div>
       <nav id="mainNav">
         <ul>
           <li><a href="#home" class="nav-link">Home</a></li>
@@ -72,39 +183,39 @@
         </div>
 
         <div class="about-cards-slider">
-  <div class="slider-wrapper">
-    <div class="about-cards-track">
-      <div class="info-card">
-        <h4>🎓 Education</h4>
-        <p><strong>Western University</strong><br>
-        Applied Mathematics (Major)<br>
-        Studio Arts (Minor)<br>
-        Graduating August 2025</p>
-        <p><strong>Certifications:</strong> IBM Data Analysis for Beginners (pursuing advanced data analysis certifications)</p>
-      </div>
+            <div class="slider-wrapper">
+                <div class="about-cards-track">
+                    <div class="info-card">
+                        <h4>🎓 Education</h4>
+                        <p><strong>Western University</strong><br>
+                        Applied Mathematics (Major)<br>
+                        Studio Arts (Minor)<br>
+                        Graduating August 2025</p>
+                        <p><strong>Certifications:</strong> IBM Data Analysis for Beginners (pursuing advanced data analysis certifications)</p>
+                    </div>
 
-      <div class="info-card">
-        <h4>📊 Research Focus</h4>
-        <p>Data Science & Modeling<br>
-        Epidemiological modeling, simulations, parameter fitting, and sensitivity analysis using differential equations and computational methods.</p>
-      </div>
+                    <div class="info-card">
+                        <h4>📊 Research Focus</h4>
+                        <p>Data Science & Modeling<br>
+                        Epidemiological modeling, simulations, parameter fitting, and sensitivity analysis using differential equations and computational methods.</p>
+                    </div>
 
-      <div class="info-card">
-        <h4>🎨 Creative Side</h4>
-        <p>Combining technical analysis with artistic vision to create compelling data visualizations that communicate complex mathematical concepts.</p>
-      </div>
-    </div>
-  </div>
-  <div class="slider-nav">
-    <button class="slider-arrow prev-slide"><i class="fas fa-chevron-left"></i></button>
-    <div class="slider-dots">
-      <span class="dot active" data-slide-index="0"></span>
-      <span class="dot" data-slide-index="1"></span>
-      <span class="dot" data-slide-index="2"></span>
-    </div>
-    <button class="slider-arrow next-slide"><i class="fas fa-chevron-right"></i></button>
-  </div>
-</div>
+                    <div class="info-card">
+                        <h4>🎨 Creative Side</h4>
+                        <p>Combining technical analysis with artistic vision to create compelling data visualizations that communicate complex mathematical concepts.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="slider-nav">
+                <button class="slider-arrow prev-slide"><i class="fas fa-chevron-left"></i></button>
+                <div class="slider-dots">
+                    <span class="dot active" data-slide-index="0"></span>
+                    <span class="dot" data-slide-index="1"></span>
+                    <span class="dot" data-slide-index="2"></span>
+                </div>
+                <button class="slider-arrow next-slide"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </div>
       </div>
       <div class="about-list">
         <h3>What I Love Most:</h3>
@@ -122,157 +233,16 @@
       <p class="section-subtitle">
         Showcasing my work in mathematical modeling, data analysis, and computational research
       </p>
-
-      <div class="projects-container">
-        <div class="project-card" data-aos="fade-up">
-          <div class="project-image-wrapper">
-            <img src="assets/Covid-19_img.jpg" alt="Visualization of SVIR disease model for COVID-19 in France" class="project-image">
-            <div class="project-overlay">
-              <h3 class="project-title">Disease Modeling: COVID-19 in France</h3>
-              <p class="project-subtitle">Epidemiological SVIR Model</p>
-              <a href="assets/Covid-19 France_Kasvi_Mahajan_FinalProject.pdf" class="project-button view-paper-button" download>
-                📄 View Research Paper
-              </a>
-            </div>
-          </div>
-          <div class="project-details-hidden">
-            <h4>Key Technical Achievements:</h4>
-            <ul>
-              <li>Implemented SVIR system using MATLAB’s ode45</li>
-              <li>Fitted exponential growth/decay functions to real data</li>
-              <li>Computed basic reproduction number \( R_0 \) and conducted stability analysis</li>
-              <li>Validated results through residual analysis and parameter tuning</li>
-            </ul>
-            <p>Curated data for COVID-19 cases in France in 2021 from renowned resources, developed an SVIR disease model that suits the trends of the data and performed a detailed statistical analysis using MATLAB and Python.</p>
-          </div>
-        </div>
-
-        <div class="project-card" data-aos="fade-up">
-          <div class="project-image-wrapper">
-            <img src="assets/adventure_img.jpg" alt="Screenshot of an Adventure Works Excel dashboard" class="project-image">
-            <div class="project-overlay">
-              <h3 class="project-title">Adventure Works Data Analysis</h3>
-              <p class="project-subtitle">Sales & Efficiency with Excel & SQL</p>
-              <a href="#" class="project-button explore-project-button">
-                Explore Project
-              </a>
-            </div>
-          </div>
-          <div class="project-details-hidden">
-            <h4>Key Skills Demonstrated:</h4>
-            <ul>
-              <li>Data analysis in Microsoft Excel and SQL</li>
-              <li>Utilization of Pivot tables for data summarization</li>
-              <li>VBA for automation and efficiency gains</li>
-              <li>Data cleaning and formatting for improved clarity and business operations</li>
-            </ul>
-            <p>Analyzed data for a fictitious company that exports athletic gear and equipment, using MS Excel, Pivot tables and VBA. Improved company data formatting, repetitions, and clarity, which increased sales and streamlined day-to-day business.</p>
-          </div>
-        </div>
-
-        <div class="project-card" data-aos="fade-up">
-          <div class="project-image-wrapper">
-            <img src="assets/income_img.jpg" alt="Plot showing income prediction based on socio-economic factors" class="project-image">
-            <div class="project-overlay">
-              <h3 class="project-title">Socio-Economic Factor Analysis</h3>
-              <p class="project-subtitle">Python Regression Model</p>
-              <a href="#" class="project-button explore-project-button">
-                Explore Project
-              </a>
-            </div>
-          </div>
-          <div class="project-details-hidden">
-            <h4>Key Technical Achievements:</h4>
-            <ul>
-              <li>Dataset engineering and cleaning for 8,000 individuals using Python</li>
-              <li>Handling missing values and encoding categorical variables</li>
-              <li>Developed a multiple linear regression model to predict income</li>
-              <li>Identified significant demographic factors influencing earnings</li>
-            </ul>
-            <p>Engineered and analyzed a dataset of 8,000 individuals using Python, handling missing values and encoding 8 categorical variables to model the impact of demographic factors on income.</p>
-          </div>
-        </div>
+      <div id="projects-container" class="projects-container">
+        <!-- Cards will be generated here by JavaScript -->
       </div>
     </section>
 
     <section id="experience" class="experience-section" data-aos="fade-up">
       <h2>Professional Experience</h2>
       <p class="section-subtitle">Building expertise through research, analysis, and real-world applications</p>
-
-      <div class="experience-grid">
-
-        <div class="experience-card" id="historyResearch" data-aos="fade-up">
-          <div class="card-visible-content">
-            <div class="card-icon">🏛️</div>
-            <h3 class="card-title">Undergraduate Research Assistant</h3>
-            <p class="card-company">Western University (History)</p>
-            <span class="card-date">May 2025 – Present</span>
-          </div>
-          <div class="card-details-hidden">
-            <h4>Undergraduate Research Assistant: Department of History (International Relations)</h4>
-            <p><strong>University of Western Ontario</strong><br>London, ON</p>
-            <ul>
-              <li>Collected and evaluated data from 36 Canadian universities offering IR-related programs, enabling comparative analysis to guide departmental improvements at Western.</li>
-              <li>Built an interactive Excel dashboard to visualise key metrics, trends, and strategic benchmarks, enhancing decision-making for long-term program enhancement.</li>
-              <li>Developing a data-driven quality control strategy for the IR program using peer-reviewed research conducted on higher education teaching strategies, along with utilising current resources available at Western.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="experience-card" id="mathResearch" data-aos="fade-up">
-          <div class="card-visible-content">
-            <div class="card-icon">🧮</div>
-            <h3 class="card-title">Undergraduate Research Assistant</h3>
-            <p class="card-company">Western University (Mathematics)</p>
-            <span class="card-date">May 2024 – September 2024</span>
-          </div>
-          <div class="card-details-hidden">
-            <h4>Undergraduate Research Assistant: Department of Mathematics</h4>
-            <p><strong>University of Western Ontario</strong><br>London, ON</p>
-            <ul>
-              <li>Analysed fitness landscapes and genome mutations, improving research accuracy through data simulations in Python.</li>
-              <li>Refined computational efficiency by 40% using MATLAB/Python, saving 6-7 hours in repetitive computations.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="experience-card" id="earthResearch" data-aos="fade-up">
-          <div class="card-visible-content">
-            <div class="card-icon">🌍</div>
-            <h3 class="card-title">Undergraduate Research Assistant</h3>
-            <p class="card-company">Western University (Earth Sciences)</p>
-            <span class="card-date">June 2023 – April 2024</span>
-          </div>
-          <div class="card-details-hidden">
-            <h4>Undergraduate Research Assistant: Department of Earth Sciences</h4>
-            <p><strong>University of Western Ontario</strong><br>London, ON</p>
-            <ul>
-              <li>Conducted in-depth research on 15+ peer-reviewed papers, ensuring research was aligned with ongoing project needs.</li>
-              <li>Collaborated with PhD candidates to analyse geological datasets, contributing to a research project that improved data accuracy.</li>
-              <li>This resulted in enhanced overall research quality for hundreds of samples.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="experience-card" id="eyIntern" data-aos="fade-up">
-          <div class="card-visible-content">
-            <div class="card-icon">🗂️</div>
-            <h3 class="card-title">Project Intern</h3>
-            <p class="card-company">Ernst & Young (EY) India</p>
-            <span class="card-date">May 2023 – August 2023</span>
-          </div>
-          <div class="card-details-hidden">
-            <h4>Project Intern</h4>
-            <p><strong>Ernst & Young (EY) India</strong><br>New Delhi, India</p>
-            <ul>
-              <li>Conducted real-time research utilising corporate business activities of over 50 companies with a focus on organisations like PowerGrid and Tata Enterprise, and their tenders to procure them as potential clients.</li>
-              <li>Provided the collected data in an organised format using Microsoft Excel.</li>
-              <li>Curated data from websites like psuwatch.com for ongoing news and changes in companies for updated information, and furnished my supervisors weekly.</li>
-              <li>Utilised VBA and Pivot tables to automate data entry, calculations and formatting tasks.</li>
-            </ul>
-          </div>
-        </div>
-
+      <div id="experience-grid" class="experience-grid">
+        <!-- Cards will be generated here by JavaScript -->
       </div>
     </section>
 
@@ -281,167 +251,8 @@
       <p class="section-subtitle">
         A diverse toolkit combining technical proficiency with creative problem-solving
       </p>
-
-      <div class="all-skills-grid">
-
-        <div class="skill-item" id="skillPython" data-aos="zoom-in">
-          <div class="skill-icon-wrapper">
-            <img src="assets/python_logo.png" alt="Python Logo" class="skill-icon-img">
-          </div>
-          <h3 class="skill-name">Python</h3>
-          <div class="proficiency-rating" data-proficiency="4.5">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-          </div>
-          <div class="skill-details-hidden">
-            <h4>Python Expertise</h4>
-            <p>Utilized for comprehensive data analysis, machine learning model development, scripting automated tasks, and building web applications. Strong command over libraries like Pandas, NumPy, Scikit-learn, and Matplotlib.</p>
-            <ul>
-              <li>Pandas, NumPy, Scikit-learn</li>
-              <li>Automated data processing</li>
-              <li>Web scraping and API integration</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="skill-item" id="skillMatlab" data-aos="zoom-in">
-          <div class="skill-icon-wrapper">
-            <img src="assets/matlab_logo.png" alt="MATLAB Logo" class="skill-icon-img">
-          </div>
-          <h3 class="skill-name">MATLAB</h3>
-          <div class="proficiency-rating" data-proficiency="5">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <div class="skill-details-hidden">
-            <h4>MATLAB Mastery</h4>
-            <p>Proficient in mathematical modeling, simulation, and algorithm development, particularly in numerical analysis and differential equations. Applied extensively in disease modeling and scientific computing.</p>
-            <ul>
-              <li>Numerical Analysis, ODE solvers</li>
-              <li>Signal processing, Image processing</li>
-              <li>Toolbox utilization (Simulink)</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="skill-item" id="skillR" data-aos="zoom-in">
-          <div class="skill-icon-wrapper">
-            <img src="assets/r_logo.png" alt="R Logo" class="skill-icon-img">
-          </div>
-          <h3 class="skill-name">R</h3>
-          <div class="proficiency-rating" data-proficiency="4">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
-          </div>
-          <div class="skill-details-hidden">
-            <h4>R Programming for Stats</h4>
-            <p>Experienced in statistical computing, graphical techniques, and data analysis. Used for complex statistical modeling and creating high-quality data visualizations.</p>
-            <ul>
-              <li>Statistical modeling (glm, lm)</li>
-              <li>Data visualization (ggplot2)</li>
-              <li>Package development</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="skill-item" id="skillSql" data-aos="zoom-in">
-          <div class="skill-icon-wrapper">
-            <img src="assets/sql_logo.png" alt="SQL Logo" class="skill-icon-img">
-          </div>
-          <h3 class="skill-name">SQL</h3>
-          <div class="proficiency-rating" data-proficiency="3">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-          </div>
-          <div class="skill-details-hidden">
-            <h4>SQL for Database Management</h4>
-            <p>Competent in querying and managing relational databases, including data extraction, manipulation, and analysis. Experience with various SQL dialects.</p>
-            <ul>
-              <li>Database querying & optimization</li>
-              <li>Data integrity & consistency</li>
-              <li>Reporting & analytics</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="skill-item" id="skillDataViz" data-aos="zoom-in">
-          <div class="skill-icon-wrapper">
-            <img src="assets/dataviz_icon.png" alt="Data Visualization Icon" class="skill-icon-img">
-          </div>
-          <h3 class="skill-name">Data Visualization</h3>
-          <div class="proficiency-rating" data-proficiency="4.5">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
-          </div>
-          <div class="skill-details-hidden">
-            <h4>Data Visualization & Storytelling</h4>
-            <p>Skilled in transforming complex data into clear, compelling, and aesthetically pleasing visual narratives using tools like Matplotlib, Seaborn, and Power BI.</p>
-            <ul>
-              <li>Interactive dashboards (Power BI)</li>
-              <li>Information design</li>
-              <li>Visual storytelling</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="skill-item" id="skillMathModeling" data-aos="zoom-in">
-          <div class="skill-icon-wrapper">
-            <img src="assets/math_modeling_icon.png" alt="Mathematical Modeling Icon" class="skill-icon-img">
-          </div>
-          <h3 class="skill-name">Mathematical Modeling</h3>
-          <div class="proficiency-rating" data-proficiency="5">
-            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-          </div>
-          <div class="skill-details-hidden">
-            <h4>Mathematical Modeling & Simulation</h4>
-            <p>Expert in developing and analyzing mathematical models for real-world phenomena, including epidemiological systems and complex simulations, using differential equations and computational methods.</p>
-            <ul>
-              <li>Epidemiological modeling</li>
-              <li>Differential equations</li>
-              <li>Parameter fitting & analysis</li>
-            </ul>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="core-competencies" data-aos="fade-up">
-        <h3>Key Competencies & Technologies</h3>
-        <div class="key-competencies-grid">
-          <div class="competency-chip" data-aos="zoom-in">
-            <i class="fas fa-calculator"></i>
-            <span>Mathematical Modeling</span>
-          </div>
-          <div class="competency-chip" data-aos="zoom-in">
-            <i class="fas fa-chart-bar"></i>
-            <span>Data Visualization</span>
-          </div>
-          <div class="competency-chip" data-aos="zoom-in">
-            <i class="fas fa-microscope"></i>
-            <span>Epidemiological Modeling</span>
-          </div>
-          <div class="competency-chip" data-aos="zoom-in">
-            <i class="fab fa-python"></i>
-            <span>Python</span>
-          </div>
-          <div class="competency-chip" data-aos="zoom-in">
-            <i class="fas fa-square-root-alt"></i> <span>MATLAB</span>
-          </div>
-          <div class="competency-chip" data-aos="zoom-in">
-            <i class="fas fa-database"></i>
-            <span>SQL</span>
-          </div>
-          <div class="competency-chip" data-aos="zoom-in">
-            <i class="fas fa-chart-line"></i>
-            <span>Statistical Analysis</span>
-          </div>
-          <div class="competency-chip" data-aos="zoom-in">
-            <i class="fas fa-lightbulb"></i>
-            <span>Problem Solving</span>
-          </div>
-          <div class="competency-chip" data-aos="zoom-in">
-            <i class="fas fa-flask"></i>
-            <span>Research Design</span>
-          </div>
-          <div class="competency-chip" data-aos="zoom-in">
-            <i class="fas fa-infinity"></i> <span>Differential Equations</span>
-          </div>
-        </div>
+      <div id="all-skills-grid" class="all-skills-grid">
+        <!-- Cards will be generated here by JavaScript -->
       </div>
     </section>
 
@@ -450,89 +261,8 @@
       <p class="section-subtitle">
         Committed to building inclusive communities and empowering the next generation of leaders
       </p>
-      <div class="leadership-grid">
-        <div class="leadership-card card-purple" id="womenInMath" data-aos="zoom-in">
-          <div class="card-header">
-            <h3>👑 Director of Outreach</h3>
-            <p class="org">Women in Mathematics</p>
-          </div>
-          <div class="card-body">
-            <div class="date-tag">2023 – Present</div>
-            <p>Leading initiatives to promote gender diversity in STEM fields and creating inclusive opportunities for women in mathematics.</p>
-          </div>
-          <div class="leadership-hover-overlay">
-            <span>View Details</span>
-          </div>
-          <div class="leadership-details-hidden">
-            <h4>Director of Outreach - Women in Mathematics</h4>
-            <p><strong>Role & Responsibilities:</strong> As Director of Outreach, I spearhead initiatives to promote gender diversity in STEM fields, specifically encouraging more women to pursue careers in mathematics. This involves designing and implementing programs that bridge the gap between academic mathematics and real-world applications.</p>
-            <ul>
-              <li>Organized and hosted over 10 workshops and seminars focusing on diverse mathematical topics and career paths, engaging over 200 students annually.</li>
-              <li>Established and managed a mentorship program connecting undergraduate students with female faculty members and industry professionals.</li>
-              <li>Developed and executed community outreach events, collaborating with local schools to introduce mathematics to young girls, increasing participation by 30%.</li>
-              <li>Managed communication and promotional campaigns for all events, utilizing social media and university platforms.</li>
-            </ul>
-            <p>My goal is to create a supportive and inclusive environment where women feel empowered to excel in mathematical fields.</p>
-          </div>
-        </div>
-
-        <div class="leadership-card card-pink" id="teamLead" data-aos="zoom-in">
-          <div class="card-header">
-            <h3>💖 Team Lead</h3>
-            <p class="org">Leadership and Mentorship Program</p>
-          </div>
-          <div class="card-body">
-            <div class="date-tag">2022 – 2024</div>
-            <p>Guiding and mentoring fellow students in their academic and professional development.</p>
-          </div>
-          <div class="leadership-hover-overlay">
-            <span>View Details</span>
-          </div>
-          <div class="leadership-details-hidden">
-            <h4>Team Lead - Leadership and Mentorship Program</h4>
-            <p><strong>Role & Responsibilities:</strong> I led a team within the university's mentorship program, dedicated to fostering academic and professional growth among students. My responsibilities included guiding new mentors and ensuring program effectiveness.</p>
-            <ul>
-              <li>Coordinated and facilitated weekly team meetings, ensuring effective communication and task delegation among mentors.</li>
-              <li>Developed and delivered training modules for new mentors on effective communication, active listening, and goal setting techniques.</li>
-              <li>Mentored a cohort of 15 students, providing academic guidance, career advice, and personal development support.</li>
-              <li>Organized peer-led study groups and workshops on challenging course material, resulting in a 10% improvement in mentee academic performance.</li>
-            </ul>
-            <p>This role allowed me to directly contribute to student success and build strong leadership and interpersonal skills.</p>
-          </div>
-        </div>
-
-        <div class="leadership-card card-blue" id="committeeMember" data-aos="zoom-in">
-          <div class="card-header">
-            <h3>👥 Committee Member</h3>
-            <p class="org">Western Science Students' Council</p>
-          </div>
-          <div class="card-body">
-            <div class="date-tag">2022 – Present</div>
-            <p>Contributing to student governance and representing the interests of science students.</p>
-          </div>
-          <div class="leadership-hover-overlay">
-            <span>View Details</span>
-          </div>
-          <div class="leadership-details-hidden">
-            <h4>Committee Member - Western Science Students' Council (International Committee)</h4>
-            <p><strong>Role & Responsibilities:</strong> As a member of the International Committee, I actively contributed to student governance and advocated for the needs of international science students at Western University.</p>
-            <ul>
-              <li>Represented the interests of international science students in council meetings and decision-making processes.</li>
-              <li>Organized and promoted cultural integration events for international students, increasing attendance by 25%.</li>
-              <li>Contributed to the development of student policies related to academic support and community engagement for diverse student populations.</li>
-              <li>Collaborated with university administration to address student concerns and improve overall student experience.</li>
-            </ul>
-            <p>My involvement strengthened my understanding of student advocacy and inclusive community building.</p>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="leadership-philosophy" data-aos="fade-up">
-        <h3>Leadership Philosophy</h3>
-        <p>
-          "I believe in creating spaces where everyone can thrive. Whether it's encouraging women to pursue mathematics, mentoring students through their academic journey, or advocating for student needs, my goal is to build bridges and open doors for others to follow their passions."
-        </p>
+      <div id="leadership-grid" class="leadership-grid">
+        <!-- Cards will be generated here by JavaScript -->
       </div>
     </section>
 
@@ -541,7 +271,6 @@
       <p class="section-subtitle">
         Interested in collaboration, research opportunities, or just want to chat about mathematics and data science?
       </p>
-
       <div class="contact-grid">
         <a href="mailto:mahajan.kasvi@gmail.com" class="contact-card" data-aos="zoom-in">
           <div class="icon">📧</div>
@@ -557,14 +286,11 @@
           <p class="value">linkedin.com/in/kasvimahajan ↗</p>
         </a>
       </div>
-
       <div class="contact-footer" data-aos="fade-up">
         <p class="location">📍 London, Ontario • Western University</p>
-
         <a href="assets/KasviMahajan_Resume.pdf" class="btn-resume" download>
           ⬇ Download My Resume
         </a>
-
         <p class="closing-note">
           Currently seeking opportunities in data science, research, and mathematical modeling. Open to internships, research collaborations, and full-time positions starting September 2025.
         </p>
@@ -578,35 +304,27 @@
       <button class="modal-close">✕</button>
       <div class="modal-body-content">
         <div class="modal-image-wrapper">
-          <img src="" alt="Modal Primary Image" class="modal-project-image">
+          <img src="" alt="" class="modal-project-image">
         </div>
-
         <div class="modal-text-content">
           <h3 class="modal-project-title"></h3>
           <p class="modal-project-subtitle"></p>
           <p class="modal-project-description"></p>
-
           <h4 class="modal-achievements-heading"></h4>
           <ul class="modal-achievements-list"></ul>
           <div class="modal-buttons">
             <a href="#" class="modal-button modal-view-paper" target="_blank" rel="noopener">📄 View Research Paper</a>
             <a href="#" class="modal-button modal-explore-project" target="_blank" rel="noopener">🚀 Explore Project</a>
           </div>
-
           <div class="modal-skill-content">
             <div class="modal-skill-proficiency">
               <span class="skill-modal-rating-label">Proficiency:</span>
-              <div class="proficiency-rating skill-modal-stars">
-                </div>
+              <div class="proficiency-rating skill-modal-stars"></div>
             </div>
-
             <h4 class="modal-skill-projects-heading">Projects Featuring This Skill:</h4>
-            <div class="modal-skill-projects-grid">
-              </div>
-
+            <div class="modal-skill-projects-grid"></div>
             <h4 class="modal-skill-tools-heading">Key Tools & Concepts:</h4>
-            <ul class="modal-skill-tools-list">
-              </ul>
+            <ul class="modal-skill-tools-list"></ul>
           </div>
         </div>
       </div>
@@ -621,6 +339,327 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
+
+    // Data for the portfolio sections
+    const portfolioData = {
+        projects: [
+            {
+                id: 'project-covid',
+                type: 'project',
+                title: 'Disease Modeling: COVID-19 in France',
+                subtitle: 'Epidemiological SVIR Model (2024)',
+                imageSrc: 'assets/Covid-19_img.jpg',
+                description: 'Curated data for COVID-19 cases in France in 2021, developed an SVIR disease model and performed a detailed statistical analysis using MATLAB and Python.',
+                achievementsHeading: 'Key Technical Achievements:',
+                achievementsListItems: [
+                    'Implemented SVIR system using MATLAB’s ode45',
+                    'Fitted exponential growth/decay functions to real data',
+                    'Computed basic reproduction number R0 and conducted stability analysis',
+                    'Validated results through residual analysis and parameter tuning'
+                ],
+                viewPaperLink: 'assets/Covid-19 France_Kasvi_Mahajan_FinalProject.pdf',
+                exploreProjectLink: null,
+                skills: ['skillMatlab', 'skillPython', 'skillMathModeling', 'skillDataViz']
+            },
+            {
+                id: 'project-adventure',
+                type: 'project',
+                title: 'Adventure Works Data Analysis',
+                subtitle: 'Sales & Efficiency with Excel & SQL (2023)',
+                imageSrc: 'assets/adventure_img.jpg',
+                description: 'Analyzed data for a fictitious company using MS Excel, Pivot tables, and VBA. Improved company data formatting, repetitions, and clarity, which increased sales and streamlined day-to-day business.',
+                achievementsHeading: 'Key Skills Demonstrated:',
+                achievementsListItems: [
+                    'Data analysis in Microsoft Excel and SQL',
+                    'Utilization of Pivot tables for data summarization',
+                    'VBA for automation and efficiency gains',
+                    'Data cleaning and formatting for improved clarity and business operations'
+                ],
+                viewPaperLink: null,
+                exploreProjectLink: '#',
+                skills: ['skillSql']
+            },
+            {
+                id: 'project-socio',
+                type: 'project',
+                title: 'Socio-Economic Factor Analysis',
+                subtitle: 'Python Regression Model (2023)',
+                imageSrc: 'assets/income_img.jpg',
+                description: 'Engineered and analyzed a dataset of 8,000 individuals using Python, handling missing values and encoding 8 categorical variables to model the impact of demographic factors on income.',
+                achievementsHeading: 'Key Technical Achievements:',
+                achievementsListItems: [
+                    'Dataset engineering and cleaning for 8,000 individuals using Python',
+                    'Handling missing values and encoding categorical variables',
+                    'Developed a multiple linear regression model to predict income',
+                    'Identified significant demographic factors influencing earnings'
+                ],
+                viewPaperLink: null,
+                exploreProjectLink: '#',
+                skills: ['skillPython', 'skillDataViz']
+            }
+        ],
+        experience: [
+            {
+                id: 'historyResearch',
+                type: 'experience',
+                title: 'Undergraduate Research Assistant',
+                subtitle: 'Western University (History) (May 2025 – Present)',
+                description: '<strong>University of Western Ontario</strong><br>London, ON',
+                achievementsHeading: 'Role & Responsibilities:',
+                achievementsListItems: [
+                    'Collected and evaluated data from 36 Canadian universities offering IR-related programs, enabling comparative analysis to guide departmental improvements at Western.',
+                    'Built an interactive Excel dashboard to visualise key metrics, trends, and strategic benchmarks, enhancing decision-making for long-term program enhancement.',
+                    'Developing a data-driven quality control strategy for the IR program using peer-reviewed research conducted on higher education teaching strategies, along with utilising current resources available at Western.'
+                ]
+            },
+            {
+                id: 'mathResearch',
+                type: 'experience',
+                title: 'Undergraduate Research Assistant',
+                subtitle: 'Western University (Mathematics) (May 2024 – September 2024)',
+                description: '<strong>University of Western Ontario</strong><br>London, ON',
+                achievementsHeading: 'Role & Responsibilities:',
+                achievementsListItems: [
+                    'Analysed fitness landscapes and genome mutations, improving research accuracy through data simulations in Python.',
+                    'Refined computational efficiency by 40% using MATLAB/Python, saving 6-7 hours in repetitive computations.'
+                ]
+            },
+            {
+                id: 'earthResearch',
+                type: 'experience',
+                title: 'Undergraduate Research Assistant',
+                subtitle: 'Western University (Earth Sciences) (June 2023 – April 2024)',
+                description: '<strong>University of Western Ontario</strong><br>London, ON',
+                achievementsHeading: 'Role & Responsibilities:',
+                achievementsListItems: [
+                    'Conducted in-depth research on 15+ peer-reviewed papers, ensuring research was aligned with ongoing project needs.',
+                    'Collaborated with PhD candidates to analyse geological datasets, contributing to a research project that improved data accuracy.',
+                    'This resulted in enhanced overall research quality for hundreds of samples.'
+                ]
+            },
+            {
+                id: 'eyIntern',
+                type: 'experience',
+                title: 'Project Intern',
+                subtitle: 'Ernst & Young (EY) India (May 2023 – August 2023)',
+                description: '<strong>Ernst & Young (EY) India</strong><br>New Delhi, India',
+                achievementsHeading: 'Role & Responsibilities:',
+                achievementsListItems: [
+                    'Conducted real-time research utilising corporate business activities of over 50 companies with a focus on organisations like PowerGrid and Tata Enterprise, and their tenders to procure them as potential clients.',
+                    'Provided the collected data in an organised format using Microsoft Excel.',
+                    'Curated data from websites like psuwatch.com for ongoing news and changes in companies for updated information, and furnished my supervisors weekly.',
+                    'Utilised VBA and Pivot tables to automate data entry, calculations and formatting tasks.'
+                ]
+            }
+        ],
+        skills: [
+            {
+                id: 'skillPython',
+                type: 'skill',
+                title: 'Python',
+                proficiency: 4.5,
+                iconSrc: 'assets/python_logo.png',
+                description: 'Utilized for comprehensive data analysis, machine learning model development, scripting automated tasks, and building web applications. Strong command over libraries like Pandas, NumPy, Scikit-learn, and Matplotlib.',
+                toolsAndConcepts: ['Pandas, NumPy, Scikit-learn', 'Automated data processing', 'Web scraping and API integration'],
+                projectsFeaturingSkill: ['project-covid', 'project-socio']
+            },
+            {
+                id: 'skillMatlab',
+                type: 'skill',
+                title: 'MATLAB',
+                proficiency: 5,
+                iconSrc: 'assets/matlab_logo.png',
+                description: 'Proficient in mathematical modeling, simulation, and algorithm development, particularly in numerical analysis and differential equations. Applied extensively in disease modeling and scientific computing.',
+                toolsAndConcepts: ['Numerical Analysis, ODE solvers', 'Signal processing, Image processing', 'Toolbox utilization (Simulink)'],
+                projectsFeaturingSkill: ['project-covid']
+            },
+            {
+                id: 'skillR',
+                type: 'skill',
+                title: 'R',
+                proficiency: 4,
+                iconSrc: 'assets/r_logo.png',
+                description: 'Experienced in statistical computing, graphical techniques, and data analysis. Used for complex statistical modeling and creating high-quality data visualizations.',
+                toolsAndConcepts: ['Statistical modeling (glm, lm)', 'Data visualization (ggplot2)', 'Package development'],
+                projectsFeaturingSkill: []
+            },
+            {
+                id: 'skillSql',
+                type: 'skill',
+                title: 'SQL',
+                proficiency: 3,
+                iconSrc: 'assets/sql_logo.png',
+                description: 'Competent in querying and managing relational databases, including data extraction, manipulation, and analysis. Experience with various SQL dialects.',
+                toolsAndConcepts: ['Database querying & optimization', 'Data integrity & consistency', 'Reporting & analytics'],
+                projectsFeaturingSkill: ['project-adventure']
+            },
+            {
+                id: 'skillDataViz',
+                type: 'skill',
+                title: 'Data Visualization',
+                proficiency: 4.5,
+                iconSrc: 'assets/dataviz_icon.png',
+                description: 'Skilled in transforming complex data into clear, compelling, and aesthetically pleasing visual narratives using tools like Matplotlib, Seaborn, and Power BI.',
+                toolsAndConcepts: ['Interactive dashboards (Power BI)', 'Information design', 'Visual storytelling'],
+                projectsFeaturingSkill: ['project-covid', 'project-socio']
+            },
+            {
+                id: 'skillMathModeling',
+                type: 'skill',
+                title: 'Mathematical Modeling',
+                proficiency: 5,
+                iconSrc: 'assets/math_modeling_icon.png',
+                description: 'Expert in developing and analyzing mathematical models for real-world phenomena, including epidemiological systems and complex simulations, using differential equations and computational methods.',
+                toolsAndConcepts: ['Epidemiological modeling', 'Differential equations', 'Parameter fitting & analysis'],
+                projectsFeaturingSkill: ['project-covid']
+            }
+        ],
+        leadership: [
+            {
+                id: 'womenInMath',
+                type: 'leadership',
+                title: 'Director of Outreach',
+                organization: 'Women in Mathematics',
+                date: '2023 – Present',
+                summary: 'Leading initiatives to promote gender diversity in STEM fields and creating inclusive opportunities for women in mathematics.',
+                description: 'As Director of Outreach, I spearhead initiatives to promote gender diversity in STEM fields, specifically encouraging more women to pursue careers in mathematics. This involves designing and implementing programs that bridge the gap between academic mathematics and real-world applications.',
+                listItems: [
+                    'Organized and hosted over 10 workshops and seminars focusing on diverse mathematical topics and career paths, engaging over 200 students annually.',
+                    'Established and managed a mentorship program connecting undergraduate students with female faculty members and industry professionals.',
+                    'Developed and executed community outreach events, collaborating with local schools to introduce mathematics to young girls, increasing participation by 30%.',
+                    'Managed communication and promotional campaigns for all events, utilizing social media and university platforms.'
+                ]
+            },
+            {
+                id: 'teamLead',
+                type: 'leadership',
+                title: 'Team Lead',
+                organization: 'Leadership and Mentorship Program',
+                date: '2022 – 2024',
+                summary: 'Guiding and mentoring fellow students in their academic and professional development.',
+                description: 'I led a team within the university\'s mentorship program, dedicated to fostering academic and professional growth among students. My responsibilities included guiding new mentors and ensuring program effectiveness.',
+                listItems: [
+                    'Coordinated and facilitated weekly team meetings, ensuring effective communication and task delegation among mentors.',
+                    'Developed and delivered training modules for new mentors on effective communication, active listening, and goal setting techniques.',
+                    'Mentored a cohort of 15 students, providing academic guidance, career advice, and personal development support.',
+                    'Organized peer-led study groups and workshops on challenging course material, resulting in a 10% improvement in mentee academic performance.'
+                ]
+            },
+            {
+                id: 'committeeMember',
+                type: 'leadership',
+                title: 'Committee Member',
+                organization: 'Western Science Students\' Council',
+                date: '2022 – Present',
+                summary: 'Contributing to student governance and representing the interests of science students.',
+                description: 'As a member of the International Committee, I actively contributed to student governance and advocated for the needs of international science students at Western University.',
+                listItems: [
+                    'Represented the interests of international science students in council meetings and decision-making processes.',
+                    'Organized and promoted cultural integration events for international students, increasing attendance by 25%.',
+                    'Contributed to the development of student policies related to academic support and community engagement for diverse student populations.',
+                    'Collaborated with university administration to address student concerns and improve overall student experience.'
+                ]
+            }
+        ]
+    };
+    
+    // --- Card Generation Functions ---
+    function createProjectCard(project) {
+        return `
+            <div id="${project.id}" class="project-card group" data-aos="fade-up" data-type="${project.type}" data-id="${project.id}">
+                <img class="project-image" src="${project.imageSrc}" alt="${project.title}">
+                <div class="project-overlay absolute inset-x-0 bottom-0 p-4 transition-all duration-300 ease-in-out group-hover:bg-gradient-to-t group-hover:from-gray-900 group-hover:to-transparent group-hover:h-full">
+                    <div class="flex flex-col h-full justify-end">
+                        <div class="project-title text-xl font-bold mb-1 transition-transform duration-300 ease-in-out transform translate-y-8 group-hover:translate-y-0">
+                            ${project.title}
+                        </div>
+                        <div class="project-subtitle text-sm text-gray-400 mb-2 transition-transform duration-300 ease-in-out transform translate-y-8 group-hover:translate-y-0">
+                            ${project.subtitle}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+
+    function createExperienceCard(experience) {
+        return `
+            <div id="${experience.id}" class="experience-card" data-aos="fade-up" data-type="${experience.type}" data-id="${experience.id}">
+                <div class="card-visible-content">
+                    <div class="card-icon">🧮</div>
+                    <h3 class="card-title">${experience.title}</h3>
+                    <p class="card-company">${experience.subtitle}</p>
+                    <span class="card-date">${experience.date}</span>
+                </div>
+            </div>
+        `;
+    }
+
+    function createSkillCard(skill) {
+        // Find projects that feature this skill to include in the card's data attribute
+        const projectsWithSkill = portfolioData.projects.filter(p => p.skills.includes(skill.id)).map(p => p.id);
+        const projectsDataAttr = projectsWithSkill.join(',');
+
+        return `
+            <div id="${skill.id}" class="skill-item" data-aos="zoom-in" data-type="${skill.type}" data-id="${skill.id}">
+                <div class="skill-icon-wrapper">
+                    <img src="${skill.iconSrc}" alt="${skill.title} Logo" class="skill-icon-img">
+                </div>
+                <h3 class="skill-name">${skill.title}</h3>
+                <div class="proficiency-rating" data-proficiency="${skill.proficiency}">
+                    ${generateStars(skill.proficiency)}
+                </div>
+            </div>
+        `;
+    }
+
+    function createLeadershipCard(leadership) {
+        return `
+            <div id="${leadership.id}" class="leadership-card" data-aos="zoom-in" data-type="${leadership.type}" data-id="${leadership.id}">
+                <div class="card-header">
+                    <h3>👑 ${leadership.title}</h3>
+                    <p class="org">${leadership.organization}</p>
+                </div>
+                <div class="card-body">
+                    <div class="date-tag">${leadership.date}</div>
+                    <p>${leadership.summary}</p>
+                </div>
+            </div>
+        `;
+    }
+    
+    function generateStars(rating) {
+        let stars = '';
+        const fullStars = Math.floor(rating);
+        const hasHalfStar = rating % 1 !== 0;
+        const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
+        for (let i = 0; i < fullStars; i++) {
+            stars += '<i class="fas fa-star"></i>';
+        }
+        if (hasHalfStar) {
+            stars += '<i class="fas fa-star-half-alt"></i>';
+        }
+        for (let i = 0; i < emptyStars; i++) {
+            stars += '<i class="far fa-star"></i>';
+        }
+        return stars;
+    }
+
+    // --- Main Rendering Function ---
+    function renderPortfolio() {
+        document.getElementById('projects-container').innerHTML = portfolioData.projects.map(createProjectCard).join('');
+        document.getElementById('experience-grid').innerHTML = portfolioData.experience.map(createExperienceCard).join('');
+        document.getElementById('all-skills-grid').innerHTML = portfolioData.skills.map(createSkillCard).join('');
+        document.getElementById('leadership-grid').innerHTML = portfolioData.leadership.map(createLeadershipCard).join('');
+    }
+
+    // Call render on load
+    document.addEventListener('DOMContentLoaded', () => {
+        renderPortfolio();
+        AOS.init();
+        // Call init again to apply animations to the dynamically loaded content
+        AOS.refresh();
+    });
 
     // Dark Mode Logic
     const darkModeToggle = document.getElementById('darkModeToggle');
@@ -657,8 +696,6 @@
     const projectModal = document.getElementById('projectModal');
     const modalCloseButton = projectModal.querySelector('.modal-close');
     const modalOverlay = projectModal.querySelector('.modal-overlay');
-
-    // Generic modal content elements
     const modalImageWrapper = projectModal.querySelector('.modal-image-wrapper');
     const modalProjectImage = projectModal.querySelector('.modal-project-image');
     const modalProjectTitle = projectModal.querySelector('.modal-project-title');
@@ -669,8 +706,6 @@
     const modalButtonsContainer = projectModal.querySelector('.modal-buttons');
     const modalViewPaperButton = projectModal.querySelector('.modal-view-paper');
     const modalExploreProjectButton = projectModal.querySelector('.modal-explore-project');
-
-    // Skill Modal Specific Elements
     const modalSkillContent = projectModal.querySelector('.modal-skill-content');
     const skillModalStarsContainer = projectModal.querySelector('.skill-modal-stars');
     const modalSkillProjectsGrid = projectModal.querySelector('.modal-skill-projects-grid');
@@ -678,20 +713,13 @@
     const modalSkillToolsList = projectModal.querySelector('.modal-skill-tools-list');
     const modalSkillToolsHeading = projectModal.querySelector('.modal-skill-tools-heading');
 
-
-    // Function to populate and open the modal
     function populateAndOpenModal(data) {
-        // Reset/Hide all specific content areas first
         modalImageWrapper.style.display = 'none';
         modalAchievementsHeading.style.display = 'none';
         modalAchievementsList.style.display = 'none';
         modalButtonsContainer.style.display = 'none';
-        modalSkillContent.style.display = 'none'; // Hide skill content by default
-
-        // Remove any previous type-specific classes from the modal
+        modalSkillContent.style.display = 'none';
         projectModal.classList.remove('skill-modal');
-
-        // Populate common fields
         modalProjectTitle.textContent = data.title;
         if (data.subtitle) {
             modalProjectSubtitle.textContent = data.subtitle;
@@ -705,92 +733,57 @@
         } else {
             modalProjectDescription.style.display = 'none';
         }
-
-        // Conditional rendering based on data.type
         if (data.type === 'project') {
             modalImageWrapper.style.display = 'block';
             modalProjectImage.src = data.imageSrc;
-            modalProjectImage.alt = data.imageAlt || data.title;
-
-            if (data.achievementsHeading && data.achievementsListItems && data.achievementsListItems.length > 0) {
+            modalProjectImage.alt = data.title;
+            if (data.achievementsListItems && data.achievementsListItems.length > 0) {
                 modalAchievementsHeading.textContent = data.achievementsHeading;
                 modalAchievementsHeading.style.display = 'block';
-                modalAchievementsList.innerHTML = '';
-                data.achievementsListItems.forEach(itemText => {
-                    const listItem = document.createElement('li');
-                    listItem.innerHTML = itemText;
-                    modalAchievementsList.appendChild(listItem);
-                });
+                modalAchievementsList.innerHTML = data.achievementsListItems.map(item => `<li>${item}</li>`).join('');
                 modalAchievementsList.style.display = 'block';
             }
-
             let hasButtons = false;
             if (data.viewPaperLink && data.viewPaperLink !== '#') {
                 modalViewPaperButton.href = data.viewPaperLink;
                 modalViewPaperButton.style.display = 'inline-block';
                 hasButtons = true;
+            } else {
+                modalViewPaperButton.style.display = 'none';
             }
             if (data.exploreProjectLink && data.exploreProjectLink !== '#') {
                 modalExploreProjectButton.href = data.exploreProjectLink;
                 modalExploreProjectButton.style.display = 'inline-block';
                 hasButtons = true;
+            } else {
+                modalExploreProjectButton.style.display = 'none';
             }
             if (hasButtons) {
                 modalButtonsContainer.style.display = 'flex';
             }
-
         } else if (data.type === 'experience' || data.type === 'leadership') {
-            // Experience and Leadership share similar display (no image, a description, and a list of achievements/roles)
-            // Image already hidden.
-            if (data.achievementsHeading && data.achievementsListItems && data.achievementsListItems.length > 0) {
+            if (data.listItems && data.listItems.length > 0) {
                 modalAchievementsHeading.textContent = data.achievementsHeading;
                 modalAchievementsHeading.style.display = 'block';
-                modalAchievementsList.innerHTML = '';
-                data.achievementsListItems.forEach(itemText => {
-                    const listItem = document.createElement('li');
-                    listItem.innerHTML = itemText;
-                    modalAchievementsList.appendChild(listItem);
-                });
+                modalAchievementsList.innerHTML = data.listItems.map(item => `<li>${item}</li>`).join('');
                 modalAchievementsList.style.display = 'block';
             }
-
         } else if (data.type === 'skill') {
-            projectModal.classList.add('skill-modal'); // Add class to modal for skill-specific CSS hiding/showing
+            projectModal.classList.add('skill-modal');
             modalSkillContent.style.display = 'block';
-
-            // Populate proficiency stars
-            skillModalStarsContainer.innerHTML = '';
-            const fullStars = Math.floor(data.proficiency);
-            const hasHalfStar = data.proficiency % 1 !== 0;
-            const emptyStars = 5 - fullStars - (hasHalfStar ? 1 : 0);
-
-            for (let i = 0; i < fullStars; i++) {
-                skillModalStarsContainer.innerHTML += '<i class="fas fa-star"></i>';
-            }
-            if (hasHalfStar) {
-                skillModalStarsContainer.innerHTML += '<i class="fas fa-star-half-alt"></i>';
-            }
-            for (let i = 0; i < emptyStars; i++) {
-                skillModalStarsContainer.innerHTML += '<i class="far fa-star"></i>';
-            }
-
-            // Populate Projects Featuring This Skill
+            skillModalStarsContainer.innerHTML = generateStars(data.proficiency);
             modalSkillProjectsGrid.innerHTML = '';
             if (data.projectsFeaturingSkill && data.projectsFeaturingSkill.length > 0) {
                 modalSkillProjectsHeading.style.display = 'block';
                 data.projectsFeaturingSkill.forEach(projectId => {
-                    const projectCard = document.getElementById(projectId);
-                    if (projectCard) { // Ensure project card exists
-                        const projectImageSrc = projectCard.querySelector('.project-image').src;
-                        const projectImageAlt = projectCard.querySelector('.project-image').alt;
-                        const projectTitle = projectCard.querySelector('.project-title').textContent;
-
+                    const project = portfolioData.projects.find(p => p.id === projectId);
+                    if (project) {
                         const miniCardHtml = `
                             <a href="#projects" class="modal-mini-project-card" data-project-id="${projectId}">
                                 <div class="modal-mini-project-image-wrapper">
-                                    <img src="${projectImageSrc}" alt="${projectImageAlt}" class="modal-mini-project-image">
+                                    <img src="${project.imageSrc}" alt="${project.title}" class="modal-mini-project-image">
                                 </div>
-                                <div class="modal-mini-project-title">${projectTitle}</div>
+                                <div class="modal-mini-project-title">${project.title}</div>
                             </a>
                         `;
                         modalSkillProjectsGrid.innerHTML += miniCardHtml;
@@ -801,49 +794,26 @@
                 modalSkillProjectsHeading.style.display = 'none';
                 modalSkillProjectsGrid.style.display = 'none';
             }
-
-            // Populate Key Tools & Concepts
             modalSkillToolsList.innerHTML = '';
             if (data.toolsAndConcepts && data.toolsAndConcepts.length > 0) {
                 modalSkillToolsHeading.style.display = 'block';
-                data.toolsAndConcepts.forEach(tool => {
-                    const listItem = document.createElement('li');
-                    listItem.textContent = tool;
-                    modalSkillToolsList.appendChild(listItem);
-                });
+                modalSkillToolsList.innerHTML = data.toolsAndConcepts.map(tool => `<li>${tool}</li>`).join('');
                 modalSkillToolsList.style.display = 'flex';
             } else {
                 modalSkillToolsHeading.style.display = 'none';
                 modalSkillToolsList.style.display = 'none';
             }
         }
-
-        // Show the modal and prevent body scrolling
         projectModal.classList.add('is-open');
         body.classList.add('modal-open');
     }
 
-    // Function to close the modal
     function closeGenericModal() {
         projectModal.classList.remove('is-open');
         body.classList.remove('modal-open');
-        // Clear content after closing to prevent flicker next open
         modalProjectImage.src = '';
-        modalProjectImage.alt = '';
-        modalProjectTitle.textContent = '';
-        modalProjectSubtitle.textContent = '';
-        modalProjectDescription.innerHTML = '';
-        modalAchievementsHeading.textContent = '';
-        modalAchievementsList.innerHTML = '';
-        modalViewPaperButton.href = '#';
-        modalExploreProjectButton.href = '#';
-        // Clear skill-specific content
-        skillModalStarsContainer.innerHTML = '';
-        modalSkillProjectsGrid.innerHTML = '';
-        modalSkillToolsList.innerHTML = '';
     }
 
-    // Event Listeners for closing modal
     modalCloseButton.addEventListener('click', closeGenericModal);
     modalOverlay.addEventListener('click', closeGenericModal);
 
@@ -853,7 +823,77 @@
         }
     });
 
-    // index.html - Inside your main <script> tag
+    document.addEventListener('click', (event) => {
+        let clickedCard = event.target.closest('[data-id]');
+        if (clickedCard) {
+            const type = clickedCard.dataset.type;
+            const id = clickedCard.dataset.id;
+            const data = portfolioData[type + 's'].find(item => item.id === id);
+            if (data) {
+                populateAndOpenModal(data);
+            }
+        }
+    });
+
+    projectModal.addEventListener('click', (event) => {
+        if (event.target.closest('.modal-mini-project-card')) {
+            const miniProjectCard = event.target.closest('.modal-mini-project-card');
+            const projectId = miniProjectCard.dataset.projectId;
+            closeGenericModal();
+            setTimeout(() => {
+                const project = portfolioData.projects.find(p => p.id === projectId);
+                if (project) {
+                    populateAndOpenModal(project);
+                }
+            }, 300);
+        }
+    });
+
+    // --- Search Functionality ---
+    const searchInput = document.getElementById('searchInput');
+
+    searchInput.addEventListener('input', (event) => {
+        const query = event.target.value.toLowerCase().trim();
+        const allCards = document.querySelectorAll('.project-card, .skill-item, .experience-card, .leadership-card');
+        allCards.forEach(card => {
+            const id = card.dataset.id;
+            let found = false;
+            // Search projects
+            if (id.startsWith('project-')) {
+                const project = portfolioData.projects.find(p => p.id === id);
+                if (project && (project.title.toLowerCase().includes(query) || project.subtitle.toLowerCase().includes(query) || project.description.toLowerCase().includes(query))) {
+                    found = true;
+                }
+            }
+            // Search skills
+            if (id.startsWith('skill')) {
+                const skill = portfolioData.skills.find(s => s.id === id);
+                if (skill && (skill.title.toLowerCase().includes(query) || skill.description.toLowerCase().includes(query))) {
+                    found = true;
+                }
+            }
+            // Search experiences
+            if (id.startsWith('history') || id.startsWith('math') || id.startsWith('earth') || id.startsWith('ey')) {
+                 const experience = portfolioData.experience.find(e => e.id === id);
+                 if (experience && (experience.title.toLowerCase().includes(query) || experience.subtitle.toLowerCase().includes(query) || experience.description.toLowerCase().includes(query))) {
+                    found = true;
+                 }
+            }
+            // Search leadership
+            if (id.startsWith('women') || id.startsWith('team') || id.startsWith('committee')) {
+                const leadership = portfolioData.leadership.find(l => l.id === id);
+                if (leadership && (leadership.title.toLowerCase().includes(query) || leadership.organization.toLowerCase().includes(query) || leadership.summary.toLowerCase().includes(query))) {
+                    found = true;
+                }
+            }
+
+            if (found) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
 
     // --- About Me Slider Logic ---
     const sliderTrack = document.querySelector('.about-cards-track');
@@ -865,20 +905,16 @@
     let currentSlideIndex = 0;
     const totalSlides = slides.length;
 
-    // Function to move to a specific slide
     function goToSlide(index) {
         if (index < 0) {
-            currentSlideIndex = totalSlides - 1; // Wrap around to end
+            currentSlideIndex = totalSlides - 1;
         } else if (index >= totalSlides) {
-            currentSlideIndex = 0; // Wrap around to beginning
+            currentSlideIndex = 0;
         } else {
             currentSlideIndex = index;
         }
-
-        const offset = -currentSlideIndex * 100; // Calculate percentage offset
+        const offset = -currentSlideIndex * 100;
         sliderTrack.style.transform = `translateX(${offset}%)`;
-
-        // Update active dot
         sliderDots.forEach((dot, idx) => {
             if (idx === currentSlideIndex) {
                 dot.classList.add('active');
@@ -888,230 +924,24 @@
         });
     }
 
-    // Event listeners for arrows
-    prevArrow.addEventListener('click', () => {
-        goToSlide(currentSlideIndex - 1);
-    });
-
-    nextArrow.addEventListener('click', () => {
-        goToSlide(currentSlideIndex + 1);
-    });
-
-    // Event listeners for dots
-    sliderDots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            goToSlide(index);
-        });
-    });
-
-    // Initialize the slider to the first slide
-    goToSlide(0);
-
-    // --- End About Me Slider Logic ---
-
-
-    // (Keep all your other existing JavaScript below this point: Scroll Progress, ScrollSpy, Mobile Menu)
-
-    // --- Data Extraction Functions for specific card types ---
-
-    // For Projects
-    function extractProjectData(card) {
-        const title = card.querySelector('.project-title').textContent;
-        const subtitle = card.querySelector('.project-subtitle').textContent;
-        const imageSrc = card.querySelector('.project-image').src;
-        const imageAlt = card.querySelector('.project-image').alt;
-
-        const hiddenDetails = card.querySelector('.project-details-hidden');
-        const description = hiddenDetails.querySelector('p').innerHTML;
-        const achievementsHeading = hiddenDetails.querySelector('h4') ? hiddenDetails.querySelector('h4').textContent : '';
-        const achievementsListItems = Array.from(hiddenDetails.querySelectorAll('ul li')).map(li => li.innerHTML);
-
-        // Corrected selectors for the buttons
-        const viewPaperLink = hiddenDetails.querySelector('a.view-paper-button') ? hiddenDetails.querySelector('a.view-paper-button').href : '';
-        const exploreProjectLink = hiddenDetails.querySelector('a.explore-project-button') ? hiddenDetails.querySelector('a.explore-project-button').href : '';
-
-        return {
-            title,
-            subtitle,
-            description,
-            imageSrc,
-            imageAlt,
-            achievementsHeading,
-            achievementsListItems,
-            viewPaperLink,
-            exploreProjectLink,
-            type: 'project'
-        };
+    if (prevArrow && nextArrow) {
+      prevArrow.addEventListener('click', () => {
+          goToSlide(currentSlideIndex - 1);
+      });
+      nextArrow.addEventListener('click', () => {
+          goToSlide(currentSlideIndex + 1);
+      });
     }
 
-    // For Experiences
-    function extractExperienceData(card) {
-        const title = card.querySelector('.card-title').textContent;
-        const company = card.querySelector('.card-company').textContent;
-        const date = card.querySelector('.card-date').textContent;
-
-        const hiddenDetails = card.querySelector('.card-details-hidden');
-        const descriptionHeading = hiddenDetails.querySelector('h4') ? hiddenDetails.querySelector('h4').textContent : '';
-        const descriptionParagraph = hiddenDetails.querySelector('p') ? hiddenDetails.querySelector('p').innerHTML : '';
-        const achievementsListItems = Array.from(hiddenDetails.querySelectorAll('ul li')).map(li => li.innerHTML);
-
-        const subtitle = `${company} (${date})`;
-        const description = descriptionParagraph;
-
-        return {
-            title: title,
-            subtitle: subtitle,
-            description: description,
-            imageSrc: null,
-            imageAlt: null,
-            achievementsHeading: descriptionHeading,
-            achievementsListItems: achievementsListItems,
-            viewPaperLink: null,
-            exploreProjectLink: null,
-            type: 'experience'
-        };
+    if (sliderDots) {
+      sliderDots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+              goToSlide(index);
+          });
+      });
     }
-
-    // For Skills
-    function extractSkillData(card) {
-        const title = card.querySelector('.skill-name').textContent;
-        const proficiencyRating = parseFloat(card.querySelector('.proficiency-rating').dataset.proficiency);
-        const iconSrc = card.querySelector('.skill-icon-img').src;
-        const iconAlt = card.querySelector('.skill-icon-img').alt;
-
-        const hiddenDetails = card.querySelector('.skill-details-hidden');
-        const descriptionParagraph = hiddenDetails.querySelector('p') ? hiddenDetails.querySelector('p').innerHTML : '';
-        const achievementsHeading = hiddenDetails.querySelector('h4') ? hiddenDetails.querySelector('h4').textContent : '';
-        const toolsAndConcepts = Array.from(hiddenDetails.querySelectorAll('ul li')).map(li => li.innerHTML);
-
-        const projectsDataAttr = hiddenDetails.dataset.projects;
-        const projectsFeaturingSkill = projectsDataAttr ? projectsDataAttr.split(',').map(id => id.trim()) : [];
-
-        return {
-            title: title,
-            subtitle: null,
-            description: descriptionParagraph,
-            imageSrc: iconSrc,
-            imageAlt: iconAlt,
-            achievementsHeading: achievementsHeading,
-            achievementsListItems: [],
-            proficiency: proficiencyRating,
-            toolsAndConcepts: toolsAndConcepts,
-            projectsFeaturingSkill: projectsFeaturingSkill,
-            viewPaperLink: null,
-            exploreProjectLink: null,
-            type: 'skill'
-        };
-    }
-
-    // For Leadership
-    function extractLeadershipData(card) {
-        const title = card.querySelector('.card-header h3').textContent;
-        const organization = card.querySelector('.card-header .org').textContent;
-        const date = card.querySelector('.card-body .date-tag').textContent;
-        const visibleSummary = card.querySelector('.card-body p').innerHTML;
-
-        const hiddenDetails = card.querySelector('.leadership-details-hidden');
-        const modalTitle = hiddenDetails.querySelector('h4') ? hiddenDetails.querySelector('h4').textContent : title;
-        const modalDescription = hiddenDetails.querySelector('p') ? hiddenDetails.querySelector('p').innerHTML : visibleSummary;
-        const modalListItems = Array.from(hiddenDetails.querySelectorAll('ul li')).map(li => li.innerHTML);
-
-        return {
-            title: modalTitle,
-            subtitle: `${organization} (${date})`,
-            description: modalDescription,
-            imageSrc: null,
-            imageAlt: null,
-            achievementsHeading: 'Role & Responsibilities:',
-            achievementsListItems: modalListItems,
-            viewPaperLink: null,
-            exploreProjectLink: null,
-            type: 'leadership'
-        };
-    }
-
-    // --- Attach Event Listeners to Cards ---
-
-    // For Project Cards
-    const projectCards = document.querySelectorAll('.projects-container .project-card');
-    projectCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const data = extractProjectData(card);
-            populateAndOpenModal(data);
-        });
-    });
-
-    // For Experience Cards
-    const experienceCards = document.querySelectorAll('.experience-grid .experience-card');
-    experienceCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const data = extractExperienceData(card);
-            populateAndOpenModal(data);
-        });
-    });
-
-    // For Skill Items
-    const skillItems = document.querySelectorAll('.all-skills-grid .skill-item');
-    skillItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const data = extractSkillData(item);
-            populateAndOpenModal(data);
-        });
-    });
-
-    // For Leadership Cards
-    const leadershipCards = document.querySelectorAll('.leadership-grid .leadership-card');
-    leadershipCards.forEach(card => {
-        card.addEventListener('click', () => {
-            const data = extractLeadershipData(card);
-            populateAndOpenModal(data);
-        });
-    });
-    // --- Project Search Functionality ---
-    const searchInput = document.getElementById('searchInput');
-    const projectCards = document.querySelectorAll('.projects-section .project-card');
-
-    searchInput.addEventListener('input', (event) => {
-        const query = event.target.value.toLowerCase().trim();
-
-        projectCards.forEach(card => {
-            const title = card.querySelector('.project-title').textContent.toLowerCase();
-            const subtitle = card.querySelector('.project-subtitle').textContent.toLowerCase();
-            const description = card.querySelector('.project-details-hidden p').textContent.toLowerCase();
-
-            // Check if the query is found in the title, subtitle, or description
-            if (title.includes(query) || subtitle.includes(query) || description.includes(query)) {
-                card.style.display = 'block'; // Show the card
-            } else {
-                card.style.display = 'none'; // Hide the card
-            }
-        });
-    });
-
-    // --- End Project Search Functionality ---
-    // Event listener for clicking on mini-project cards inside skill modal
-    projectModal.addEventListener('click', (event) => {
-        if (event.target.closest('.modal-mini-project-card')) {
-            const miniProjectCard = event.target.closest('.modal-mini-project-card');
-            const projectId = miniProjectCard.dataset.projectId;
-
-            // Close skill modal first for a clean transition
-            closeGenericModal();
-
-            // Find the original project card and trigger its click behavior
-            setTimeout(() => {
-                const originalProjectCard = document.getElementById(projectId);
-                if (originalProjectCard) {
-                    originalProjectCard.click();
-                }
-            }, 300);
-        }
-    });
-
-
+    
     // --- Other existing JavaScript (Scroll Progress, ScrollSpy, Mobile Menu) ---
-
-    // Scroll progress bar
     const topBtn = document.getElementById("scrollToTopBtn");
     const progressBar = document.getElementById("progress-bar");
     window.onscroll = function () {
@@ -1126,7 +956,6 @@
         }
     };
 
-    // ScrollSpy
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll(".nav-link");
     window.addEventListener("scroll", () => {
@@ -1146,7 +975,6 @@
         });
     });
 
-    // Mobile menu toggle function
     const hamburgerMenu = document.getElementById('hamburgerMenu');
     const mainNavUl = document.querySelector('nav ul');
 
@@ -1156,7 +984,6 @@
         });
     }
 
-    // Close menu on nav link click (for mobile menu)
     document.querySelectorAll("nav ul li a").forEach(link => {
         link.addEventListener("click", () => {
             const navUl = document.querySelector("nav ul");
@@ -1166,13 +993,11 @@
         });
     });
 
-    // Scroll to Top - Now attached as event listener
     if (topBtn) {
         topBtn.addEventListener('click', () => {
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
   </script>
-
 </body>
 </html>
