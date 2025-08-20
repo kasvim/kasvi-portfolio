@@ -3,121 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <title>Kasvi Mahajan | Portfolio</title>
+  <link rel="stylesheet" href="styles/style.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Correctly link Tailwind CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <style>
-    /* Add custom styles here to match the Letterboxd aesthetic and override defaults */
-    body {
-        font-family: 'Poppins', sans-serif;
-        background-color: #f0f2f5;
-        color: #333;
-        transition: background-color 0.3s, color 0.3s;
-    }
-    body.dark-mode {
-        background-color: #1a1a1a;
-        color: #d4d4d4;
-    }
-    
-    .nav-container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 2rem;
-    }
-
-    /* --- Search Bar Styling --- */
-    .search-container {
-        display: none; /* Hide on mobile by default */
-        position: relative;
-        align-items: center;
-        margin-left: auto;
-        margin-right: 1rem;
-    }
-    @media (min-width: 768px) {
-        .search-container {
-            display: flex; /* Show on desktop */
-        }
-    }
-
-    .search-box {
-        display: flex;
-        align-items: center;
-        background-color: #d4d4d4;
-        border-radius: 8px;
-        padding: 0.5rem 1rem;
-        width: 250px;
-    }
-    body.dark-mode .search-box {
-        background-color: #2a2a2a;
-    }
-
-    .search-box i {
-        color: #888;
-        margin-right: 0.75rem;
-        font-size: 1rem;
-    }
-
-    .search-box input {
-        background: none;
-        border: none;
-        color: #333;
-        font-size: 0.9rem;
-        outline: none;
-        width: 100%;
-    }
-    body.dark-mode .search-box input {
-        color: #d4d4d4;
-    }
-
-    /* --- Project/Card Container Styling --- */
-    .projects-container, .experience-grid, .leadership-grid, .all-skills-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: center;
-    }
-
-    /* --- Letterboxd-Style Card Styling --- */
-    .project-card, .skill-item {
-        width: 300px;
-        height: 400px;
-        position: relative;
-        overflow: hidden;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        cursor: pointer;
-    }
-    .project-card:hover, .skill-item:hover {
-        transform: translateY(-8px) scale(1.03);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
-    }
-    .project-image {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.3s ease;
-    }
-    .project-card:hover .project-image {
-      transform: scale(1.05);
-    }
-    .project-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        padding: 1rem;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
-        transform: translateY(100%);
-        transition: transform 0.3s ease-in-out;
-    }
-    .project-card:hover .project-overlay {
-        transform: translateY(0);
-    }
-  </style>
 </head>
 
 <body>
@@ -129,12 +19,11 @@
       <button id="darkModeToggle" aria-label="Toggle Dark Mode" class="dark-mode-toggle">
         ☀️
       </button>
-      <!-- ADDED NEW SEARCH BAR HTML -->
       <div class="search-container">
-          <div class="search-box">
-              <i class="fas fa-search"></i>
-              <input type="text" id="searchInput" placeholder="Search projects...">
-          </div>
+        <div class="search-box">
+          <i class="fas fa-search"></i>
+          <input type="text" id="searchInput" placeholder="Search projects...">
+        </div>
       </div>
       <nav id="mainNav">
         <ul>
@@ -176,45 +65,40 @@
       <div class="about-grid">
         <div class="about-bio">
           <p>My journey began in Computer Science, but I discovered my true passion lay in the elegant world of Applied Mathematics. This transition wasn't just academic—it was a revelation that mathematical modeling could be both rigorous and creative.</p>
-
           <p>Today, I combine technical precision with artistic vision through my Studio Arts minor, creating data visualizations that don't just inform—they inspire. From epidemiological modeling to genome mutation simulations, I find beauty in the patterns that emerge from complex systems.</p>
-
           <p>What drives me is the power of mathematics to tell stories about our world, whether it's tracking disease spread or understanding fitness landscapes in evolutionary biology. Every equation is a narrative waiting to be discovered.</p>
         </div>
-
         <div class="about-cards-slider">
-            <div class="slider-wrapper">
-                <div class="about-cards-track">
-                    <div class="info-card">
-                        <h4>🎓 Education</h4>
-                        <p><strong>Western University</strong><br>
-                        Applied Mathematics (Major)<br>
-                        Studio Arts (Minor)<br>
-                        Graduating August 2025</p>
-                        <p><strong>Certifications:</strong> IBM Data Analysis for Beginners (pursuing advanced data analysis certifications)</p>
-                    </div>
-
-                    <div class="info-card">
-                        <h4>📊 Research Focus</h4>
-                        <p>Data Science & Modeling<br>
-                        Epidemiological modeling, simulations, parameter fitting, and sensitivity analysis using differential equations and computational methods.</p>
-                    </div>
-
-                    <div class="info-card">
-                        <h4>🎨 Creative Side</h4>
-                        <p>Combining technical analysis with artistic vision to create compelling data visualizations that communicate complex mathematical concepts.</p>
-                    </div>
-                </div>
+          <div class="slider-wrapper">
+            <div class="about-cards-track">
+              <div class="info-card">
+                <h4>🎓 Education</h4>
+                <p><strong>Western University</strong><br>
+                Applied Mathematics (Major)<br>
+                Studio Arts (Minor)<br>
+                Graduating August 2025</p>
+                <p><strong>Certifications:</strong> IBM Data Analysis for Beginners (pursuing advanced data analysis certifications)</p>
+              </div>
+              <div class="info-card">
+                <h4>📊 Research Focus</h4>
+                <p>Data Science & Modeling<br>
+                Epidemiological modeling, simulations, parameter fitting, and sensitivity analysis using differential equations and computational methods.</p>
+              </div>
+              <div class="info-card">
+                <h4>🎨 Creative Side</h4>
+                <p>Combining technical analysis with artistic vision to create compelling data visualizations that communicate complex mathematical concepts.</p>
+              </div>
             </div>
-            <div class="slider-nav">
-                <button class="slider-arrow prev-slide"><i class="fas fa-chevron-left"></i></button>
-                <div class="slider-dots">
-                    <span class="dot active" data-slide-index="0"></span>
-                    <span class="dot" data-slide-index="1"></span>
-                    <span class="dot" data-slide-index="2"></span>
-                </div>
-                <button class="slider-arrow next-slide"><i class="fas fa-chevron-right"></i></button>
+          </div>
+          <div class="slider-nav">
+            <button class="slider-arrow prev-slide"><i class="fas fa-chevron-left"></i></button>
+            <div class="slider-dots">
+              <span class="dot active" data-slide-index="0"></span>
+              <span class="dot" data-slide-index="1"></span>
+              <span class="dot" data-slide-index="2"></span>
             </div>
+            <button class="slider-arrow next-slide"><i class="fas fa-chevron-right"></i></button>
+          </div>
         </div>
       </div>
       <div class="about-list">
@@ -254,6 +138,49 @@
       <div id="all-skills-grid" class="all-skills-grid">
         <!-- Cards will be generated here by JavaScript -->
       </div>
+      <div class="core-competencies" data-aos="fade-up">
+        <h3>Key Competencies & Technologies</h3>
+        <div class="key-competencies-grid">
+          <div class="competency-chip" data-aos="zoom-in">
+            <i class="fas fa-calculator"></i>
+            <span>Mathematical Modeling</span>
+          </div>
+          <div class="competency-chip" data-aos="zoom-in">
+            <i class="fas fa-chart-bar"></i>
+            <span>Data Visualization</span>
+          </div>
+          <div class="competency-chip" data-aos="zoom-in">
+            <i class="fas fa-microscope"></i>
+            <span>Epidemiological Modeling</span>
+          </div>
+          <div class="competency-chip" data-aos="zoom-in">
+            <i class="fab fa-python"></i>
+            <span>Python</span>
+          </div>
+          <div class="competency-chip" data-aos="zoom-in">
+            <i class="fas fa-square-root-alt"></i> <span>MATLAB</span>
+          </div>
+          <div class="competency-chip" data-aos="zoom-in">
+            <i class="fas fa-database"></i>
+            <span>SQL</span>
+          </div>
+          <div class="competency-chip" data-aos="zoom-in">
+            <i class="fas fa-chart-line"></i>
+            <span>Statistical Analysis</span>
+          </div>
+          <div class="competency-chip" data-aos="zoom-in">
+            <i class="fas fa-lightbulb"></i>
+            <span>Problem Solving</span>
+          </div>
+          <div class="competency-chip" data-aos="zoom-in">
+            <i class="fas fa-flask"></i>
+            <span>Research Design</span>
+          </div>
+          <div class="competency-chip" data-aos="zoom-in">
+            <i class="fas fa-infinity"></i> <span>Differential Equations</span>
+          </div>
+        </div>
+      </div>
     </section>
 
     <section id="leadership" class="leadership-section" data-aos="fade-up">
@@ -263,6 +190,12 @@
       </p>
       <div id="leadership-grid" class="leadership-grid">
         <!-- Cards will be generated here by JavaScript -->
+      </div>
+      <div class="leadership-philosophy" data-aos="fade-up">
+        <h3>Leadership Philosophy</h3>
+        <p>
+          "I believe in creating spaces where everyone can thrive. Whether it's encouraging women to pursue mathematics, mentoring students through their academic journey, or advocating for student needs, my goal is to build bridges and open doors for others to follow their passions."
+        </p>
       </div>
     </section>
 
@@ -278,7 +211,6 @@
           <p class="subtext">Get in touch directly</p>
           <p class="value">mahajan.kasvi@gmail.com ↗</p>
         </a>
-
         <a href="https://www.linkedin.com/in/kasvimahajan" target="_blank" class="contact-card" data-aos="zoom-in">
           <div class="icon">💼</div>
           <h3>LinkedIn</h3>
@@ -562,7 +494,7 @@
             }
         ]
     };
-    
+
     // --- Card Generation Functions ---
     function createProjectCard(project) {
         return `
@@ -692,7 +624,7 @@
         }
     });
 
-    // Project/Experience Detail Modal Logic (Refactored)
+    // Project/Experience Detail Modal Logic
     const projectModal = document.getElementById('projectModal');
     const modalCloseButton = projectModal.querySelector('.modal-close');
     const modalOverlay = projectModal.querySelector('.modal-overlay');
