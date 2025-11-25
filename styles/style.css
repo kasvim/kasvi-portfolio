@@ -43,26 +43,27 @@ html {
 
 .dark-mode {
   /* Dark Mode Colors (Letterboxd aesthetic) */
-  --bg-primary: #181818; /* Main background, deep dark grey */
-  --bg-secondary: #222222; /* Slightly lighter for cards, header */
+  --bg-primary: #14181c; /* Deep Letterboxd-like dark blue-gray */
+  --bg-secondary: #1f2327; /* Slightly lighter for cards, header */
   --text-primary: #e0e0e0; /* Light text for readability */
   --text-secondary: #a0a0a0; /* Muted light text */
-  --heading-color: #e50914; /* A pop of red, similar to Netflix/some dark themes, or a desaturated blue #79a6ed */
-  --border-color: #333333; /* Darker borders */
+  --accent-color: #8cde99; /* Vibrant lime/mint green accent */
+  --heading-color: var(--accent-color); /* Headings use the accent color */
+  --border-color: #2b3036; /* Darker borders */
   --shadow-light: rgba(0, 0, 0, 0.3);
   --shadow-medium: rgba(0, 0, 0, 0.5);
   --shadow-dark: rgba(0, 0, 0, 0.7);
-  --link-color: #e50914; /* Matching accent */
-  --link-hover-color: #ff3344;
-  --button-bg-primary: #e50914;
-  --button-text-primary: #ffffff;
+  --link-color: var(--accent-color);
+  --link-hover-color: #5bb367; /* A darker shade of the accent for hover */
+  --button-bg-primary: var(--accent-color);
+  --button-text-primary: #14181c; /* Use dark background color for text on accent buttons */
   --button-bg-secondary: #333333;
   --button-text-secondary: #e0e0e0;
   --gradient-light-card: linear-gradient(to bottom right, #2a2a2a, #1f1f1f);
-  --hero-background-gradient: linear-gradient(to bottom, #1a1a1a, #0f0f0f);
-  --progress-bar-color: #e50914;
+  --hero-background-gradient: linear-gradient(to bottom, #101215, #14181c);
+  --progress-bar-color: var(--accent-color);
   --icon-bg-default: #444; /* Darker default icon background */
-  --translucent-bg: rgba(0, 0, 0, 0.85); /* Darker translucent for overlays */
+  --translucent-bg: rgba(20, 24, 28, 0.85); /* Darker translucent for overlays */
 
   /* Specific Dark Mode Gradients (Adjust these for skills/leadership if they use gradients) */
   --card-blue-gradient: linear-gradient(to right, #202020, #303030);
@@ -86,7 +87,7 @@ html {
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif; /* Keep Poppins for main text */
   background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
@@ -212,6 +213,9 @@ section {
 }
 
 section h2 {
+  font-family: 'Oswald', sans-serif; /* Use the cinematic font */
+  text-transform: uppercase; /* Match the bold, graphic style */
+  letter-spacing: 2px;
   margin-bottom: 30px;
   font-size: 2.5rem;
   color: var(--heading-color);
@@ -637,38 +641,41 @@ section h2 {
 
 .project-card:hover .project-image {
   transform: scale(1.08);
-  filter: brightness(0.7);
 }
 
 .project-overlay {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
   width: 100%;
+  height: 100%;
   padding: 15px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 10%, rgba(0, 0, 0, 0.3) 70%, transparent 100%);
   color: white;
   text-align: left;
   opacity: 0;
-  transform: translateY(100%);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease, background 0.3s ease;
+  display: flex; /* Added for rating placement */
+  flex-direction: column;
+  justify-content: flex-end; /* Push content to bottom */
 }
 
 .project-card:hover .project-overlay {
   opacity: 1;
-  transform: translateY(0);
 }
 
 .project-title {
-  font-size: 1.15rem;
-  font-weight: 600;
+  font-family: 'Oswald', sans-serif; /* Use the cinematic font for titles */
+  font-size: 1.3rem;
+  font-weight: 700;
   margin-bottom: 5px;
-  color: white;
+  color: var(--text-primary);
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .project-subtitle {
   font-size: 0.85rem;
-  color: #c0c0c0;
+  color: var(--text-secondary);
   margin-bottom: 10px;
 }
 
