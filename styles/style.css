@@ -678,6 +678,20 @@ section h2 {
   color: var(--text-secondary);
   margin-bottom: 10px;
 }
+/* New styling for the Project Card Rating */
+.project-rating {
+  display: flex;
+  gap: 3px;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-top: 5px;
+  /* Letterboxd-style accent color for the stars */
+}
+
+.project-rating .fas.fa-star,
+.project-rating .fas.fa-star-half-alt {
+    color: var(--accent-color); /* Use the new accent color */
+}
 
 /* --- Experience Section --- */
 .experience-section {

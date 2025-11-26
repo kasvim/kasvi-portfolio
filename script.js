@@ -10,6 +10,7 @@ AOS.init();
                 subtitle: 'Epidemiological SVIR Model (2024)',
                 imageSrc: 'assets/Covid-19_img.jpg',
                 description: 'Curated data for COVID-19 cases in France in 2021, developed an SVIR disease model and performed a detailed statistical analysis using MATLAB and Python.',
+                rating: 4.5,
                 achievementsHeading: 'Key Technical Achievements:',
                 achievementsListItems: [
                     'Implemented SVIR system using MATLAB’s ode45',
@@ -28,6 +29,7 @@ AOS.init();
                 subtitle: 'Sales & Efficiency with Excel & SQL (2023)',
                 imageSrc: 'assets/adventure_img.jpg',
                 description: 'Analyzed data for a fictitious company using MS Excel, Pivot tables, and VBA. Improved company data formatting, repetitions, and clarity, which increased sales and streamlined day-to-day business.',
+                rating: 3.0,
                 achievementsHeading: 'Key Skills Demonstrated:',
                 achievementsListItems: [
                     'Data analysis in Microsoft Excel and SQL',
@@ -46,6 +48,7 @@ AOS.init();
                 subtitle: 'Python Regression Model (2023)',
                 imageSrc: 'assets/income_img.jpg',
                 description: 'Engineered and analyzed a dataset of 8,000 individuals using Python, handling missing values and encoding 8 categorical variables to model the impact of demographic factors on income.',
+                rating: 3.5,
                 achievementsHeading: 'Key Technical Achievements:',
                 achievementsListItems: [
                     'Dataset engineering and cleaning for 8,000 individuals using Python',
@@ -223,17 +226,22 @@ AOS.init();
         ]
     };
 
+  
     function createProjectCard(project) {
+        // Get the stars using the existing function
+        const projectRatingStars = generateStars(project.rating || 0);
+
         return `
-            <div id="${project.id}" class="project-card group" data-aos="fade-up" data-type="${project.type}" data-id="${project.id}">
-                <img class="project-image" src="${project.imageSrc}" alt="${project.title}">
-                <div class="project-overlay absolute inset-x-0 bottom-0 p-4 transition-all duration-300 ease-in-out group-hover:bg-gradient-to-t group-hover:from-gray-900 group-hover:to-transparent group-hover:h-full">
-                    <div class="flex flex-col h-full justify-end">
-                        <div class="project-title text-xl font-bold mb-1 transition-transform duration-300 ease-in-out transform translate-y-8 group-hover:translate-y-0">
-                            ${project.title}
-                        </div>
-                        <div class="project-subtitle text-sm text-gray-400 mb-2 transition-transform duration-300 ease-in-out transform translate-y-8 group-hover:translate-y-0">
-                            ${project.subtitle}
+            <div id="${project.id}" class="project-card" data-aos="fade-up" data-type="${project.type}" data-id="${project.id}">
+                <div class="project-image-wrapper">
+                    <img class="project-image" src="${project.imageSrc}" alt="${project.title}">
+                </div>
+                <div class="project-overlay">
+                    <div class="project-overlay-content">
+                        <div class="project-title">${project.title}</div>
+                        <div class="project-subtitle">${project.subtitle}</div>
+                        <div class="project-rating">
+                            ${projectRatingStars}
                         </div>
                     </div>
                 </div>
