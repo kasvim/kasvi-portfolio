@@ -580,6 +580,156 @@ section h2 {
   transform: translateY(-50%);
   margin-right: 10px;
 }
+/* --- Algorithm's Journey Flowchart Styling --- */
+.about-journey-intro {
+    max-width: 800px;
+    margin: 0 auto 50px auto;
+}
+
+.algorithm-journey-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 30px 0;
+    position: relative;
+}
+
+.journey-path {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    padding: 20px 0;
+}
+
+/* Horizontal Connector Line */
+.journey-path::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    right: 5%;
+    height: 2px;
+    background: var(--border-color);
+    z-index: 1;
+    transform: translateY(-50%);
+}
+.dark-mode .journey-path::before {
+    background: #333;
+}
+
+.journey-node {
+    flex: 1;
+    max-width: 30%;
+    z-index: 2;
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px var(--shadow-medium);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
+    position: relative;
+    border: 1px solid var(--border-color);
+}
+
+.journey-node:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px var(--shadow-dark);
+}
+
+.node-icon {
+    font-size: 2.5rem;
+    color: var(--heading-color);
+    margin-bottom: 10px;
+    background: var(--bg-primary); /* Circle base behind icon */
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px auto;
+    box-shadow: 0 0 0 5px var(--bg-secondary); /* Separator ring */
+}
+.node-icon i {
+    transition: color 0.2s ease;
+}
+
+.journey-node:hover .node-icon i {
+    color: var(--link-hover-color);
+}
+
+.node-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+.node-text {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Arrows (Triangle Connectors) */
+.journey-arrow {
+    width: 10%;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 70px; /* Position next to the horizontal line */
+}
+.journey-arrow::after {
+    content: '▶'; /* Unicode right arrow or a triangle */
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100%);
+}
+
+@media (max-width: 768px) {
+    .journey-path {
+        flex-direction: column;
+        align-items: center;
+    }
+    .journey-path::before {
+        left: 50%;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        height: 100%;
+        transform: translateX(-50%) translateY(0);
+    }
+    .journey-node {
+        max-width: 90%;
+        margin-bottom: 40px;
+        padding: 25px;
+        position: relative;
+        left: 0;
+    }
+    .journey-arrow {
+        width: 0;
+        height: 40px;
+        margin-top: 0;
+    }
+    .journey-arrow::after {
+        content: '▼'; /* Down arrow for vertical flow */
+        font-size: 1.5rem;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+    }
+    /* Hide the last arrow */
+    .journey-arrow:last-of-type {
+        display: none;
+    }
+}
+
+/* Remove the old slider code for a cleaner About Section */
+.about-cards-slider, .about-grid { display: none !important; }
 
 /* --- Projects Section - Letterboxd-Inspired Grid --- */
 .projects-section {
