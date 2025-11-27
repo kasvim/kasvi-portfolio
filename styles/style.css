@@ -1137,6 +1137,66 @@ section h2 {
   line-height: 1.8;
   color: white;
 }
+/* --- Custom Leadership Themes --- */
+
+/* Theme 1: Math/Science Focus (Green/Teal accent) */
+.leadership-math-theme .card-header {
+    background: linear-gradient(135deg, #1f2327 0%, #1f2327 50%, var(--accent-color) 100%);
+    border-bottom: 3px solid var(--accent-color);
+    color: var(--text-primary);
+}
+.leadership-math-theme .card-header i {
+    color: var(--accent-color);
+}
+
+/* Theme 2: Mentorship/Community Focus (Blue/Purple accent) */
+.leadership-mentor-theme .card-header {
+    background: linear-gradient(135deg, #1f2327 0%, #1f2327 50%, #4a90e2 100%);
+    border-bottom: 3px solid #4a90e2;
+    color: var(--text-primary);
+}
+.leadership-mentor-theme .card-header i {
+    color: #4a90e2;
+}
+
+/* Theme 3: Service/Governance Focus (Orange/Gold accent) */
+.leadership-service-theme .card-header {
+    background: linear-gradient(135deg, #1f2327 0%, #1f2327 50%, #f5a623 100%);
+    border-bottom: 3px solid #f5a623;
+    color: var(--text-primary);
+}
+.leadership-service-theme .card-header i {
+    color: #f5a623;
+}
+
+/* General Header Fix for dark theme text consistency */
+.leadership-card h3, .leadership-card .org {
+    color: var(--text-primary);
+    position: relative;
+    z-index: 10;
+}
+.leadership-card .card-header {
+    background-color: var(--bg-secondary); /* ensure background is dark */
+    padding: 20px;
+}
+.leadership-card .card-header h3 {
+    margin-top: 10px;
+}
+.leadership-card .card-header i {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+
+/* Apply dark mode styles to card body */
+.dark-mode .leadership-card .card-body {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.dark-mode .leadership-card .date-tag {
+    background: var(--bg-primary);
+    color: var(--text-secondary);
+}
 
 /* --- Contact Section --- */
 .contact-section {

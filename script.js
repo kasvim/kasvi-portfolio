@@ -189,6 +189,7 @@ AOS.init();
                 organization: 'Women in Mathematics',
                 date: '2023 – Present',
                 summary: 'Leading initiatives to promote gender diversity in STEM fields and creating inclusive opportunities for women in mathematics.',
+                themeClass: 'leadership-math-theme',
                 description: 'As Director of Outreach, I spearhead initiatives to promote gender diversity in STEM fields, specifically encouraging more women to pursue careers in mathematics. This involves designing and implementing programs that bridge the gap between academic mathematics and real-world applications.',
                 listItems: [
                     'Organized and hosted over 10 workshops and seminars focusing on diverse mathematical topics and career paths, engaging over 200 students annually.',
@@ -204,6 +205,7 @@ AOS.init();
                 organization: 'Leadership and Mentorship Program',
                 date: '2022 – 2024',
                 summary: 'Guiding and mentoring fellow students in their academic and professional development.',
+                themeClass: 'leadership-mentor-theme',
                 description: 'I led a team within the university\'s mentorship program, dedicated to fostering academic and professional growth among students. My responsibilities included guiding new mentors and ensuring program effectiveness.',
                 listItems: [
                     'Coordinated and facilitated weekly team meetings, ensuring effective communication and task delegation among mentors.',
@@ -219,6 +221,7 @@ AOS.init();
                 organization: 'Western Science Students\' Council',
                 date: '2022 – Present',
                 summary: 'Contributing to student governance and representing the interests of science students.',
+                themeClass: 'leadership-service-theme',
                 description: 'As a member of the International Committee, I actively contributed to student governance and advocated for the needs of international science students at Western University.',
                 listItems: [
                     'Represented the interests of international science students in council meetings and decision-making processes.',
@@ -298,19 +301,20 @@ AOS.init();
 }
 
     function createLeadershipCard(leadership) {
-        return `
-            <div id="${leadership.id}" class="leadership-card" data-aos="zoom-in" data-type="${leadership.type}" data-id="${leadership.id}">
-                <div class="card-header">
-                    <h3>👑 ${leadership.title}</h3>
-                    <p class="org">${leadership.organization}</p>
-                </div>
-                <div class="card-body">
-                    <div class="date-tag">${leadership.date}</div>
-                    <p>${leadership.summary}</p>
-                </div>
+    return `
+        <div id="${leadership.id}" class="leadership-card ${leadership.themeClass}" 
+             data-aos="zoom-in" data-type="${leadership.type}" data-id="${leadership.id}">
+            <div class="card-header">
+                <i class="fas fa-trophy"></i> <h3>${leadership.title}</h3>
+                <p class="org">${leadership.organization}</p>
             </div>
-        `;
-    }
+            <div class="card-body">
+                <div class="date-tag">${leadership.date}</div>
+                <p>${leadership.summary}</p>
+            </div>
+        </div>
+    `;
+}
     
     function generateStars(rating) {
         let stars = '';
