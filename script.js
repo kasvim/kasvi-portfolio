@@ -67,6 +67,7 @@ AOS.init();
                 type: 'experience',
                 title: 'Undergraduate Research Assistant',
                 subtitle: 'Western University (History) (May 2025 – Present)',
+                impactScore: 4.0,
                 description: '<strong>University of Western Ontario</strong><br>London, ON',
                 achievementsHeading: 'Role & Responsibilities:',
                 achievementsListItems: [
@@ -80,6 +81,7 @@ AOS.init();
                 type: 'experience',
                 title: 'Undergraduate Research Assistant',
                 subtitle: 'Western University (Mathematics) (May 2024 – September 2024)',
+                impactScore: 4.5,
                 description: '<strong>University of Western Ontario</strong><br>London, ON',
                 achievementsHeading: 'Role & Responsibilities:',
                 achievementsListItems: [
@@ -92,6 +94,7 @@ AOS.init();
                 type: 'experience',
                 title: 'Undergraduate Research Assistant',
                 subtitle: 'Western University (Earth Sciences) (June 2023 – April 2024)',
+                impactScore: 3.0,
                 description: '<strong>University of Western Ontario</strong><br>London, ON',
                 achievementsHeading: 'Role & Responsibilities:',
                 achievementsListItems: [
@@ -105,6 +108,7 @@ AOS.init();
                 type: 'experience',
                 title: 'Project Intern',
                 subtitle: 'Ernst & Young (EY) India (May 2023 – August 2023)',
+                impactScore: 4.0,
                 description: '<strong>Ernst & Young (EY) India</strong><br>New Delhi, India',
                 achievementsHeading: 'Role & Responsibilities:',
                 achievementsListItems: [
@@ -250,34 +254,48 @@ AOS.init();
     }
 
     function createExperienceCard(experience) {
-        return `
-            <div id="${experience.id}" class="experience-card" data-aos="fade-up" data-type="${experience.type}" data-id="${experience.id}">
-                <div class="card-visible-content">
-                    <div class="card-icon">🧮</div>
-                    <h3 class="card-title">${experience.title}</h3>
-                    <p class="card-company">${experience.subtitle}</p>
-                    <span class="card-date">${experience.date}</span>
-                </div>
-            </div>
-        `;
-    }
+    const stars = generateStars(experience.impactScore || 0);
 
-    function createSkillCard(skill) {
-        const projectsWithSkill = portfolioData.projects.filter(p => p.skills.includes(skill.id)).map(p => p.id);
-        const projectsDataAttr = projectsWithSkill.join(',');
-
-        return `
-            <div id="${skill.id}" class="skill-item" data-aos="zoom-in" data-type="${skill.type}" data-id="${skill.id}">
-                <div class="skill-icon-wrapper">
-                    <img src="${skill.iconSrc}" alt="${skill.title} Logo" class="skill-icon-img">
+    return `
+        <div id="${experience.id}" class="experience-card" data-aos="fade-up" data-type="${experience.type}" data-id="${experience.id}">
+            <div class="card-visible-content">
+                <div class="card-icon">
+                    <i class="fas fa-flask"></i> </div>
+                <h3 class="card-title">${experience.title}</h3>
+                <p class="card-company">${experience.subtitle}</p>
+                <div class="experience-impact-rating">
+                    <span class="rating-label">Impact:</span>
+                    <span class="rating-stars">${stars}</span>
                 </div>
-                <h3 class="skill-name">${skill.title}</h3>
-                <div class="proficiency-rating" data-proficiency="${skill.proficiency}">
-                    ${generateStars(skill.proficiency)}
-                </div>
+                <span class="card-date">${experience.date}</span>
             </div>
-        `;
-    }
+        </div>
+    `;
+}
+
+   function createSkillCard(skill) {
+    // Determine a fallback Font Awesome icon if image is missing/not shared
+    let skillIcon = '';
+    if (skill.title.toLowerCase().includes('python')) skillIcon = 'fab fa-python';
+    else if (skill.title.toLowerCase().includes('matlab')) skillIcon = 'fas fa-square-root-alt';
+    else if (skill.title.toLowerCase().includes('sql')) skillIcon = 'fas fa-database';
+    else if (skill.title.toLowerCase().includes('data')) skillIcon = 'fas fa-chart-area';
+    else if (skill.title.toLowerCase().includes('r')) skillIcon = 'fas fa-chart-bar';
+    else if (skill.title.toLowerCase().includes('modeling')) skillIcon = 'fas fa-cogs';
+    else skillIcon = 'fas fa-code'; // General fallback
+
+    return `
+        <div id="${skill.id}" class="skill-item" data-aos="zoom-in" data-type="${skill.type}" data-id="${skill.id}">
+            <div class="skill-icon-fa-wrapper">
+                <i class="${skillIcon}"></i>
+            </div>
+            <h3 class="skill-name">${skill.title}</h3>
+            <div class="proficiency-rating" data-proficiency="${skill.proficiency}">
+                ${generateStars(skill.proficiency)}
+            </div>
+        </div>
+    `;
+}
 
     function createLeadershipCard(leadership) {
         return `

@@ -761,6 +761,44 @@ section h2 {
   padding-top: 10px;
   border-top: 1px solid var(--border-color);
 }
+/* Styling for the new Experience Rating */
+.experience-impact-rating {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.experience-impact-rating .rating-label {
+    font-weight: 600;
+    color: var(--heading-color); /* Use the accent color for the label */
+}
+
+.experience-impact-rating .rating-stars .fas.fa-star,
+.experience-impact-rating .rating-stars .fas.fa-star-half-alt {
+    color: var(--accent-color); /* Ensure stars use the accent color */
+    font-size: 1rem;
+}
+
+.experience-impact-rating .rating-stars .far.fa-star {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* Update the card-icon to use a dynamic font-awesome icon */
+.experience-section .card-icon {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    color: var(--heading-color);
+    text-align: left; /* Align icon left like text */
+}
+
+/* Change icon for Leadership Section to match Math/Art theme */
+.leadership-section .card-header i {
+    font-size: 2rem;
+    margin-right: 10px;
+}
 
 /* --- Skills Section --- */
 .skills-section {
@@ -814,25 +852,39 @@ section h2 {
   box-shadow: 0 10px 30px var(--shadow-dark);
 }
 
-.skill-icon-wrapper {
+/* REPLACE .skill-icon-wrapper and .skill-icon-img */
+.skill-icon-fa-wrapper {
   width: 80px;
   height: 80px;
   margin-bottom: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  /* Dark mode visual styling */
+  background-color: var(--bg-primary); /* Dark circle base */
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--shadow-light);
+  transition: background-color 0.2s ease;
 }
 
-.skill-icon-img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
-  transition: transform 0.2s ease;
+.skill-icon-fa-wrapper i {
+  font-size: 2.8rem;
+  color: var(--heading-color); /* Accent color for the icon */
+  transition: color 0.2s ease, transform 0.2s ease;
 }
 
-.skill-item:hover .skill-icon-img {
+.skill-item:hover .skill-icon-fa-wrapper {
+  background-color: var(--bg-secondary);
+}
+
+.skill-item:hover .skill-icon-fa-wrapper i {
   transform: scale(1.1);
+}
+
+/* Ensure the rating stars use the accent color */
+.proficiency-rating i.fas.fa-star,
+.proficiency-rating i.fas.fa-star-half-alt {
+  color: var(--accent-color); /* Use the new accent color for filled stars */
 }
 
 .skill-name {
