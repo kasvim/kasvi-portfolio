@@ -162,12 +162,6 @@ header.scrolled {
   z-index: 1000;
 }
 
-@media (min-width: 768px) {
-    .search-container {
-        display: flex; /* Show on desktop */
-    }
-}
-
 @media (max-width: 768px) {
   nav ul {
     /* Full-screen mobile menu overlay */
@@ -211,11 +205,18 @@ header.scrolled {
 /* --- Search Bar Styling --- */
 .search-container {
     position: relative;
-    display: none; /* Hidden on mobile by default, handled in media query */
+    display: none; /* Hidden by default, shown explicitly via media query */
     align-items: center;
     justify-content: center;
     margin-left: auto;
     margin-right: 1rem;
+}
+
+/* CRITICAL FIX: Show search bar ONLY on desktop (min-width: 768px) */
+@media (min-width: 768px) {
+    .search-container {
+        display: flex; /* <-- FIX: Show on Desktop */
+    }
 }
 
 .search-box {
@@ -249,11 +250,7 @@ body.dark-mode .search-box input {
     color: #d4d4d4;
 }
 /* --- Search Dropdown Styling --- */
-.search-container {
-    position: relative;
-    /* Ensure search box is positioned relative to the container */
-}
-
+/* The position: relative on .search-container above is now the primary definition */
 .search-dropdown-content {
     display: none; /* Initially hidden */
     position: absolute;
@@ -825,7 +822,6 @@ section h2 {
 
 .projects-section h2 {
   font-size: 2.5rem;
-  /* Redundancy removed: margin-bottom is set by the global h2 style */
   color: var(--text-primary);
 }
 
@@ -869,7 +865,6 @@ section h2 {
 
 .project-card:hover .project-image {
   transform: scale(1.08);
-  /* filter: brightness(0.7); was removed previously, this is clean */
 }
 
 .project-overlay {
