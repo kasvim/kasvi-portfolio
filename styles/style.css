@@ -124,10 +124,47 @@ header {
     margin-left: auto; /* Pushes the search bar to the right on large screens */
     margin-right: 1rem;
 }
-@media (min-width: 768px) {
-    .search-container {
-        display: flex; /* Show on desktop */
-    }
+@media (max-width: 768px) {
+  /* Ensure the nav list is full screen on mobile */
+  nav ul {
+    display: none;
+    flex-direction: column;
+    gap: 30px; /* Increased spacing */
+    background-color: var(--bg-primary); /* Use primary BG for full-screen menu */
+    padding: 100px 20px 40px; /* Padding for header clearance */
+    position: fixed; /* Fixed full-screen overlay */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 998; /* Below header sticky z-index (999) */
+    box-shadow: none; /* Remove box shadow for full screen */
+    text-align: center;
+    overflow-y: auto;
+  }
+
+  /* Show menu when 'show' class is applied */
+  nav ul.show {
+    display: flex;
+  }
+
+  /* Style mobile links */
+  nav a {
+    font-size: 1.5rem; /* Larger font for mobile touch targets */
+    font-weight: 600;
+    color: var(--text-primary);
+    padding: 10px 0;
+  }
+
+  /* Hamburger and other elements */
+  .hamburger {
+    display: block;
+    z-index: 1000;
+  }
+
+  .nav-container {
+    padding: 0 20px;
+  }
 }
 
 .search-box {
@@ -406,94 +443,29 @@ section h2 {
 }
 
 .btn-resume {
-  background-color: var(--button-bg-primary);
-  color: var(--button-text-primary);
-  padding: 12px 22px;
+  background: var(--accent-color);
+  color: var(--bg-primary); /* Dark text on bright accent */
+  padding: 15px 30px;
   font-weight: bold;
-  border-radius: 12px;
+  font-size: 1.1rem;
+  border-radius: 8px; /* Slightly softer corners */
   display: inline-block;
   margin-bottom: 30px;
   transition: all 0.3s ease;
   text-decoration: none;
+  border: 2px solid var(--accent-color);
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px var(--shadow-medium);
 }
 
 .btn-resume:hover {
-  background-color: var(--link-hover-color);
+  background: transparent;
+  color: var(--accent-color);
   transform: scale(1.05);
+  box-shadow: 0 6px 20px var(--shadow-dark);
 }
 
 /* --- About Section Layout (Animated Slider) --- */
-.about-section {
-  padding: 80px 20px;
-  background-color: var(--bg-primary);
-  color: var(--text-primary);
-}
-
-.about-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px;
-  justify-content: center;
-  align-items: flex-start;
-  margin-top: 30px;
-}
-
-.about-bio {
-  flex: 1 1 450px;
-  max-width: 600px;
-  text-align: left;
-  font-size: 1rem;
-  color: var(--text-primary);
-  line-height: 1.8;
-}
-
-/* Slider Container */
-.about-cards-slider {
-  flex: 1 1 350px;
-  max-width: 400px;
-  position: relative;
-  overflow: hidden;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px 0;
-}
-
-.slider-wrapper {
-  width: 100%;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px var(--shadow-medium);
-}
-
-.about-cards-track {
-  display: flex;
-  transition: transform 0.5s ease-in-out;
-}
-
-.about-cards-track .info-card {
-  flex-shrink: 0;
-  width: 100%;
-  background: var(--bg-secondary);
-  padding: 25px;
-  border-radius: 12px;
-  text-align: left;
-  color: var(--text-primary);
-  box-sizing: border-box;
-}
-
-.about-cards-track .info-card h4 {
-  font-size: 1.15rem;
-  color: var(--heading-color);
-  margin-bottom: 10px;
-}
-
-.about-cards-track .info-card p {
-  font-size: 0.95rem;
-  color: var(--text-secondary);
-  line-height: 1.5;
-}
 
 .slider-nav {
   display: flex;
