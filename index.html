@@ -22,11 +22,19 @@
         ☀️
       </button>
       <div class="search-container">
-        <div class="search-box">
-          <i class="fas fa-search"></i>
-          <input type="text" id="searchInput" placeholder="Search projects...">
-        </div>
+    <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input type="text" id="searchInput" placeholder="Search projects...">
+    </div>
+    <div id="searchDropdown" class="search-dropdown-content">
+        <div class="dropdown-section-title">Recent Searches</div>
+        <ul id="recentSearchesList" class="dropdown-list">
+            </ul>
+        <div class="dropdown-section-title">Suggestions</div>
+        <ul id="suggestionsList" class="dropdown-list">
+            </ul>
       </div>
+    </div>
       <nav id="mainNav">
         <ul>
           <li><a href="#home" class="nav-link">Home</a></li>

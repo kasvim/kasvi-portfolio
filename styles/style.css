@@ -248,6 +248,102 @@ body.dark-mode .search-box {
 body.dark-mode .search-box input {
     color: #d4d4d4;
 }
+/* --- Search Dropdown Styling --- */
+.search-container {
+    position: relative;
+    /* Ensure search box is positioned relative to the container */
+}
+
+.search-dropdown-content {
+    display: none; /* Initially hidden */
+    position: absolute;
+    top: 100%; /* Position right below the search box */
+    left: 0;
+    width: 100%;
+    min-width: 300px; /* Give it a minimum width */
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 8px 16px var(--shadow-dark);
+    z-index: 997; /* Below header */
+    text-align: left;
+    padding-bottom: 10px;
+}
+body.dark-mode .search-dropdown-content {
+    border: 1px solid var(--border-color);
+}
+
+.dropdown-section-title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.9rem;
+    color: var(--heading-color);
+    padding: 8px 15px 4px;
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.dropdown-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-list li {
+    padding: 10px 15px;
+    cursor: pointer;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-list li:hover,
+.dropdown-list li.selected { /* 'selected' class for keyboard navigation */
+    background-color: var(--link-color);
+    color: var(--button-text-primary);
+}
+
+.dropdown-list li:hover .result-type,
+.dropdown-list li.selected .result-type {
+    color: var(--button-text-primary);
+}
+
+.result-type {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background-color: var(--bg-primary);
+    padding: 2px 6px;
+    border-radius: 4px;
+    opacity: 0.7;
+}
+body.dark-mode .result-type {
+    background-color: #333;
+}
+
+/* --- Search Highlight Effect --- */
+.highlight-search {
+    animation: highlightFade 3s ease-out;
+}
+
+@keyframes highlightFade {
+    0% {
+        box-shadow: 0 0 15px 5px var(--accent-color);
+        transform: scale(1.01);
+    }
+    10% {
+        box-shadow: 0 0 20px 8px var(--accent-color);
+    }
+    100% {
+        box-shadow: none;
+        transform: scale(1);
+    }
+}
 
 /* --- Global Section Styles --- */
 section {
