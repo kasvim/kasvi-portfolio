@@ -5,13 +5,13 @@ html {
 
 /* --- CSS Variables for Colors (Letterboxd-inspired) --- */
 :root {
-  /* Default (Light Mode) Colors - Can be kept or adjusted if you want a light mode that matches LB's light mode */
-  --bg-primary: #f8f8f8; /* Light background */
-  --bg-secondary: #ffffff; /* Lighter background for cards/elements */
-  --text-primary: #222222; /* Dark text */
-  --text-secondary: #555555; /* Muted text */
-  --heading-color: #004aad; /* Original accent blue */
-  --border-color: #e0e0e0; /* Light borders */
+  /* Default (Light Mode) Colors */
+  --bg-primary: #f8f8f8;
+  --bg-secondary: #ffffff;
+  --text-primary: #222222;
+  --text-secondary: #555555;
+  --heading-color: #004aad;
+  --border-color: #e0e0e0;
   --shadow-light: rgba(0, 0, 0, 0.05);
   --shadow-medium: rgba(0, 0, 0, 0.1);
   --shadow-dark: rgba(0, 0, 0, 0.15);
@@ -21,22 +21,11 @@ html {
   --button-text-primary: #ffffff;
   --button-bg-secondary: #f0f0f0;
   --button-text-secondary: #222222;
-  --gradient-light-card: linear-gradient(to bottom right, #f2f9ff, #e6f0fb);
   --hero-background-gradient: linear-gradient(to bottom, #f6fafd, #ffffff);
   --progress-bar-color: #004aad;
-  --icon-bg-default: #333; /* For timeline icons */
   --translucent-bg: rgba(255, 255, 255, 0.75);
 
-  /* Specific Skill/Leadership Card Gradients (Light Mode versions) */
-  --card-blue-gradient: linear-gradient(to right, #004aad, #0a65c2);
-  --card-lightblue-gradient: linear-gradient(to right, #2196f3, #64b5f6);
-  --card-cyan-gradient: linear-gradient(to right, #00bcd4, #4dd0e1);
-  --card-purple-gradient: linear-gradient(to right, #9c27b0, #ba68c8);
-  --card-indigo-gradient: linear-gradient(to right, #3f51b5, #7986cb);
-  --card-green-gradient: linear-gradient(to right, #2e7d32, #66bb6a);
-  --leadership-card-purple: linear-gradient(to right, #9c27b0, #ba68c8);
-  --leadership-card-pink: linear-gradient(to right, #e91e63, #f06292);
-  --leadership-card-blue: linear-gradient(to right, #004aad, #1e88e5);
+  /* Unused Gradients Removed for Cleanliness */
   --philosophy-bg: linear-gradient(to right, #004aad, #1e88e5);
   --contact-section-bg: linear-gradient(to bottom, #004aad, #005bd3);
 }
@@ -45,36 +34,25 @@ html {
   /* Dark Mode Colors (Letterboxd aesthetic) */
   --bg-primary: #14181c; /* Deep Letterboxd-like dark blue-gray */
   --bg-secondary: #1f2327; /* Slightly lighter for cards, header */
-  --text-primary: #e0e0e0; /* Light text for readability */
-  --text-secondary: #a0a0a0; /* Muted light text */
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
   --accent-color: #8cde99; /* Vibrant lime/mint green accent */
-  --heading-color: var(--accent-color); /* Headings use the accent color */
-  --border-color: #2b3036; /* Darker borders */
+  --heading-color: var(--accent-color);
+  --border-color: #2b3036;
   --shadow-light: rgba(0, 0, 0, 0.3);
   --shadow-medium: rgba(0, 0, 0, 0.5);
   --shadow-dark: rgba(0, 0, 0, 0.7);
   --link-color: var(--accent-color);
-  --link-hover-color: #5bb367; /* A darker shade of the accent for hover */
+  --link-hover-color: #5bb367;
   --button-bg-primary: var(--accent-color);
-  --button-text-primary: #14181c; /* Use dark background color for text on accent buttons */
+  --button-text-primary: #14181c;
   --button-bg-secondary: #333333;
   --button-text-secondary: #e0e0e0;
-  --gradient-light-card: linear-gradient(to bottom right, #2a2a2a, #1f1f1f);
   --hero-background-gradient: linear-gradient(to bottom, #101215, #14181c);
   --progress-bar-color: var(--accent-color);
-  --icon-bg-default: #444; /* Darker default icon background */
-  --translucent-bg: rgba(20, 24, 28, 0.85); /* Darker translucent for overlays */
+  --translucent-bg: rgba(20, 24, 28, 0.85);
 
-  /* Specific Dark Mode Gradients (Adjust these for skills/leadership if they use gradients) */
-  --card-blue-gradient: linear-gradient(to right, #202020, #303030);
-  --card-lightblue-gradient: linear-gradient(to right, #252525, #353535);
-  --card-cyan-gradient: linear-gradient(to right, #2a2a2a, #3a3a3a);
-  --card-purple-gradient: linear-gradient(to right, #2f2f2f, #3f3f3f);
-  --card-indigo-gradient: linear-gradient(to right, #343434, #444444);
-  --card-green-gradient: linear-gradient(to right, #393939, #494949);
-  --leadership-card-purple: linear-gradient(to right, #2f2f2f, #3f3f3f);
-  --leadership-card-pink: linear-gradient(to right, #2a2a2a, #3a3a3a);
-  --leadership-card-blue: linear-gradient(to right, #202020, #303030);
+  /* Contact/Philosophy dark mode colors */
   --philosophy-bg: linear-gradient(to right, #222222, #181818);
   --contact-section-bg: linear-gradient(to bottom, #181818, #0a0a0a);
 }
@@ -87,7 +65,7 @@ html {
 }
 
 body {
-  font-family: 'Poppins', sans-serif; /* Keep Poppins for main text */
+  font-family: 'Poppins', sans-serif;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.6;
@@ -95,7 +73,7 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Header */
+/* --- Header & Navigation --- */
 header {
   background: var(--bg-secondary);
   padding: 15px 0;
@@ -115,97 +93,14 @@ header {
   margin: 0 auto;
 }
 
-/* --- Search Bar Styling --- */
-.search-container {
-    position: relative;
-    display: none; /* Hidden on mobile by default */
-    align-items: center;
-    justify-content: center;
-    margin-left: auto; /* Pushes the search bar to the right on large screens */
-    margin-right: 1rem;
-}
-@media (max-width: 768px) {
-  /* Ensure the nav list is full screen on mobile */
-  nav ul {
-    display: none;
-    flex-direction: column;
-    gap: 30px; /* Increased spacing */
-    background-color: var(--bg-primary); /* Use primary BG for full-screen menu */
-    padding: 100px 20px 40px; /* Padding for header clearance */
-    position: fixed; /* Fixed full-screen overlay */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 998; /* Below header sticky z-index (999) */
-    box-shadow: none; /* Remove box shadow for full screen */
-    text-align: center;
-    overflow-y: auto;
-  }
-
-  /* Show menu when 'show' class is applied */
-  nav ul.show {
-    display: flex;
-  }
-
-  /* Style mobile links */
-  nav a {
-    font-size: 1.5rem; /* Larger font for mobile touch targets */
-    font-weight: 600;
-    color: var(--text-primary);
-    padding: 10px 0;
-  }
-
-  /* Hamburger and other elements */
-  .hamburger {
-    display: block;
-    z-index: 1000;
-  }
-
-  .nav-container {
-    padding: 0 20px;
-  }
-}
-
-.search-box {
-    display: flex;
-    align-items: center;
-    background-color: #d4d4d4;
-    border-radius: 8px;
-    padding: 0.5rem 1rem;
-    transition: width 0.3s ease-in-out;
-    width: 250px; /* Default width */
-}
-body.dark-mode .search-box {
-    background-color: #2a2a2a;
-}
-
-.search-box i {
-    color: #888;
-    margin-right: 0.75rem;
-    font-size: 1rem;
-}
-
-.search-box input {
-    background: none;
-    border: none;
-    color: #333;
-    font-size: 0.9rem;
-    outline: none;
-    width: 100%;
-}
-body.dark-mode .search-box input {
-    color: #d4d4d4;
-}
-
-nav {
-  margin-left: auto;
-}
-
 header h3 {
   font-size: 1.8rem;
   color: var(--text-primary);
   margin: 0;
+}
+
+nav {
+  margin-left: auto;
 }
 
 nav ul {
@@ -238,33 +133,6 @@ header.scrolled {
   transition: box-shadow 0.3s ease;
 }
 
-section {
-  padding: 80px 20px;
-  background-color: var(--bg-primary);
-}
-
-@media (min-width: 768px) {
-  section {
-    padding: 100px 60px;
-  }
-}
-
-section h2 {
-  font-family: 'Oswald', sans-serif; /* Use the cinematic font */
-  text-transform: uppercase; /* Match the bold, graphic style */
-  letter-spacing: 2px;
-  margin-bottom: 30px;
-  font-size: 2.5rem;
-  color: var(--heading-color);
-}
-
-.section-subtitle {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  max-width: 800px;
-  margin: 0 auto 60px auto;
-}
-
 /* Dark Mode Toggle Button */
 .dark-mode-toggle {
   background: none;
@@ -294,26 +162,45 @@ section h2 {
   z-index: 1000;
 }
 
+@media (min-width: 768px) {
+    .search-container {
+        display: flex; /* Show on desktop */
+    }
+}
+
 @media (max-width: 768px) {
   nav ul {
+    /* Full-screen mobile menu overlay */
     display: none;
     flex-direction: column;
-    gap: 15px;
-    background-color: var(--bg-secondary);
-    padding: 20px;
-    position: absolute;
-    top: 60px; /* Adjust if header height changes */
-    right: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px var(--shadow-medium);
+    gap: 30px;
+    background-color: var(--bg-primary);
+    padding: 100px 20px 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 998;
+    box-shadow: none;
+    text-align: center;
+    overflow-y: auto;
   }
 
   nav ul.show {
     display: flex;
   }
 
+  nav a {
+    font-size: 1.5rem; /* Larger font for mobile touch targets */
+    font-weight: 600;
+    color: var(--text-primary);
+    padding: 10px 0;
+  }
+
   .hamburger {
     display: block;
+    z-index: 1000;
   }
 
   .nav-container {
@@ -321,7 +208,76 @@ section h2 {
   }
 }
 
-/* Home Section */
+/* --- Search Bar Styling --- */
+.search-container {
+    position: relative;
+    display: none; /* Hidden on mobile by default, handled in media query */
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: 1rem;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background-color: #d4d4d4;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    transition: width 0.3s ease-in-out;
+    width: 250px;
+}
+body.dark-mode .search-box {
+    background-color: #2a2a2a;
+}
+
+.search-box i {
+    color: #888;
+    margin-right: 0.75rem;
+    font-size: 1rem;
+}
+
+.search-box input {
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 0.9rem;
+    outline: none;
+    width: 100%;
+}
+body.dark-mode .search-box input {
+    color: #d4d4d4;
+}
+
+/* --- Global Section Styles --- */
+section {
+  padding: 80px 20px;
+  background-color: var(--bg-primary);
+}
+
+@media (min-width: 768px) {
+  section {
+    padding: 100px 60px;
+  }
+}
+
+section h2 {
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  color: var(--heading-color);
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 800px;
+  margin: 0 auto 60px auto;
+}
+
+/* --- Home Section --- */
 #home {
   position: relative;
   overflow: hidden;
@@ -444,11 +400,11 @@ section h2 {
 
 .btn-resume {
   background: var(--accent-color);
-  color: var(--bg-primary); /* Dark text on bright accent */
+  color: var(--bg-primary);
   padding: 15px 30px;
   font-weight: bold;
   font-size: 1.1rem;
-  border-radius: 8px; /* Slightly softer corners */
+  border-radius: 8px;
   display: inline-block;
   margin-bottom: 30px;
   transition: all 0.3s ease;
@@ -465,203 +421,8 @@ section h2 {
   box-shadow: 0 6px 20px var(--shadow-dark);
 }
 
-/* --- About Section Layout (Animated Slider) --- */
+/* --- About Section (Algorithm's Journey & Interests) --- */
 
-.slider-nav {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 25px;
-  gap: 15px;
-  width: 100%;
-}
-
-.slider-arrow {
-  background-color: var(--bg-secondary);
-  border: 1px solid var(--border-color);
-  color: var(--text-primary);
-  padding: 10px 14px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 1.1rem;
-  box-shadow: 0 2px 8px var(--shadow-light);
-  transition: all 0.2s ease;
-  flex-shrink: 0;
-}
-
-.slider-arrow:hover {
-  background-color: var(--link-hover-color);
-  color: white;
-  transform: scale(1.05);
-}
-
-.slider-dots {
-  display: flex;
-  gap: 8px;
-}
-
-.slider-dots .dot {
-  width: 10px;
-  height: 10px;
-  background-color: var(--text-secondary);
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.2s ease;
-}
-
-.slider-dots .dot.active {
-  background-color: var(--heading-color);
-  transform: scale(1.2);
-}
-
-.about-list {
-  margin-top: 60px;
-  text-align: left;
-  max-width: 700px;
-  margin: 60px auto 0 auto;
-}
-
-.about-list h3 {
-  font-size: 1.3rem;
-  margin-bottom: 15px;
-  color: var(--text-primary);
-}
-
-.about-list ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.about-list li {
-  font-size: 0.95rem;
-  margin-bottom: 10px;
-  color: var(--text-primary);
-  position: relative;
-  padding-left: 30px;
-  display: flex;
-  align-items: center;
-}
-
-.about-list li::before {
-  content: attr(data-icon);
-  font-size: 1.2rem;
-  color: var(--heading-color);
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  margin-right: 10px;
-}
-
-/* --- Interactive Interest Gallery Styling --- */
-
-.interest-gallery {
-    margin-top: 60px;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.interest-gallery h3 {
-    font-size: 1.6rem;
-    margin-bottom: 30px;
-    color: var(--text-primary);
-}
-
-.interest-gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-
-@media (max-width: 600px) {
-    .interest-gallery-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-.interest-card {
-    position: relative;
-    overflow: hidden;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px var(--shadow-medium);
-    transition: transform 0.3s ease;
-    cursor: pointer;
-    min-height: 250px;
-}
-
-.interest-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px var(--shadow-dark);
-}
-
-.interest-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.5s ease;
-}
-
-.interest-card:hover .interest-image {
-    transform: scale(1.05);
-    filter: brightness(0.3); /* Darken the image substantially on hover */
-}
-
-/* The Overlay for Text/Icon Reveal */
-.interest-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Slightly darker overlay */
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 0.4s ease;
-}
-
-.interest-card:hover .interest-overlay {
-    opacity: 1;
-}
-
-.interest-overlay i {
-    font-size: 3rem;
-    color: var(--accent-color); /* Highlight icon with accent color */
-    margin-bottom: 15px;
-    transform: translateY(20px);
-    transition: transform 0.4s ease, color 0.4s ease;
-}
-
-.interest-card:hover .interest-overlay i {
-    transform: translateY(0);
-}
-
-.interest-overlay h4 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 1.4rem;
-    color: var(--text-primary); /* Use a light text color */
-    margin-bottom: 10px;
-}
-
-.interest-overlay p {
-    font-size: 0.9rem;
-    color: var(--text-secondary); /* Use a secondary light text color */
-    max-width: 80%;
-    transform: translateY(-20px);
-    transition: transform 0.4s ease;
-}
-
-.interest-card:hover .interest-overlay p {
-    transform: translateY(0);
-}
-/* --- Algorithm's Journey Flowchart Styling --- */
 .about-journey-intro {
     max-width: 800px;
     margin: 0 auto 50px auto;
@@ -721,7 +482,7 @@ section h2 {
     font-size: 2.5rem;
     color: var(--heading-color);
     margin-bottom: 10px;
-    background: var(--bg-primary); /* Circle base behind icon */
+    background: var(--bg-primary);
     width: 60px;
     height: 60px;
     border-radius: 50%;
@@ -729,7 +490,7 @@ section h2 {
     align-items: center;
     justify-content: center;
     margin: 0 auto 15px auto;
-    box-shadow: 0 0 0 5px var(--bg-secondary); /* Separator ring */
+    box-shadow: 0 0 0 5px var(--bg-secondary);
 }
 .node-icon i {
     transition: color 0.2s ease;
@@ -760,10 +521,10 @@ section h2 {
     align-items: center;
     justify-content: center;
     position: relative;
-    margin-top: 70px; /* Position next to the horizontal line */
+    margin-top: 70px;
 }
 .journey-arrow::after {
-    content: '▶'; /* Unicode right arrow or a triangle */
+    content: '▶';
     font-size: 1.5rem;
     color: var(--accent-color);
     position: absolute;
@@ -797,22 +558,169 @@ section h2 {
         margin-top: 0;
     }
     .journey-arrow::after {
-        content: '▼'; /* Down arrow for vertical flow */
+        content: '▼';
         font-size: 1.5rem;
         left: 50%;
         top: 0;
         transform: translateX(-50%);
     }
-    /* Hide the last arrow */
     .journey-arrow:last-of-type {
         display: none;
     }
 }
 
-/* Remove the old slider code for a cleaner About Section */
+/* Remove unused/old About Section elements */
 .about-cards-slider, .about-grid { display: none !important; }
 
-/* --- Projects Section - Letterboxd-Inspired Grid --- */
+/* Old about-list CSS (Kept only for its structure if used elsewhere) */
+.about-list {
+  margin-top: 60px;
+  text-align: left;
+  max-width: 700px;
+  margin: 60px auto 0 auto;
+}
+
+.about-list h3 {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: var(--text-primary);
+}
+
+.about-list ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.about-list li {
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+  position: relative;
+  padding-left: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.about-list li::before {
+  content: attr(data-icon);
+  font-size: 1.2rem;
+  color: var(--heading-color);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-right: 10px;
+}
+
+/* --- Interactive Interest Gallery Styling (Replaces old about list) --- */
+
+.interest-gallery {
+    margin-top: 60px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.interest-gallery h3 {
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+    color: var(--text-primary);
+}
+
+.interest-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+@media (max-width: 600px) {
+    .interest-gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.interest-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px var(--shadow-medium);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    min-height: 250px;
+}
+
+.interest-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px var(--shadow-dark);
+}
+
+.interest-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.interest-card:hover .interest-image {
+    transform: scale(1.05);
+    filter: brightness(0.3);
+}
+
+.interest-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.interest-card:hover .interest-overlay {
+    opacity: 1;
+}
+
+.interest-overlay i {
+    font-size: 3rem;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    transform: translateY(20px);
+    transition: transform 0.4s ease, color 0.4s ease;
+}
+
+.interest-card:hover .interest-overlay i {
+    transform: translateY(0);
+}
+
+.interest-overlay h4 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+.interest-overlay p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    max-width: 80%;
+    transform: translateY(-20px);
+    transition: transform 0.4s ease;
+}
+
+.interest-card:hover .interest-overlay p {
+    transform: translateY(0);
+}
+
+/* --- Projects Section --- */
 .projects-section {
   padding: 80px 20px;
   background: var(--bg-primary);
@@ -821,15 +729,8 @@ section h2 {
 
 .projects-section h2 {
   font-size: 2.5rem;
-  margin-bottom: 15px;
+  /* Redundancy removed: margin-bottom is set by the global h2 style */
   color: var(--text-primary);
-}
-
-.section-subtitle {
-  font-size: 1.1rem;
-  color: var(--text-secondary);
-  max-width: 800px;
-  margin: 0 auto 60px auto;
 }
 
 .projects-container {
@@ -872,6 +773,7 @@ section h2 {
 
 .project-card:hover .project-image {
   transform: scale(1.08);
+  /* filter: brightness(0.7); was removed previously, this is clean */
 }
 
 .project-overlay {
@@ -886,9 +788,9 @@ section h2 {
   text-align: left;
   opacity: 0;
   transition: opacity 0.3s ease, background 0.3s ease;
-  display: flex; /* Added for rating placement */
+  display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* Push content to bottom */
+  justify-content: flex-end;
 }
 
 .project-card:hover .project-overlay {
@@ -896,7 +798,7 @@ section h2 {
 }
 
 .project-title {
-  font-family: 'Oswald', sans-serif; /* Use the cinematic font for titles */
+  font-family: 'Oswald', sans-serif;
   font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 5px;
@@ -909,19 +811,18 @@ section h2 {
   color: var(--text-secondary);
   margin-bottom: 10px;
 }
-/* New styling for the Project Card Rating */
+
 .project-rating {
   display: flex;
   gap: 3px;
   font-size: 1rem;
   color: var(--text-secondary);
   margin-top: 5px;
-  /* Letterboxd-style accent color for the stars */
 }
 
 .project-rating .fas.fa-star,
 .project-rating .fas.fa-star-half-alt {
-    color: var(--accent-color); /* Use the new accent color */
+    color: var(--accent-color);
 }
 
 /* --- Experience Section --- */
@@ -992,7 +893,7 @@ section h2 {
   padding-top: 10px;
   border-top: 1px solid var(--border-color);
 }
-/* Styling for the new Experience Rating */
+
 .experience-impact-rating {
     display: flex;
     align-items: center;
@@ -1003,12 +904,12 @@ section h2 {
 
 .experience-impact-rating .rating-label {
     font-weight: 600;
-    color: var(--heading-color); /* Use the accent color for the label */
+    color: var(--heading-color);
 }
 
 .experience-impact-rating .rating-stars .fas.fa-star,
 .experience-impact-rating .rating-stars .fas.fa-star-half-alt {
-    color: var(--accent-color); /* Ensure stars use the accent color */
+    color: var(--accent-color);
     font-size: 1rem;
 }
 
@@ -1017,18 +918,11 @@ section h2 {
     font-size: 1rem;
 }
 
-/* Update the card-icon to use a dynamic font-awesome icon */
 .experience-section .card-icon {
     font-size: 2.2rem;
     margin-bottom: 15px;
     color: var(--heading-color);
-    text-align: left; /* Align icon left like text */
-}
-
-/* Change icon for Leadership Section to match Math/Art theme */
-.leadership-section .card-header i {
-    font-size: 2rem;
-    margin-right: 10px;
+    text-align: left;
 }
 
 /* --- Skills Section --- */
@@ -1083,7 +977,6 @@ section h2 {
   box-shadow: 0 10px 30px var(--shadow-dark);
 }
 
-/* REPLACE .skill-icon-wrapper and .skill-icon-img */
 .skill-icon-fa-wrapper {
   width: 80px;
   height: 80px;
@@ -1091,8 +984,7 @@ section h2 {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Dark mode visual styling */
-  background-color: var(--bg-primary); /* Dark circle base */
+  background-color: var(--bg-primary);
   border-radius: 50%;
   box-shadow: 0 0 10px var(--shadow-light);
   transition: background-color 0.2s ease;
@@ -1100,7 +992,7 @@ section h2 {
 
 .skill-icon-fa-wrapper i {
   font-size: 2.8rem;
-  color: var(--heading-color); /* Accent color for the icon */
+  color: var(--heading-color);
   transition: color 0.2s ease, transform 0.2s ease;
 }
 
@@ -1110,12 +1002,6 @@ section h2 {
 
 .skill-item:hover .skill-icon-fa-wrapper i {
   transform: scale(1.1);
-}
-
-/* Ensure the rating stars use the accent color */
-.proficiency-rating i.fas.fa-star,
-.proficiency-rating i.fas.fa-star-half-alt {
-  color: var(--accent-color); /* Use the new accent color for filled stars */
 }
 
 .skill-name {
@@ -1137,12 +1023,9 @@ section h2 {
   transition: color 0.2s ease;
 }
 
-.proficiency-rating i.fas.fa-star {
-  color: var(--heading-color);
-}
-
+.proficiency-rating i.fas.fa-star,
 .proficiency-rating i.fas.fa-star-half-alt {
-  color: var(--heading-color);
+  color: var(--accent-color);
 }
 
 .proficiency-rating i.far.fa-star {
@@ -1268,31 +1151,47 @@ section h2 {
   min-height: 100px;
   position: relative;
   z-index: 2;
+  background-color: var(--bg-secondary); /* ensure background is dark */
 }
 
 .leadership-card h3 {
   font-size: 1.25rem;
   margin-bottom: 5px;
+  color: var(--text-primary);
+  position: relative;
+  z-index: 10;
 }
 
 .leadership-card .org {
   font-size: 0.95rem;
   font-weight: 500;
   opacity: 0.9;
+  color: var(--text-primary);
+  position: relative;
+  z-index: 10;
 }
 
-.leadership-card.card-purple .card-header { background: var(--leadership-card-purple); }
-.leadership-card.card-pink .card-header { background: var(--leadership-card-pink); }
-.leadership-card.card-blue .card-header { background: var(--leadership-card-blue); }
+.leadership-card .card-header h3 {
+    margin-top: 10px;
+}
+.leadership-card .card-header i {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+    margin-right: 0; /* Clear previous margin-right from combined rule */
+}
 
 .leadership-card .card-body {
-  background: var(--gradient-light-card);
+  background: var(--bg-secondary); /* Cleaned up from var(--gradient-light-card) */
   padding: 20px;
   text-align: left;
   flex-grow: 1;
   position: relative;
   z-index: 1;
   transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.dark-mode .leadership-card .card-body {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
 }
 
 .leadership-card:hover .card-body {
@@ -1311,6 +1210,11 @@ section h2 {
   margin-bottom: 15px;
   box-shadow: 0 1px 6px var(--shadow-light);
 }
+.dark-mode .leadership-card .date-tag {
+    background: var(--bg-primary);
+    color: var(--text-secondary);
+}
+
 
 .leadership-card p {
   font-size: 0.9rem;
@@ -1318,6 +1222,7 @@ section h2 {
   line-height: 1.6;
 }
 
+/* Redundant default gradient classes removed (.card-purple, .card-pink, .card-blue) */
 .leadership-hover-overlay {
   position: absolute;
   bottom: 0;
@@ -1368,7 +1273,12 @@ section h2 {
   line-height: 1.8;
   color: white;
 }
+
 /* --- Custom Leadership Themes --- */
+.leadership-section .card-header i {
+    font-size: 2rem;
+    margin-right: 10px; /* Kept this for inline icon in custom theme headers */
+}
 
 /* Theme 1: Math/Science Focus (Green/Teal accent) */
 .leadership-math-theme .card-header {
@@ -1400,34 +1310,6 @@ section h2 {
     color: #f5a623;
 }
 
-/* General Header Fix for dark theme text consistency */
-.leadership-card h3, .leadership-card .org {
-    color: var(--text-primary);
-    position: relative;
-    z-index: 10;
-}
-.leadership-card .card-header {
-    background-color: var(--bg-secondary); /* ensure background is dark */
-    padding: 20px;
-}
-.leadership-card .card-header h3 {
-    margin-top: 10px;
-}
-.leadership-card .card-header i {
-    font-size: 2.5rem;
-    margin-bottom: 5px;
-}
-
-/* Apply dark mode styles to card body */
-.dark-mode .leadership-card .card-body {
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-}
-
-.dark-mode .leadership-card .date-tag {
-    background: var(--bg-primary);
-    color: var(--text-secondary);
-}
 
 /* --- Contact Section --- */
 .contact-section {
@@ -1531,7 +1413,7 @@ section h2 {
   color: white;
 }
 
-/* Footer */
+/* --- Footer & Utility --- */
 footer {
   text-align: center;
   padding: 20px;
@@ -1834,10 +1716,10 @@ body.modal-open {
 .skill-modal-stars i.fas.fa-star {
   color: var(--heading-color);
 }
-.skill-modal-stars i.fas.fa-star-half-alt {
+.modal-skill-stars i.fas.fa-star-half-alt {
   color: var(--heading-color);
 }
-.skill-modal-stars i.far.fa-star {
+.modal-skill-stars i.far.fa-star {
   color: var(--text-secondary);
 }
 
